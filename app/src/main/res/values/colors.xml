@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0101</color>
     <color name="purple">#8D4DDC</color>
+
+
+    <color name="wheel_color_1">#6B2ABC</color>
+    <color name="wheel_color_2">#9058D3</color>
 </resources>

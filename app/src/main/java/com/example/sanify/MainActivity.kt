@@ -1,8 +1,11 @@
 package com.example.sanify
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bluehomestudio.luckywheel.WheelItem
 import com.example.sanify.databinding.ActivityMainBinding
 import com.example.sanify.ui.lottery.LotteryActivity
 import com.example.sanify.ui.spin.LuckyDrawActivity
@@ -25,5 +28,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LuckyDrawActivity::class.java)
             startActivity(intent)
         }
+
     }
 }
