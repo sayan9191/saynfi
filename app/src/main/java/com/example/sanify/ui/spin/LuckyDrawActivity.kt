@@ -39,11 +39,22 @@ class LuckyDrawActivity : AppCompatActivity() {
 
 
 
+
+        binding.playAnimation.setOnClickListener {
+            binding.lwv.rotateWheelTo(targetValue)
+            binding.playAnimation.isClickable = false
+            binding.playAnimation.pauseAnimation()
+        }
+
+
         binding.lwv.setLuckyWheelReachTheTarget {
             total += textItems[targetValue-1].toInt()
             targetValue = (1..8).random()
             binding.lwv.setTarget(targetValue)
             binding.totalText.text = "Total: ₹ $total"
+            binding.congoAnimation.playAnimation()
+            binding.playAnimation.isClickable = true
+            binding.playAnimation.playAnimation()
         }
 
     }
