@@ -1,4 +1,4 @@
-package com.example.sanify;
+package com.example.sanify.model.lottery;
 
 public class LotteryInformation {
     String name;

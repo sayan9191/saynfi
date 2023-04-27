@@ -1,18 +1,18 @@
-package com.example.sanify;
+package com.example.sanify.ui.auth;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.concurrent.TimeUnit;
+import com.example.sanify.ui.auth.bottomsheet.BottomSheetPP;
+import com.example.sanify.ui.auth.bottomsheet.BottomSheetTC;
+import com.example.sanify.R;
 
 public class SignUpActivity extends AppCompatActivity {
 

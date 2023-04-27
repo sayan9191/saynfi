@@ -1,8 +1,10 @@
-package com.example.sanify;
+package com.example.sanify.ui.spin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.sanify.R;
 
 public class LuckyDrawActivity extends AppCompatActivity {
 

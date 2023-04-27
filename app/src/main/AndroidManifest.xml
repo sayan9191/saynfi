@@ -12,19 +12,19 @@
         android:theme="@style/Theme.SANIFY"
         tools:targetApi="31">
         <activity
-            android:name=".OTPVerifyActivity"
+            android:name=".ui.auth.OTPVerifyActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".LuckyDrawActivity"
+            android:name=".ui.spin.LuckyDrawActivity"
             android:exported="false" />
         <activity
-            android:name=".LotteryActivity"
+            android:name=".ui.lottery.LotteryActivity"
             android:exported="false" />
         <activity
-            android:name=".LogInActivity"
+            android:name=".ui.auth.LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

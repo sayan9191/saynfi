@@ -1,14 +1,29 @@
-package com.example.sanify;
+package com.example.sanify
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.sanify.databinding.ActivityMainBinding
+import com.example.sanify.ui.lottery.LotteryActivity
+import com.example.sanify.ui.spin.LuckyDrawActivity
 
-import android.os.Bundle;
+class MainActivity : AppCompatActivity() {
 
-public class MainActivity extends AppCompatActivity {
+    lateinit var binding : ActivityMainBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        binding.lotteryOption.setOnClickListener {
+            val intent = Intent(this, LotteryActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.spinOption.setOnClickListener {
+            val intent = Intent(this, LuckyDrawActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

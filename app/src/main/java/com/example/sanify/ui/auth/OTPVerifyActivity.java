@@ -1,4 +1,4 @@
-package com.example.sanify;
+package com.example.sanify.ui.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+
+import com.example.sanify.MainActivity;
+import com.example.sanify.R;
 
 public class OTPVerifyActivity extends AppCompatActivity {
 

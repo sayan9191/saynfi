@@ -1,19 +1,16 @@
-package com.example.sanify;
+package com.example.sanify.ui.auth;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.concurrent.TimeUnit;
+import com.example.sanify.R;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -45,7 +42,7 @@ public class LogInActivity extends AppCompatActivity {
                     Toast.makeText(LogInActivity.this, "Enter your details", Toast.LENGTH_SHORT).show();
                     return;
                 }else {
-                    Intent intent = new Intent(LogInActivity.this,OTPVerifyActivity.class);
+                    Intent intent = new Intent(LogInActivity.this, OTPVerifyActivity.class);
                     intent.putExtra("phoneNumber", phoneNumber.getText().toString());
                     startActivity(intent);
                 }

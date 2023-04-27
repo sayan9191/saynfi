@@ -1,5 +1,8 @@
 plugins {
     id 'com.android.application'
+//    id 'com.google.gms.google-services'
+    // Migrating to kotlin
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -26,6 +29,23 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildscript {
+        ext.kotlin_version = "1.7.20"
+        repositories {
+            google()
+            mavenCentral()
+        }
+        dependencies {
+            classpath "com.android.tools.build:gradle:4.2.2"
+
+        }
+    }
+
 }
 
 dependencies {
@@ -41,4 +61,9 @@ dependencies {
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
     //lucky draw dependency
+
+
+    // Kotlin Migration
+    implementation 'androidx.core:core-ktx:1.10.0'
+
 }

@@ -1,10 +1,14 @@
-package com.example.sanify;
+package com.example.sanify.ui.lottery;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.sanify.model.lottery.LotteryInformation;
+import com.example.sanify.adapter.lottery.LotteryNameAdapter;
+import com.example.sanify.R;
 
 import java.util.ArrayList;
 import java.util.List;
