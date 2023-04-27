@@ -6,33 +6,33 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.auth.LogInActivity">
-    <ImageView
-        android:id="@+id/iconImageView"
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimation"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/phone_icon" />
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/login_animation" />
 
     <LinearLayout
         android:id="@+id/linerLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
+        android:layout_below="@+id/lottieAnimation"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/iconImageView">
+        android:gravity="center"
+        android:orientation="vertical">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SAYANIFY"
-            android:textSize="30dp"
+            android:text="WELCOME BACK"
             android:textColor="@color/purple"
-            android:textStyle="bold"/>
+            android:textSize="30dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -44,10 +44,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:text="Log In"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="25sp"
-        />
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/linerLayout1"
@@ -69,28 +68,28 @@
             android:id="@+id/phoneEdTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="40dp"
-            android:hint="Phone No."
-            android:maxLength="10"
-            android:layout_gravity="end"
             android:backgroundTint="#8F8F8F"
+            android:hint="Phone No."
             android:inputType="phone"
-            android:textColor="@color/black"/>
+            android:maxLength="10"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linerLayout1"
-        >
+        android:layout_below="@+id/linerLayout1">
+
         <ProgressBar
             android:id="@+id/progressbar"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:visibility="invisible"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:visibility="invisible" />
 
 
         <TextView
@@ -158,18 +157,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnSignInGoogle"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:gravity="center|bottom"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New to Plantonic?"
-            android:textColor="@color/black"
-            />
+            android:text="New to SANITFY?"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/btnSignIN"
@@ -177,8 +175,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="Sign Up"
-            android:textStyle="bold"
-            android:textColor="@color/purple" />
+            android:textColor="@color/purple"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

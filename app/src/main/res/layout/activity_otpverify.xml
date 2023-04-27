@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.auth.OTPVerifyActivity">
 
     <LinearLayout
@@ -11,11 +12,14 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/google_logo"
-            android:layout_marginTop="80dp"/>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:lottie_autoPlay="true"
+            android:layout_marginTop="20dp"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/otp_animation" />
 
         <TextView
             android:layout_width="wrap_content"
