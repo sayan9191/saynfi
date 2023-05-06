@@ -1,8 +1,10 @@
 package com.example.sanify.ui.spin
 
+import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import com.bluehomestudio.luckywheel.WheelItem
 import com.example.sanify.R
@@ -18,6 +20,7 @@ class LuckyDrawActivity : AppCompatActivity() {
     var total = 0;
 
     lateinit var binding: ActivityLuckyDrawBinding
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLuckyDrawBinding.inflate(layoutInflater)
@@ -37,6 +40,14 @@ class LuckyDrawActivity : AppCompatActivity() {
         binding.lwv.addWheelItems(wheelItems)
         binding.lwv.setTarget(targetValue)
 
+        binding.lwv.setOnTouchListener { view, motionEvent ->
+            if ( motionEvent.action == MotionEvent.ACTION_DOWN ) {
+                //   remove gestureDetector
+            } else {
+                view.onTouchEvent(motionEvent);
+            }
+            return@setOnTouchListener true;
+        }
 
 
 
