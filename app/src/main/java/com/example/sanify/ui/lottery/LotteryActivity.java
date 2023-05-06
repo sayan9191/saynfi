@@ -23,16 +23,17 @@ public class LotteryActivity extends AppCompatActivity {
         RecyclerView recyclerviewLottery = findViewById(R.id.recyclerviewLottery);
 
         List<LotteryInformation> items = new ArrayList<LotteryInformation>();
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
-        items.add(new LotteryInformation("SAYAN MONDAL",201000, R.drawable.person_icon));
+        items.add(new LotteryInformation("MADAN SAHA", 2017404,R.drawable.person_icon));
+        items.add(new LotteryInformation("SAYAN MONDAL", 20154144,R.drawable.person_icon));
+        items.add(new LotteryInformation("SANTUNU MUKHERJEE", 7855558, R.drawable.person_icon));
+        items.add(new LotteryInformation("Srijan Mukherjee", 98452221, R.drawable.person_icon));
+        items.add(new LotteryInformation("Sreyashi Saha", 425563110, R.drawable.person_icon));
+        items.add(new LotteryInformation("Bikash Ghosh", 478221235, R.drawable.person_icon));
+        items.add(new LotteryInformation("Bidhut Sen", 10258686, R.drawable.person_icon));
+        items.add(new LotteryInformation("Ankan Ghosh", 86574212, R.drawable.person_icon));
+        items.add(new LotteryInformation("Lakshman Mondal", 78787, R.drawable.person_icon));
+        items.add(new LotteryInformation("Vikash  Das", 5386865, R.drawable.person_icon));
+        items.add(new LotteryInformation("Shreya Mandal", 2102222, R.drawable.person_icon));
         recyclerviewLottery.setLayoutManager(new LinearLayoutManager(this));
         recyclerviewLottery.setAdapter(new LotteryNameAdapter(getApplicationContext(),items));
     }

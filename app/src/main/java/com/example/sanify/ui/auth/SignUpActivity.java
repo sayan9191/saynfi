@@ -1,24 +1,23 @@
 package com.example.sanify.ui.auth;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.sanify.R;
 import com.example.sanify.ui.auth.bottomsheet.BottomSheetPP;
 import com.example.sanify.ui.auth.bottomsheet.BottomSheetTC;
-import com.example.sanify.R;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText phoneNo, name, emailId;
+    com.google.android.material.textfield.TextInputEditText phoneNo, name, password;
     TextView termsAndConditionBtn, privacyAndPolicyBtn, signINBtn, continueBtn;
-    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +25,12 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         termsAndConditionBtn = findViewById(R.id.termsAndConditionBtn);
         privacyAndPolicyBtn = findViewById(R.id.privacyAndPolicy);
-        phoneNo = findViewById(R.id.newPhoneEditTxt);
-        name = findViewById(R.id.fullNameEditTxt);
-        emailId = findViewById(R.id.emailIdEditTxt);
-        signINBtn = findViewById(R.id.btnSignIN);
-        continueBtn = findViewById(R.id.logInBtn);
-        progressBar = findViewById(R.id.progressbar);
+        phoneNo = findViewById(R.id.emailIdEditTxt);
+        name = findViewById(R.id.nameIdEditTxt);
+        password = findViewById(R.id.passWordEditText);
+        continueBtn = findViewById(R.id.signUpBtn);
+        signINBtn= findViewById(R.id.signInBtn);
+
 
         String phoneNumber = phoneNo.getText().toString();
         termsAndConditionBtn.setOnClickListener(new View.OnClickListener() {
@@ -62,12 +61,12 @@ public class SignUpActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (phoneNo.getText().toString().trim().isEmpty() || name.getText().toString().isEmpty() || emailId.getText().toString().isEmpty()) {
+                if (phoneNo.getText().toString().trim().isEmpty() || name.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Enter your details first", Toast.LENGTH_SHORT).show();
                     return;
-                }else{
+                } else {
                     Intent intent = new Intent(SignUpActivity.this, OTPVerifyActivity.class);
-                    intent.putExtra("phoneNumber",phoneNo.getText().toString());
+                    intent.putExtra("phoneNumber", phoneNo.getText().toString());
                     startActivity(intent);
                 }
             }

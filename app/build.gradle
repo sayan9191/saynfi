@@ -68,4 +68,9 @@ dependencies {
     // Kotlin Migration
     implementation 'androidx.core:core-ktx:1.10.0'
 
+    //circle Imageview
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+
 }

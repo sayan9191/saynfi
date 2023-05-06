@@ -12,7 +12,13 @@
         android:theme="@style/Theme.SANIFY"
         tools:targetApi="31">
         <activity
-            android:name=".LotteryBuyActivity"
+            android:name=".ui.auth.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FaqActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.lottery.LotteryBuyActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.OTPVerifyActivity"
@@ -37,7 +43,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

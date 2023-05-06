@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.sanify.R;
 import com.example.sanify.adapter.lottery.LotteryNameAdapter;
@@ -35,5 +37,14 @@ public class LotteryBuyActivity extends AppCompatActivity {
         items.add(new LotteryInformation("Shreya Mandal", 2102222, R.drawable.person_icon));
         binding.recyclerviewLotteryBuy.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerviewLotteryBuy.setAdapter(new LotteryNameAdapter(getApplicationContext(), items));
+
+        binding.buyTicketBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LotteryBuyActivity.this, LotteryActivity.class);
+
+                startActivity(intent);
+            }
+        });
     }
 }
