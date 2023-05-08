@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile_Activity">
+    tools:context=".Profile_Fragment">
 
     <ImageView
         android:id="@+id/backBtn"
@@ -187,7 +187,6 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:id="@+id/addMoneyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -199,6 +198,7 @@
                     android:src="@drawable/add_icon" />
 
                 <TextView
+                    android:id="@+id/addMoneyBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -220,7 +220,6 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:id="@+id/transactionHistoryBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -232,6 +231,7 @@
                     android:src="@drawable/transaction_history_icon" />
 
                 <TextView
+                    android:id="@+id/transactionHistoryBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -253,7 +253,6 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:id="@+id/helpCenterBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -265,6 +264,7 @@
                     android:src="@drawable/helpcenter" />
 
                 <TextView
+                    android:id="@+id/helpCenterBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -286,7 +286,6 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:id="@+id/tcBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -298,6 +297,7 @@
                     android:src="@drawable/tc" />
 
                 <TextView
+                    android:id="@+id/tcBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -320,7 +320,6 @@
             app:cardUseCompatPadding="true">
 
             <LinearLayout
-                android:id="@+id/logOutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
@@ -332,6 +331,7 @@
                     android:src="@drawable/logout_icon" />
 
                 <TextView
+                    android:id="@+id/logOutBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"

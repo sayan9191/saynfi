@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.sanify.Profile_Activity
+import com.example.sanify.Profile_Fragment
 import com.example.sanify.R
 import com.example.sanify.databinding.FragmentDashBoardBinding
 import com.example.sanify.ui.lottery.LotteryBuyActivity
@@ -35,7 +35,9 @@ class DashBoardFragment : Fragment() {
             parentFragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
                     .addToBackStack("Home")
-                    .replace(R.id.fragmentContainerView, Profile_Activity())
+                    .replace(R.id.fragmentContainerView,
+                        Profile_Fragment()
+                    )
                     .commit()
         }
 

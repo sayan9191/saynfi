@@ -1,23 +1,24 @@
 package com.example.sanify;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class Profile_Activity extends Fragment {
+import androidx.fragment.app.Fragment;
 
-    LinearLayout addMoneyBtn,transactionHistoryBtn,helpCenterBtn,tcBtn,logOutBtn;
+public class Profile_Fragment extends Fragment {
+
+    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn;
     View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_profile__activity, container, false);
+        view = inflater.inflate(R.layout.fragment_profile__activity, container, false);
         addMoneyBtn = view.findViewById(R.id.addMoneyBtn);
         transactionHistoryBtn = view.findViewById(R.id.transactionHistoryBtn);
         helpCenterBtn = view.findViewById(R.id.helpCenterBtn);
@@ -30,8 +31,19 @@ public class Profile_Activity extends Fragment {
                 getParentFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack("Profile")
-//                        .replace(R.id.main_, new PaymentActivity())
+                        .replace(R.id.fragmentContainerView, new PaymentActivity())
                         .commit();            }
+        });
+
+        helpCenterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("helpCenter")
+                        .replace(R.id.fragmentContainerView, new HelpCenterActivity())
+                        .commit();
+            }
         });
         return view;
     }

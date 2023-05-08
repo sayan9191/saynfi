@@ -27,18 +27,9 @@ public class HelpCenterActivity extends Fragment {
         whatsAppBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String contact = "+91 8617048942"; // use country code with your phone number
-                String url = "https://api.whatsapp.com/send?phone=" + contact;
-                try {
-                    PackageManager pm = requireContext().getPackageManager();
-                    pm.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(url));
-                    startActivity(i);
-                } catch (PackageManager.NameNotFoundException e) {
-                    Toast.makeText(requireContext(), "Whatsapp app not installed in your phone", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+91"+"8609728367" + "&text="+"Hi,"));
+                startActivity(intent);
             }
         });
         return view;
