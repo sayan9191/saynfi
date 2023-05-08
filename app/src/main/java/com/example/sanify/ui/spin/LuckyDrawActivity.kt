@@ -12,7 +12,7 @@ import com.example.sanify.databinding.ActivityLuckyDrawBinding
 
 class LuckyDrawActivity : AppCompatActivity() {
 
-    val textItems = listOf<String>("00", "01", "02", "03", "05", "10", "15", "20")
+    val textItems = listOf<String>("Better luck next time", "01", "02", "03", "05", "10")
     val colorItems = listOf<Int>(R.color.wheel_color_1, R.color.wheel_color_2, R.color.wheel_color_1,
             R.color.wheel_color_2, R.color.wheel_color_1, R.color.wheel_color_2, R.color.wheel_color_1, R.color.wheel_color_2, R.color.wheel_color_1, R.color.wheel_color_2)
 

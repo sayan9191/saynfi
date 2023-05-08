@@ -4,43 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.DashBoardFragment">
+    tools:context=".ui.DashBoardFragment"
+    android:background="@drawable/app_background">
 
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
+        android:layout_height="70dp"
+        android:padding="10dp"
         android:orientation="horizontal"
+        android:background="@drawable/top_gradient"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/profileImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/person_icon" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/person_icon"
+            app:tint="@color/white" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
-                android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SAYAN MONDAL"
-                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -50,19 +57,32 @@
             android:gravity="end"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="50dp"
-                android:src="@drawable/wallet_icon" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:text="100"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:background="@drawable/corner_rectangle"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:backgroundTint="#B3000000">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/wallet_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                     />
+            </LinearLayout>
+
+
         </LinearLayout>
     </LinearLayout>
 
@@ -88,14 +108,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMyGame">
 
-        <androidx.cardview.widget.CardView
+        <FrameLayout
             android:id="@+id/spinOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:elevation="5dp"
-            app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true">
+
+            android:backgroundTint="#73F9EDFF"
+            android:background="@drawable/corner_rectangle"
+            android:layout_margin="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,16 +144,16 @@
             </LinearLayout>
 
 
-        </androidx.cardview.widget.CardView>
+        </FrameLayout>
 
-        <androidx.cardview.widget.CardView
+        <FrameLayout
             android:id="@+id/lotteryOption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:elevation="5dp"
-            app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true">
+            android:backgroundTint="#73F9EDFF"
+            android:background="@drawable/corner_rectangle"
+            android:layout_margin="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -157,7 +178,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </FrameLayout>
 
     </LinearLayout>
 
