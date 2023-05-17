@@ -5,16 +5,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.sanify.ui.DashBoardFragment;
 import com.example.sanify.ui.auth.LogInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile_Fragment extends Fragment {
 
     TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn;
+    ImageView backBtn;
     FirebaseAuth firebaseAuth;
     View view;
 
@@ -28,6 +31,7 @@ public class Profile_Fragment extends Fragment {
         helpCenterBtn = view.findViewById(R.id.helpCenterBtn);
         tcBtn = view.findViewById(R.id.tcBtn);
         logOutBtn = view.findViewById(R.id.logOutBtn);
+        backBtn = view.findViewById(R.id.backBtn);
 
         addMoneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +58,12 @@ public class Profile_Fragment extends Fragment {
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(requireContext(), LogInActivity.class));
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(requireContext(), DashBoardFragment.class));
             }
         });
         return view;

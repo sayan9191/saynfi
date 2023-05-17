@@ -133,7 +133,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/square"
-                    android:backgroundTint="@color/yellow"
+                    android:backgroundTint="@color/unselect_color"
                     android:gravity="center"
                     android:text="Winners"
                     android:textColor="@color/black"

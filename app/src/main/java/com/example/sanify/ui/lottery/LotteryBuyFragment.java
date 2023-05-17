@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.sanify.R;
 import com.example.sanify.adapter.lottery.LotteryNameAdapter;
 import com.example.sanify.adapter.lottery.LotteryTicketAdapter;
 import com.example.sanify.databinding.ActivityLotteryBuyBinding;
@@ -115,6 +116,8 @@ public class LotteryBuyFragment extends AppCompatActivity {
         binding.WinnerName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.prizePoolBtn.setBackgroundTintList(getResources().getColorStateList(R.color.unselect_color));
+                binding.WinnerName.setBackgroundTintList(getResources().getColorStateList(R.color.yellow));
                 binding.recyclerviewLottery.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 binding.recyclerviewLottery.setAdapter(new LotteryNameAdapter(getApplicationContext(), items1));
             }
@@ -122,6 +125,8 @@ public class LotteryBuyFragment extends AppCompatActivity {
         binding.prizePoolBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                binding.WinnerName.setBackgroundTintList(getResources().getColorStateList(R.color.unselect_color));
+                binding.prizePoolBtn.setBackgroundTintList(getResources().getColorStateList(R.color.yellow));
                 binding.recyclerviewLottery.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 binding.recyclerviewLottery.setAdapter(new LotteryNameAdapter(getApplicationContext(), items2));
             }
