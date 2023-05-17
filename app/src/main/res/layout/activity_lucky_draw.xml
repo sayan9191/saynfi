@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.spin.LuckyDrawActivity"
-    android:background="@drawable/coin_background">
+    android:background="@drawable/background">
 
 
     <com.bluehomestudio.luckywheel.LuckyWheel

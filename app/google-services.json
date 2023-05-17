@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "830890631638",
+    "project_id": "sanify-b0113",
+    "storage_bucket": "sanify-b0113.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830890631638:android:9ff1f7c9f0c2b228c5c477",
+        "android_client_info": {
+          "package_name": "com.example.sanify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830890631638-gqto0fap80pmesghb2hc0ca4c969hsct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuPdykQ-RL8m24iz8ILs4qd3X3FqTw-to"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830890631638-gqto0fap80pmesghb2hc0ca4c969hsct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

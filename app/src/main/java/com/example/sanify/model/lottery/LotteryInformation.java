@@ -2,13 +2,12 @@ package com.example.sanify.model.lottery;
 
 public class LotteryInformation {
     String name;
-    Integer number;
-    Integer image;
+    String number;
 
-    public LotteryInformation(String name, Integer number, Integer image) {
+    public LotteryInformation(String name, String number) {
         this.name = name;
         this.number = number;
-        this.image = image;
+
     }
 
     public String getName() {
@@ -19,19 +18,13 @@ public class LotteryInformation {
         this.name = name;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public Integer getImage() {
-        return image;
-    }
 
-    public void setImage(Integer image) {
-        this.image = image;
-    }
 }

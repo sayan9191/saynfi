@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaymentActivity">
+    android:background="@drawable/background"
+    tools:context=".PaymentFragment">
 
 
     <ImageView
@@ -81,6 +82,7 @@
         app:startIconDrawable="@drawable/person_icon">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/transactionIdNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -101,6 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/transactionId">
 
         <LinearLayout
+            android:id="@+id/fileChoose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -120,12 +123,6 @@
                 android:text="Drop Your Screenshot of Payment here"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/imageFileName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="imageSs.jpg" />
 
         </LinearLayout>
 

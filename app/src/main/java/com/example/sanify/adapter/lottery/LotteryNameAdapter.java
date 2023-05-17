@@ -21,6 +21,7 @@ public class LotteryNameAdapter extends RecyclerView.Adapter<LotteryNameViewHold
         this.items = items;
     }
 
+
     @NonNull
     @Override
     public LotteryNameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,7 +30,7 @@ public class LotteryNameAdapter extends RecyclerView.Adapter<LotteryNameViewHold
 
     @Override
     public void onBindViewHolder(@NonNull LotteryNameViewHolder holder, int position) {
-        holder.profileImage.setImageResource(items.get(position).getImage());
+
         holder.personName.setText(items.get(position).getName());
         holder.lotteryNumber.setText(items.get(position).getNumber().toString());
     }

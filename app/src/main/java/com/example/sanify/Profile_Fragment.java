@@ -1,17 +1,21 @@
 package com.example.sanify;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.sanify.ui.auth.LogInActivity;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Profile_Fragment extends Fragment {
 
     TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn;
+    FirebaseAuth firebaseAuth;
     View view;
 
     @Override
@@ -31,7 +35,7 @@ public class Profile_Fragment extends Fragment {
                 getParentFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack("Profile")
-                        .replace(R.id.fragmentContainerView, new PaymentActivity())
+                        .replace(R.id.fragmentContainerView, new PaymentFragment())
                         .commit();            }
         });
 
@@ -43,6 +47,13 @@ public class Profile_Fragment extends Fragment {
                         .addToBackStack("helpCenter")
                         .replace(R.id.fragmentContainerView, new HelpCenterActivity())
                         .commit();
+            }
+        });
+        logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(requireContext(), LogInActivity.class));
             }
         });
         return view;

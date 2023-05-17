@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.auth.SignUpActivity"
-    android:background="@drawable/app_background">
+    android:background="@drawable/background">
 
     <FrameLayout
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#73F9EDFF"
+        android:backgroundTint="@color/white"
         android:layout_margin="20dp"
         android:background="@drawable/corner_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +33,7 @@
                 android:text="Create Your Account"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <com.airbnb.lottie.LottieAnimationView

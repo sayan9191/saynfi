@@ -1,11 +1,7 @@
 package com.example.sanify
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
-import com.example.sanify.ui.lottery.LotteryBuyActivity
-import com.example.sanify.ui.spin.LuckyDrawActivity
 
 class MainActivity : AppCompatActivity() {
 

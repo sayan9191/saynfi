@@ -8,24 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.sanify.Profile_Fragment
 import com.example.sanify.R
-import com.example.sanify.repo.Repository
 import com.example.sanify.databinding.FragmentDashBoardBinding
-import com.example.sanify.ui.lottery.LotteryBuyActivity
+import com.example.sanify.ui.lottery.LotteryBuyFragment
 import com.example.sanify.ui.spin.LuckyDrawActivity
 
 class DashBoardFragment : Fragment() {
 
 
     lateinit var binding: FragmentDashBoardBinding
-    private val repo = Repository()
+//    private val repo = Repository()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         binding = FragmentDashBoardBinding.inflate(layoutInflater, container, false)
 
         binding.lotteryOption.setOnClickListener {
-            repo.getAllItems()
-            val intent = Intent(requireContext(), LotteryBuyActivity::class.java)
+//            repo.getAllItems()
+            val intent = Intent(requireContext(), LotteryBuyFragment::class.java)
             startActivity(intent)
         }
 

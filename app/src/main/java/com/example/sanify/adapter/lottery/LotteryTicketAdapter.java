@@ -1,0 +1,39 @@
+package com.example.sanify.adapter.lottery;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.sanify.R;
+import com.example.sanify.model.lottery.LotteryTicketInformation;
+
+import java.util.List;
+
+public class LotteryTicketAdapter extends RecyclerView.Adapter<LotteryTicketViewHolder> {
+    Context context;
+    List<LotteryTicketInformation> ticketNos;
+
+    public LotteryTicketAdapter(Context context, List<LotteryTicketInformation> ticketNos) {
+        this.context = context;
+        this.ticketNos = ticketNos;
+    }
+
+    @NonNull
+    @Override
+    public LotteryTicketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new LotteryTicketViewHolder(LayoutInflater.from(context).inflate(R.layout.tickets_item_layout, parent, false));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull LotteryTicketViewHolder holder, int position) {
+        holder.myTicketNumber.setText(ticketNos.get(position).getLotteryTicketNo());
+    }
+
+    @Override
+    public int getItemCount() {
+        return ticketNos.size();
+    }
+}

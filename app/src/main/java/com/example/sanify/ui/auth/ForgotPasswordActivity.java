@@ -11,12 +11,16 @@ import com.example.sanify.R;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
+    com.google.android.material.textfield.TextInputEditText emailId, password1, password2;
     Button continueBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        emailId = findViewById(R.id.emailIdEditTxt);
+        password1 = findViewById(R.id.confirmPassWordEditText);
+        password2 = findViewById(R.id.passWordEditText);
         continueBtn = findViewById(R.id.continueBtn);
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
