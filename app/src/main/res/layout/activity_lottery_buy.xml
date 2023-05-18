@@ -20,6 +20,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back_icon"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.041"
@@ -35,6 +36,7 @@
             android:text="Lottery"
             android:textColor="@color/white"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/backBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +60,7 @@
                 android:src="@drawable/wallet_icon" />
 
             <TextView
+                android:id="@+id/coinAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
@@ -68,29 +71,26 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolBar"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/toolBar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/buyLotteryBtn">
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/winner_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 app:cardCornerRadius="15dp">
 
@@ -103,125 +103,132 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/appName" />
-
-
             </androidx.cardview.widget.CardView>
 
 
             <TextView
                 android:id="@+id/countdownTextView"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/button_design"
-                android:backgroundTint="#FF8C00"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="CountDown"
+                android:background="@drawable/golden_border"
+                android:layout_marginStart="10dp"
+                android:padding="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Lottery closes at: 10:00:21"
+                android:textAlignment="center"
+                android:textSize="24sp"
                 android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/winner_image" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:gravity="center"
-                android:text="Play and win exciting Prize pool"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/countdownTextView" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-                <TextView
-                    android:id="@+id/prizePoolBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/square"
-                    android:backgroundTint="@color/select_color"
-                    android:gravity="center"
-                    android:text="Prize pool"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/WinnerName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/square"
-                    android:backgroundTint="@color/unselect_color"
-                    android:gravity="center"
-                    android:text="Winners"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerviewLottery"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
-
-            <TextView
-                android:id="@+id/tickets"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/square"
-                android:backgroundTint="@color/yellow"
-                android:gravity="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="Your Tickets"
-                android:textColor="@color/black"
-                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ticketRecyclerView"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:textStyle="bold"
+                android:text="---- WIN UP TO 1 LAKES ---"
+                android:textColor="#F6D00A"
+                android:textSize="20sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="#CBFFFFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/prizepoolTxt"
+                    app:layout_constraintTop_toTopOf="@+id/prizepoolTxt" />
+
+                <TextView
+                    android:id="@+id/prizepoolTxt"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/square"
+                    android:backgroundTint="#590957"
+                    android:gravity="center"
+                    android:elevation="1dp"
+                    android:padding="10dp"
+                    android:text="Prize Pool"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lotteryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                tools:listitem="@layout/lottery_profile" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="#CBFFFFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/yourTicketTxt"
+                    app:layout_constraintTop_toTopOf="@+id/yourTicketTxt" />
+
+                <TextView
+                    android:id="@+id/yourTicketTxt"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/square"
+                    android:backgroundTint="#590957"
+                    android:elevation="1dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Your Ticket"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lotteryTicketRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
                 android:layout_margin="10dp" />
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
-
 
     <TextView
         android:id="@+id/buyLotteryBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/button_design"
-        android:backgroundTint="#FF8C00"
-        android:drawableStart="@drawable/star_icon"
-        android:drawableEnd="@drawable/star_icon"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/golden_border_button"
+        android:elevation="5dp"
         android:gravity="center"
         android:padding="10dp"
         android:text="Join ৳20"

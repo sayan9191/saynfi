@@ -31,8 +31,9 @@ public class LotteryNameAdapter extends RecyclerView.Adapter<LotteryNameViewHold
     @Override
     public void onBindViewHolder(@NonNull LotteryNameViewHolder holder, int position) {
 
-        holder.personName.setText(items.get(position).getName());
-        holder.lotteryNumber.setText(items.get(position).getNumber().toString());
+        holder.rankName.setText(items.get(position).getRank());
+        holder.prizeMoney.setText(items.get(position).getPrizeMoney().toString());
+        holder.ticketNo.setText(items.get(position).getTicketNo().toString());
     }
 
     @Override
