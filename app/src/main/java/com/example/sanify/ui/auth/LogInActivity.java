@@ -16,6 +16,7 @@ import com.example.sanify.LoginViewModel;
 import com.example.sanify.MainActivity;
 import com.example.sanify.R;
 import com.example.sanify.ui.DashBoardFragment;
+import com.example.sanify.utils.NetworkUtils;
 import com.example.sanify.utils.StorageUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -65,14 +66,19 @@ public class LogInActivity extends AppCompatActivity {
                 return;
             } else {
 
-                if (loginEmail.equals("Ja.adam192@gmail.com") && loginPassword.equals("ABC@aws12345")){
-                    Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
-                    localStorage.saveTokenLocally("logged_in");
-                    startActivity(intent);
-                    finish();
+                if (NetworkUtils.Companion.isOnline(this)){
+                    if (loginEmail.equals("Ja.adam192@gmail.com") && loginPassword.equals("ABC@aws12345")){
+                        Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                        localStorage.saveTokenLocally("logged_in");
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(LogInActivity.this, "Username or password not correct", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
-                    Toast.makeText(LogInActivity.this, "Username or password not correct", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "Please connect to the internet", Toast.LENGTH_SHORT).show();
                 }
+
 
 //                viewModel.login(loginEmail, loginPassword);
             }
