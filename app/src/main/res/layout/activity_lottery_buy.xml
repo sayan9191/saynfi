@@ -119,7 +119,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/square"
-                    android:backgroundTint="@color/yellow"
+                    android:backgroundTint="@color/select_color"
                     android:gravity="center"
                     android:text="Prize pool"
                     android:textColor="@color/black"

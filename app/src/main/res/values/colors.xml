@@ -13,6 +13,7 @@
 
     <color name="wheel_color_1">#6B2ABC</color>
     <color name="wheel_color_2">#9058D3</color>
-    <color name="yellow">#B4FFFFFF</color>
-    <color name="unselect_color">#e6e6e6</color>
+    <color name="yellow">#FFC107</color>
+    <color name="unselect_color">#88FFFFFF</color>
+    <color name="select_color">#FFFFFF</color>
 </resources>

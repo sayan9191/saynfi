@@ -3,6 +3,7 @@ package com.example.sanify.ui.lottery;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,21 +15,27 @@ import com.example.sanify.adapter.lottery.LotteryTicketAdapter;
 import com.example.sanify.databinding.ActivityLotteryBuyBinding;
 import com.example.sanify.model.lottery.LotteryInformation;
 import com.example.sanify.model.lottery.LotteryTicketInformation;
+import com.example.sanify.ui.auth.bottomsheet.BottomSheetLottery;
+import com.example.sanify.ui.auth.bottomsheet.BottomSheetPP;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LotteryBuyFragment extends AppCompatActivity {
     ActivityLotteryBuyBinding binding;
     private CountDownTimer countDownTimer;
+    public String lotteryNo;
+
+    private LotteryTicketAdapter lotteryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLotteryBuyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        List<LotteryTicketInformation> items3 = new ArrayList<LotteryTicketInformation>();
 
         long currentTimeMillis = System.currentTimeMillis();
         long ninePmMillis;
@@ -61,7 +68,6 @@ public class LotteryBuyFragment extends AppCompatActivity {
             @Override
             public void onFinish() {
                 binding.countdownTextView.setText("Time Over");
-//                binding.buyLotteryBtn.setVisibility(View.GONE);
             }
         };
 
@@ -71,23 +77,33 @@ public class LotteryBuyFragment extends AppCompatActivity {
         List<LotteryInformation> items1 = new ArrayList<LotteryInformation>();
         items1.add(new
 
-                LotteryInformation("SAYAN MONDAL", "20154144"));
+                LotteryInformation("Rank 1", "20154144"));
         items1.add(new
 
-                LotteryInformation("SANTUNU MUKHERJEE", "785555"));
+                LotteryInformation("Rank 2", "785555"));
         items1.add(new
 
-                LotteryInformation("Srijan Mukherjee", "98452221"));
+                LotteryInformation("Rank 3", "984522"));
         items1.add(new
 
-                LotteryInformation("Bikash Ghosh", "478221235"));
+                LotteryInformation("Rank 4", "478221"));
         items1.add(new
 
-                LotteryInformation("Bidhut Sen", "10258686"));
-        items1.add(new
-
-                LotteryInformation("Ankan Ghosh", "86574212"));
-
+                LotteryInformation("Rank 5", "10258686"));
+        items1.add(new LotteryInformation("Rank 7", "804212"));
+        items1.add(new LotteryInformation("Rank 8", "985412"));
+        items1.add(new LotteryInformation("Rank 9", "001057"));
+        items1.add(new LotteryInformation("Rank 10", "122144"));
+        items1.add(new LotteryInformation("Rank 11", "5426550"));
+        items1.add(new LotteryInformation("Rank 12", "4877449"));
+        items1.add(new LotteryInformation("Rank 13", "9876541"));
+        items1.add(new LotteryInformation("Rank 14", "3201458"));
+        items1.add(new LotteryInformation("Rank 15", "98745655"));
+        items1.add(new LotteryInformation("Rank 16", "21025448"));
+        items1.add(new LotteryInformation("Rank 17", "89785212"));
+        items1.add(new LotteryInformation("Rank 18", "478210205"));
+        items1.add(new LotteryInformation("Rank 19", "545545444"));
+        items1.add(new LotteryInformation("Rank 20", "822555554"));
         List<LotteryInformation> items2 = new ArrayList<LotteryInformation>();
         items2.add(new
 
@@ -113,34 +129,45 @@ public class LotteryBuyFragment extends AppCompatActivity {
         binding.recyclerviewLottery.setAdapter(new
 
                 LotteryNameAdapter(getApplicationContext(), items2));
+
+        // Set adapter
+        binding.ticketRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
+        lotteryAdapter = new LotteryTicketAdapter(getApplicationContext());
+        binding.ticketRecyclerView.setAdapter(lotteryAdapter);
+
         binding.WinnerName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.prizePoolBtn.setBackgroundTintList(getResources().getColorStateList(R.color.unselect_color));
-                binding.WinnerName.setBackgroundTintList(getResources().getColorStateList(R.color.yellow));
+                binding.WinnerName.setBackgroundTintList(getResources().getColorStateList(R.color.select_color));
                 binding.recyclerviewLottery.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 binding.recyclerviewLottery.setAdapter(new LotteryNameAdapter(getApplicationContext(), items1));
+                binding.tickets.setVisibility(View.GONE);
+                binding.ticketRecyclerView.setVisibility(View.GONE);
             }
         });
         binding.prizePoolBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.WinnerName.setBackgroundTintList(getResources().getColorStateList(R.color.unselect_color));
-                binding.prizePoolBtn.setBackgroundTintList(getResources().getColorStateList(R.color.yellow));
+                binding.prizePoolBtn.setBackgroundTintList(getResources().getColorStateList(R.color.select_color));
                 binding.recyclerviewLottery.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 binding.recyclerviewLottery.setAdapter(new LotteryNameAdapter(getApplicationContext(), items2));
+                binding.tickets.setVisibility(View.VISIBLE);
+                binding.ticketRecyclerView.setVisibility(View.VISIBLE);
             }
         });
 
-        List<LotteryTicketInformation> items3 = new ArrayList<LotteryTicketInformation>();
-        items3.add(new LotteryTicketInformation("100000"));
-        items3.add(new LotteryTicketInformation("100000"));
-        items3.add(new LotteryTicketInformation("100000"));
-        items3.add(new LotteryTicketInformation("100000"));
-        items3.add(new LotteryTicketInformation("100000"));
-        items3.add(new LotteryTicketInformation("100000"));
-        binding.ticketRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
-        binding.ticketRecyclerView.setAdapter(new LotteryTicketAdapter(getApplicationContext(), items3));
+        binding.buyLotteryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetLottery bottomSheetLottery = new BottomSheetLottery();
+                bottomSheetLottery.show(getSupportFragmentManager(), "TAG");
+                lotteryNo = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 999999));
+                items3.add(new LotteryTicketInformation(lotteryNo));
+                lotteryAdapter.updateList(items3);
+            }
+        });
     }
 
     @Override

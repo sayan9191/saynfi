@@ -10,15 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sanify.R;
 import com.example.sanify.model.lottery.LotteryTicketInformation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LotteryTicketAdapter extends RecyclerView.Adapter<LotteryTicketViewHolder> {
     Context context;
-    List<LotteryTicketInformation> ticketNos;
+    ArrayList<LotteryTicketInformation> ticketNos = new ArrayList<>();
 
-    public LotteryTicketAdapter(Context context, List<LotteryTicketInformation> ticketNos) {
+    public LotteryTicketAdapter(Context context) {
         this.context = context;
-        this.ticketNos = ticketNos;
     }
 
     @NonNull
@@ -35,5 +35,12 @@ public class LotteryTicketAdapter extends RecyclerView.Adapter<LotteryTicketView
     @Override
     public int getItemCount() {
         return ticketNos.size();
+    }
+
+
+    public void updateList(List<LotteryTicketInformation> list){
+        ticketNos.clear();
+        ticketNos.addAll(list);
+        this.notifyDataSetChanged();
     }
 }
