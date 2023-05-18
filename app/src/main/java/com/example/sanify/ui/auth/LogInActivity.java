@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sanify.MainActivity;
 import com.example.sanify.R;
+import com.example.sanify.ui.DashBoardFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -46,18 +47,9 @@ public class LogInActivity extends AppCompatActivity {
                 Toast.makeText(LogInActivity.this, "Enter your details", Toast.LENGTH_SHORT).show();
                 return;
             } else {
-                firebaseAuth.signInWithEmailAndPassword(loginEmail,loginPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(LogInActivity.this, "Welcome User", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }
-                        else{
-                            Toast.makeText(LogInActivity.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

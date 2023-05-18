@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.SANIFY" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.SANIFY" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -16,10 +16,9 @@
     </style>
 
     <style name="MyTextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="hintTextColor">@color/red</item>
-        <item name="backgroundColor">@color/white</item>
+        <item name="hintTextColor">@color/black</item>
         <item name="boxCornerRadiusTopEnd">20dp</item>
-        <item name="boxStrokeColor">@color/red</item>
+        <item name="boxStrokeColor">@color/black</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">

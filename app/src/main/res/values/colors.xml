@@ -11,9 +11,15 @@
     <color name="purple">#8D4DDC</color>
     <color name="brown">#9C550F</color>
 
-    <color name="wheel_color_1">#6B2ABC</color>
+
+    <color name="teal_500">#0F9C80</color>
+
+
+    <color name="wheel_color_1">#28BFBA</color>
     <color name="wheel_color_2">#9058D3</color>
     <color name="yellow">#FFC107</color>
     <color name="unselect_color">#88FFFFFF</color>
     <color name="select_color">#FFFFFF</color>
+
+    <color name="purple_btn">#6817CD</color>
 </resources>
