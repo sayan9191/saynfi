@@ -1,5 +1,6 @@
 package com.example.sanify;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,6 +36,9 @@ public class Profile_Fragment extends Fragment {
         logOutBtn = view.findViewById(R.id.logOutBtn);
         backBtn = view.findViewById(R.id.backBtn);
 
+        localStorage.setSharedPref(requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE));
+
+
         addMoneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +63,7 @@ public class Profile_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
 //                FirebaseAuth.getInstance().signOut();
-                localStorage.saveTokenLocally("");
+                localStorage.setToken("");
                 startActivity(new Intent(requireContext(), LogInActivity.class));
                 requireActivity().finish();
             }

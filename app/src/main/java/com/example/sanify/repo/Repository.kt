@@ -37,7 +37,7 @@ class Repository {
                     if (response.code() == 200){
                         val loginResponse = response.body();
                         if (loginResponse != null){
-                            storage.saveTokenLocally(loginResponse.access_token)
+                            storage.token = loginResponse.access_token
                             isLoading.postValue(false)
                             errorMessage.postValue("")
                             isLoginSuccess.postValue(true)

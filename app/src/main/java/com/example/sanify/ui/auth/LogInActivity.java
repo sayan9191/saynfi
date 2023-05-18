@@ -1,8 +1,10 @@
 package com.example.sanify.ui.auth;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.sanify.LoginViewModel;
 import com.example.sanify.MainActivity;
 import com.example.sanify.R;
+import com.example.sanify.databinding.ActivityLogInBinding;
 import com.example.sanify.ui.DashBoardFragment;
 import com.example.sanify.utils.NetworkUtils;
 import com.example.sanify.utils.StorageUtil;
@@ -27,34 +30,32 @@ import java.util.Objects;
 
 public class LogInActivity extends AppCompatActivity {
 
-    com.google.android.material.textfield.TextInputEditText emailId, password;
-    TextView logInBtn, signUpBtn, forgotPasswordBtn;
-    FirebaseAuth firebaseAuth;
+//    com.google.android.material.textfield.TextInputEditText emailId, password;
+//    TextView logInBtn, signUpBtn, forgotPasswordBtn;
+//    FirebaseAuth firebaseAuth;
     private LoginViewModel viewModel;
     StorageUtil localStorage = new StorageUtil();
+
+    ActivityLogInBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        binding = ActivityLogInBinding.inflate(getLayoutInflater());
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        setContentView(R.layout.activity_log_in);
-        emailId = findViewById(R.id.emailIdEditTxt);
-        password = findViewById(R.id.passWordEditText);
-        logInBtn = findViewById(R.id.logInBtn);
-        signUpBtn = findViewById(R.id.signUpBtn);
-        forgotPasswordBtn = findViewById(R.id.forgotPasswordBtn);
-        firebaseAuth = FirebaseAuth.getInstance();
+        setContentView(binding.getRoot());
+        localStorage.setSharedPref(getSharedPreferences("sharedPref", Context.MODE_PRIVATE));
+//        emailId = findViewById(R.id.emailIdEditTxt);
+//        password = findViewById(R.id.passWordEditText);
+//        logInBtn = findViewById(R.id.logInBtn);
+//        signUpBtn = findViewById(R.id.signUpBtn);
+//        forgotPasswordBtn = findViewById(R.id.forgotPasswordBtn);
+//        firebaseAuth = FirebaseAuth.getInstance();
 
-        if (localStorage.getUserStatus().equals("logged_in")){
-            Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-        logInBtn.setOnClickListener(view -> {
-            String loginEmail = emailId.getText().toString().trim();
-            String loginPassword = password.getText().toString().trim();
+        binding.logInBtn.setOnClickListener(view -> {
+            String loginEmail = Objects.requireNonNull(binding.emailIdEditTxt.getText()).toString().trim();
+            String loginPassword = Objects.requireNonNull(binding.passWordEditText.getText()).toString().trim();
             if (TextUtils.isEmpty(loginEmail)) {
                 Toast.makeText(LogInActivity.this, "Enter your Email ID", Toast.LENGTH_SHORT).show();
             }
@@ -63,17 +64,17 @@ public class LogInActivity extends AppCompatActivity {
             }
             if (loginEmail.isEmpty() || loginPassword.isEmpty()) {
                 Toast.makeText(LogInActivity.this, "Enter your details", Toast.LENGTH_SHORT).show();
-                return;
             } else {
 
                 if (NetworkUtils.Companion.isOnline(this)){
-                    if (loginEmail.equals("Ja.adam192@gmail.com") && loginPassword.equals("ABC@aws12345")){
+                    if (!loginEmail.equals("84santamon@gmail.com") || !loginPassword.equals("AWS@aws12345")){
+                        Log.d("--------", loginEmail + loginPassword);
+                        Toast.makeText(LogInActivity.this, "Username or password not correct", Toast.LENGTH_SHORT).show();
+                    }else{
                         Intent intent = new Intent(LogInActivity.this, MainActivity.class);
-                        localStorage.saveTokenLocally("logged_in");
+                        localStorage.setToken("logged_in");
                         startActivity(intent);
                         finish();
-                    }else{
-                        Toast.makeText(LogInActivity.this, "Username or password not correct", Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Toast.makeText(LogInActivity.this, "Please connect to the internet", Toast.LENGTH_SHORT).show();
@@ -84,7 +85,16 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
+        String user_status = localStorage.getToken();
+
+
+        if (user_status.equals("logged_in")){
+            Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        binding.signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
@@ -93,7 +103,7 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        forgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
+        binding.forgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LogInActivity.this, ForgotPasswordActivity.class);
