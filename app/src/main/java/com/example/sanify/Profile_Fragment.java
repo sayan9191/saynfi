@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sanify.ui.DashBoardFragment;
 import com.example.sanify.ui.auth.LogInActivity;
+import com.example.sanify.utils.StorageUtil;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile_Fragment extends Fragment {
@@ -20,6 +21,7 @@ public class Profile_Fragment extends Fragment {
     ImageView backBtn;
     FirebaseAuth firebaseAuth;
     View view;
+    StorageUtil localStorage = new StorageUtil();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,8 +58,10 @@ public class Profile_Fragment extends Fragment {
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
+//                FirebaseAuth.getInstance().signOut();
+                localStorage.saveTokenLocally("");
                 startActivity(new Intent(requireContext(), LogInActivity.class));
+                requireActivity().finish();
             }
         });
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +70,7 @@ public class Profile_Fragment extends Fragment {
                 startActivity( new Intent(requireContext(), DashBoardFragment.class));
             }
         });
+
         return view;
     }
 }
