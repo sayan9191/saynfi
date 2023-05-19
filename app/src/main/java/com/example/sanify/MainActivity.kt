@@ -13,7 +13,9 @@ class MainActivity : AppCompatActivity() {
         binding = com.example.sanify.databinding.ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        localStorage.generateCoin()
+        if (localStorage.coins == -1){
+            localStorage.coins = 1000
+        }
 
 //        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 //        val navController = navHostFragment.navController

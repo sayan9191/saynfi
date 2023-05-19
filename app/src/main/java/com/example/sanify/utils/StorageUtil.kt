@@ -9,9 +9,9 @@ import java.io.FileOutputStream
 
 class StorageUtil {
 
-    private var sharedPref: SharedPreferences? = null
+    var sharedPref: SharedPreferences? = null
 
-    private var token: String?
+    var token: String?
         get() {
             return sharedPref?.getString("token", "")
         }
@@ -19,20 +19,12 @@ class StorageUtil {
             sharedPref?.edit()?.putString("token", value)?.apply()
         }
 
-    private var coins: Int?
+    var coins: Int?
         get() {
             return sharedPref?.getInt("coins", -1)
         }
         set(value) {
             sharedPref?.edit()?.putInt("coins", value!!)?.apply()
-        }
-
-    private var tickets: String?
-        get() {
-            return sharedPref?.getString("tickets", "")
-        }
-        set(value) {
-            sharedPref?.edit()?.putString("tickets", value!!)?.apply()
         }
 
     fun saveTokenLocally(token : String){
@@ -61,7 +53,7 @@ class StorageUtil {
         }
     }
 
-    fun addCoins(amount : Int){
-
+    fun addCoins(amount: Int){
+        coins = coins?.plus(amount)
     }
 }

@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:paddingEnd="24dp"
     android:elevation="5dp"
-    android:layout_marginBottom="10dp"
-    android:backgroundTint="#B3000000"
+    android:layout_marginBottom="5dp"
+    android:backgroundTint="#99000000"
     android:orientation="vertical"
     android:background="@drawable/small_border_radious">
 
