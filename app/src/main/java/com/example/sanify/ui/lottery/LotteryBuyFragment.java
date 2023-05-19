@@ -1,5 +1,6 @@
 package com.example.sanify.ui.lottery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.sanify.MainActivity;
 import com.example.sanify.adapter.lottery.LotteryNameAdapter;
 import com.example.sanify.adapter.lottery.LotteryTicketAdapter;
 import com.example.sanify.databinding.ActivityLotteryBuyBinding;
@@ -64,7 +66,7 @@ public class LotteryBuyFragment extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                binding.countdownTextView.setText("Time Over");
+                binding.countdownTextView.setText("Congratulations Winners");
             }
         };
 
@@ -73,22 +75,22 @@ public class LotteryBuyFragment extends AppCompatActivity {
         List<LotteryInformation> items2 = new ArrayList<LotteryInformation>();
         items2.add(new
 
-                LotteryInformation("Rank 1", "৳1,00,000","20145"));
+                LotteryInformation("Rank 1", "৳1,00,000", "Ticket No. 2014502"));
         items2.add(new
 
-                LotteryInformation("Rank 2", "৳50,000","032448"));
+                LotteryInformation("Rank 2", "৳50,000", "Ticket No. 0324481"));
         items2.add(new
 
-                LotteryInformation("Rank 3", "৳10,000","6554655"));
+                LotteryInformation("Rank 3", "৳10,000", "Ticket No. 6554655"));
         items2.add(new
 
-                LotteryInformation("Rank 4-5", "৳5,000","548787"));
+                LotteryInformation("Rank 4-5", "৳5,000", "Ticket No. 5487870"));
         items2.add(new
 
-                LotteryInformation("Rank 6-15", "৳2,000","654779797"));
+                LotteryInformation("Rank 6-15", "৳2,000", "Ticket No. 6547797"));
         items2.add(new
 
-                LotteryInformation("Rank 16-40", "৳1,000","878787"));
+                LotteryInformation("Rank 16-40", "৳1,000", "878787"));
         binding.lotteryRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         binding.lotteryRecyclerView.setAdapter(new LotteryNameAdapter(getApplicationContext(), items2));
 
@@ -98,6 +100,9 @@ public class LotteryBuyFragment extends AppCompatActivity {
         binding.lotteryTicketRecyclerView.setAdapter(lotteryAdapter);
 
 
+        if (items3.size() == 0) {
+            binding.ticketNoView.setVisibility(View.GONE);
+        }
         binding.buyLotteryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,6 +111,17 @@ public class LotteryBuyFragment extends AppCompatActivity {
                 lotteryNo = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 999999));
                 items3.add(new LotteryTicketInformation(lotteryNo));
                 lotteryAdapter.updateList(items3);
+                if (items3.size() > 0) {
+                    binding.ticketNoView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LotteryBuyFragment.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

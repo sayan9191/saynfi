@@ -5,47 +5,54 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.sanify.ui.DashBoardFragment;
+import com.example.sanify.databinding.FragmentProfileActivityBinding;
 import com.example.sanify.ui.auth.LogInActivity;
 import com.example.sanify.utils.StorageUtil;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile_Fragment extends Fragment {
 
-    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn;
-    ImageView backBtn;
-    FirebaseAuth firebaseAuth;
-    View view;
+    FragmentProfileActivityBinding binding;
     StorageUtil localStorage = new StorageUtil();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_profile__activity, container, false);
-        addMoneyBtn = view.findViewById(R.id.addMoneyBtn);
-        transactionHistoryBtn = view.findViewById(R.id.transactionHistoryBtn);
-        helpCenterBtn = view.findViewById(R.id.helpCenterBtn);
-        tcBtn = view.findViewById(R.id.tcBtn);
-        logOutBtn = view.findViewById(R.id.logOutBtn);
-        backBtn = view.findViewById(R.id.backBtn);
+        binding = FragmentProfileActivityBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
 
-        addMoneyBtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.addMoneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack("Profile")
                         .replace(R.id.fragmentContainerView, new PaymentFragment())
-                        .commit();            }
+                        .commit();
+            }
+        });
+        binding.transactionHistoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("helpCenter")
+                        .replace(R.id.fragmentContainerView, new TransactionFragment())
+                        .commit();
+            }
         });
 
-        helpCenterBtn.setOnClickListener(new View.OnClickListener() {
+        binding.helpCenterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().beginTransaction()
@@ -55,7 +62,7 @@ public class Profile_Fragment extends Fragment {
                         .commit();
             }
         });
-        logOutBtn.setOnClickListener(new View.OnClickListener() {
+        binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                FirebaseAuth.getInstance().signOut();
@@ -64,13 +71,11 @@ public class Profile_Fragment extends Fragment {
                 requireActivity().finish();
             }
         });
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(requireContext(), DashBoardFragment.class));
+                startActivity(new Intent(requireContext(), MainActivity.class));
             }
         });
-
-        return view;
     }
-}
+    }

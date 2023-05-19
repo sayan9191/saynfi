@@ -43,10 +43,6 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/transaction_history" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tHistoryRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/lottieAnimation" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
