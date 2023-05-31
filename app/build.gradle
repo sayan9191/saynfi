@@ -87,6 +87,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.2.0'
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
+<<<<<<< HEAD
 
+=======
+    // Image Slider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.2'
+>>>>>>> 7300c9fcf6c9ae1426532eefef3aeabfafb41c47
 
 }

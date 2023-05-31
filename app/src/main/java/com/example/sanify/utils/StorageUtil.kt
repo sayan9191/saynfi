@@ -27,6 +27,14 @@ class StorageUtil {
             sharedPref?.edit()?.putInt("coins", value!!)?.apply()
         }
 
+    var tickets: String?
+        get() {
+            return sharedPref?.getString("tickets", "")
+        }
+        set(value) {
+            sharedPref?.edit()?.putString("tickets", value)?.apply()
+        }
+
     fun saveTokenLocally(token : String){
         this.token = token
     }

@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile_Fragment extends Fragment {
 
-    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn;
+    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn, balanceAmount;
     ImageView backBtn;
     FirebaseAuth firebaseAuth;
     View view;
@@ -35,9 +35,12 @@ public class Profile_Fragment extends Fragment {
         tcBtn = view.findViewById(R.id.tcBtn);
         logOutBtn = view.findViewById(R.id.logOutBtn);
         backBtn = view.findViewById(R.id.backBtn);
+        balanceAmount = view.findViewById(R.id.balanceAmountText);
 
         localStorage.setSharedPref(requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE));
 
+
+        balanceAmount.setText(localStorage.getCoins().toString());
 
         addMoneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +77,15 @@ public class Profile_Fragment extends Fragment {
                 startActivity( new Intent(requireContext(), DashBoardFragment.class));
             }
         });
+
+        backBtn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getParentFragmentManager().popBackStackImmediate();
+                    }
+                }
+        );
 
         return view;
     }

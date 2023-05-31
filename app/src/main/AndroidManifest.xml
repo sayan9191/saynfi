@@ -11,7 +11,12 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+<<<<<<< HEAD
         android:icon="@mipmap/ic_launcher"
+=======
+        android:icon="@drawable/tin_patti"
+        android:usesCleartextTraffic="true"
+>>>>>>> 7300c9fcf6c9ae1426532eefef3aeabfafb41c47
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SANIFY"

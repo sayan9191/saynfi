@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = com.example.sanify.databinding.ActivityMainBinding.inflate(layoutInflater)
+        localStorage.sharedPref = getSharedPreferences("sharedPref", MODE_PRIVATE)
         setContentView(binding.root)
 
         if (localStorage.coins == -1){
