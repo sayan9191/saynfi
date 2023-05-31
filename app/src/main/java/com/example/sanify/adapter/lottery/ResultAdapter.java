@@ -8,15 +8,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sanify.R;
-import com.example.sanify.model.lottery.LotteryInformation;
+import com.example.sanify.model.lottery.ResultInformation;
 
 import java.util.List;
 
-public class LotteryNameAdapter extends RecyclerView.Adapter<LotteryNameViewHolder> {
+public class ResultAdapter extends RecyclerView.Adapter<ResultViewHolder> {
     Context context;
-    List<LotteryInformation> items;
+    List<ResultInformation> items;
 
-    public LotteryNameAdapter(Context context, List<LotteryInformation> items) {
+    public ResultAdapter(Context context, List<ResultInformation> items) {
         this.context = context;
         this.items = items;
     }
@@ -24,12 +24,12 @@ public class LotteryNameAdapter extends RecyclerView.Adapter<LotteryNameViewHold
 
     @NonNull
     @Override
-    public LotteryNameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LotteryNameViewHolder(LayoutInflater.from(context).inflate(R.layout.lottery_profile, parent, false));
+    public ResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ResultViewHolder(LayoutInflater.from(context).inflate(R.layout.lottery_profile, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LotteryNameViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
 
         holder.rankName.setText(items.get(position).getRank());
         holder.prizeMoney.setText(items.get(position).getPrizeMoney().toString());

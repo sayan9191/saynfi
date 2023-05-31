@@ -8,28 +8,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sanify.R;
+import com.example.sanify.YourTicketInformation;
 import com.example.sanify.model.lottery.LotteryTicketInformation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LotteryTicketAdapter extends RecyclerView.Adapter<LotteryTicketViewHolder> {
+public class YourTicketsAdapter extends RecyclerView.Adapter<YourTicketViewHolder> {
     Context context;
+    List<YourTicketInformation> items;
     ArrayList<LotteryTicketInformation> ticketNos = new ArrayList<>();
 
-    public LotteryTicketAdapter(Context context) {
+    public YourTicketsAdapter(Context context, List<YourTicketInformation> items) {
         this.context = context;
+        this.items = items;
     }
 
     @NonNull
     @Override
-    public LotteryTicketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LotteryTicketViewHolder(LayoutInflater.from(context).inflate(R.layout.tickets_item_layout, parent, false));
+    public YourTicketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new YourTicketViewHolder(LayoutInflater.from(context).inflate(R.layout.tickets_item_layout, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LotteryTicketViewHolder holder, int position) {
-        holder.myTicketNumber.setText(ticketNos.get(position).getLotteryTicketNo());
+    public void onBindViewHolder(@NonNull YourTicketViewHolder holder, int position) {
+        holder.dateTxt.setText(items.get(position).getDate());
+        holder.timeTxt.setText(items.get(position).getTime());
+        holder.ticketNoTxt.setText(items.get(position).getTicketNo());
     }
 
     @Override

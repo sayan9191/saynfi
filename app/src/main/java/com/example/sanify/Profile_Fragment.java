@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile_Fragment extends Fragment {
 
-    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn;
+    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn, balanceAmount;
     ImageView backBtn;
     FirebaseAuth firebaseAuth;
     View view;

@@ -1,14 +1,12 @@
 package com.example.sanify.model.lottery;
 
-public class LotteryInformation {
-    String rank;
-    String prizeMoney;
-    String ticketNo;
+public class PrizePoolInformation {
+    String rank, ticketNo, prizeMoney;
 
-    public LotteryInformation(String rank, String prizeMoney, String ticketNo) {
+    public PrizePoolInformation(String rank, String ticketNo, String prizeMoney) {
         this.rank = rank;
-        this.prizeMoney = prizeMoney;
         this.ticketNo = ticketNo;
+        this.prizeMoney = prizeMoney;
     }
 
     public String getRank() {
@@ -19,19 +17,19 @@ public class LotteryInformation {
         this.rank = rank;
     }
 
-    public String getPrizeMoney() {
-        return prizeMoney;
-    }
-
-    public void setPrizeMoney(String prizeMoney) {
-        this.prizeMoney = prizeMoney;
-    }
-
     public String getTicketNo() {
         return ticketNo;
     }
 
     public void setTicketNo(String ticketNo) {
         this.ticketNo = ticketNo;
+    }
+
+    public String getPrizeMoney() {
+        return prizeMoney;
+    }
+
+    public void setPrizeMoney(String prizeMoney) {
+        this.prizeMoney = prizeMoney;
     }
 }

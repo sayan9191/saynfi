@@ -23,14 +23,12 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.lottery.LotteryBuyFragment"
-            android:exported="false" />
-        <activity
             android:name=".ui.auth.OTPVerifyActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.SignUpActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.spin.LuckyDrawActivity"
             android:exported="false" />
