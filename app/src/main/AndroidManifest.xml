@@ -21,6 +21,7 @@
         <activity
             android:name=".FaqActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.lottery.LotteryBuyFragment"
             android:exported="false" />
