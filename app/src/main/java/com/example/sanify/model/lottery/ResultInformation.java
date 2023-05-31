@@ -1,11 +1,11 @@
 package com.example.sanify.model.lottery;
 
-public class LotteryInformation {
+public class ResultInformation {
     String rank;
     String prizeMoney;
     String ticketNo;
 
-    public LotteryInformation(String rank, String prizeMoney, String ticketNo) {
+    public ResultInformation(String rank, String prizeMoney, String ticketNo) {
         this.rank = rank;
         this.prizeMoney = prizeMoney;
         this.ticketNo = ticketNo;

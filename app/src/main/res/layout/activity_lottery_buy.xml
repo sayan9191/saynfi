@@ -128,96 +128,79 @@
                 android:layout_gravity="center"
                 android:layout_margin="15dp"
                 android:textStyle="bold"
-                android:text="---- WIN UP TO 1 LAKES ---"
+                android:text="You can win upto 1 Lakh"
                 android:textColor="#F6D00A"
                 android:textSize="20sp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="#CBFFFFFF"
-                    app:layout_constraintBottom_toBottomOf="@+id/prizepoolTxt"
-                    app:layout_constraintTop_toTopOf="@+id/prizepoolTxt" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <TextView
-                    android:id="@+id/prizepoolTxt"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/square"
-                    android:backgroundTint="#590957"
+                    android:id="@+id/totalTicket"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circular_shape"
                     android:gravity="center"
-                    android:elevation="1dp"
-                    android:padding="10dp"
-                    android:text="Prize Pool"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lotteryRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                tools:listitem="@layout/lottery_profile" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/ticketNoView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
-
-                <View
-                    android:id="@+id/view1"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="#CBFFFFFF"
-                    app:layout_constraintBottom_toBottomOf="@+id/yourTicketTxt"
-                    app:layout_constraintTop_toTopOf="@+id/yourTicketTxt" />
+                    android:text="Total Slots:20000"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/yourTicketTxt"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/square"
-                    android:backgroundTint="#590957"
-                    android:elevation="1dp"
+                    android:id="@+id/prizePoolBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circular_shape"
+                    android:text="PrizePool"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Your Ticket"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lotteryTicketRecyclerView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:layout_margin="10dp" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/yourTicketsBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circular_shape"
+                    android:gravity="center"
+                    android:text="Your Tickets"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/resultBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circular_shape"
+                    android:text="Result"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
