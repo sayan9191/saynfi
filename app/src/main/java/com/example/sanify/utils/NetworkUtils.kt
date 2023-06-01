@@ -13,7 +13,7 @@ class NetworkUtils {
         //getting retrofit instance
         fun getRetrofitInstance(): Retrofit {
             val client = Retrofit.Builder()
-            client.baseUrl("http://10.0.2.2:8000/")
+            client.baseUrl("http://13.53.64.101/")
             client.addConverterFactory(GsonConverterFactory.create())
             return client.build()
         }

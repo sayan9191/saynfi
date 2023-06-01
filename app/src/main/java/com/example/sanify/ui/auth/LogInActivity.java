@@ -53,6 +53,8 @@ public class LogInActivity extends AppCompatActivity {
 //        forgotPasswordBtn = findViewById(R.id.forgotPasswordBtn);
 //        firebaseAuth = FirebaseAuth.getInstance();
 
+
+
         binding.logInBtn.setOnClickListener(view -> {
             String loginEmail = Objects.requireNonNull(binding.emailIdEditTxt.getText()).toString().trim();
             String loginPassword = Objects.requireNonNull(binding.passWordEditText.getText()).toString().trim();
@@ -66,7 +68,7 @@ public class LogInActivity extends AppCompatActivity {
                 Toast.makeText(LogInActivity.this, "Enter your details", Toast.LENGTH_SHORT).show();
             } else {
 
-                if (NetworkUtils.Companion.isOnline(this)){
+                /*if (NetworkUtils.Companion.isOnline(this)){
                     if (!loginEmail.equals("84santamon@gmail.com") || !loginPassword.equals("AWS@aws12345")){
                         Log.d("--------", loginEmail + loginPassword);
                         Toast.makeText(LogInActivity.this, "Username or password not correct", Toast.LENGTH_SHORT).show();
@@ -78,6 +80,10 @@ public class LogInActivity extends AppCompatActivity {
                     }
                 }else{
                     Toast.makeText(LogInActivity.this, "Please connect to the internet", Toast.LENGTH_SHORT).show();
+                }*/
+
+                if (NetworkUtils.Companion.isOnline(this)){
+                    viewModel.login(loginEmail, loginPassword);
                 }
 
 
@@ -111,6 +117,16 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
+
+        viewModel.isLogin().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoginSuccess) {
+                if (isLoginSuccess){
+                    Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
 
         viewModel.getErrorMessage().observe(this, new Observer<String>() {
             @Override

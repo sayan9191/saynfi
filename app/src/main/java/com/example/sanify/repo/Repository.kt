@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.sanify.retrofit.RemoteApi
 import com.example.sanify.retrofit.models.Items
 import com.example.sanify.retrofit.models.LoginResponseModel
+import com.example.sanify.retrofit.models.login.LoginRequest
 import com.example.sanify.retrofit.models.login.LoginResponse
 import com.example.sanify.utils.NetworkUtils
 import com.example.sanify.utils.StorageUtil
@@ -27,29 +28,35 @@ class Repository {
 
     fun login(username : String, password : String){
         isLoading.postValue(true)
-        api.login(username, password).enqueue(object : Callback<LoginResponseModel> {
+
+        val loginRequest = LoginRequest(username, password);
+
+        api.login(loginRequest).enqueue(object : Callback<Any> {
 
             override fun onResponse(
-                call: Call<LoginResponseModel>,
-                response: Response<LoginResponseModel>
+                call: Call<Any>,
+                response: Response<Any>
             ) {
                 if (response.isSuccessful){
                     if (response.code() == 200){
                         val loginResponse = response.body();
                         if (loginResponse != null){
-                            storage.token = loginResponse.access_token
+                            storage.token = (loginResponse as LoginResponse).access_token
                             isLoading.postValue(false)
                             errorMessage.postValue("")
                             isLoginSuccess.postValue(true)
+                            Log.d("________________", response.toString())
                         }
                     }else{
                         Log.d("Error", response.message())
                         errorMessage.postValue("Something went wrong")
+                        Log.d("________________", response.toString())
+
                     }
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponseModel>, t: Throwable) {
+            override fun onFailure(call: Call<Any>, t: Throwable) {
                 Log.d("Error", t.message.toString())
                 isLoading.postValue(false)
                 errorMessage.postValue("Something went wrong")

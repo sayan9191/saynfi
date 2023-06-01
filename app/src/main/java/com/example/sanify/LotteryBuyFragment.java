@@ -9,15 +9,14 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.sanify.adapter.lottery.PrizePoolFragment;
 import com.example.sanify.adapter.lottery.ResultFragment;
 import com.example.sanify.databinding.FragmentLotteryBuyBinding;
 import com.example.sanify.model.lottery.LotteryTicketInformation;
-import com.example.sanify.ui.auth.bottomsheet.BottomSheetLottery;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class LotteryBuyFragment extends Fragment {
 
@@ -75,30 +74,39 @@ public class LotteryBuyFragment extends Fragment {
             }
         });
 
-        //YourTicket
+        //PrizePool Button
+        binding.prizePoolBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction().setReorderingAllowed(true).addToBackStack("PrizePool").replace(R.id.fragmentContainerView, new PrizePoolFragment()).commit();
+            }
+        });
+
+        //YourTicket Button
         binding.yourTicketsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction()
-//                        .setReorderingAllowed(true)
-//                        .addToBackStack("Home")
-//                        .replace(R.id.fragmentContainerView, new YourTicketsFragment())
-//                        .commit();
-                Intent intent = new Intent(requireContext(), YourTicketsFragment.class);
-                startActivity(intent);
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("YourTickets")
+                        .replace(R.id.fragmentContainerView, new YourTicketsFragment())
+                        .commit();
             }
         });
 
-        //
-
+        //result button
         binding.resultBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), ResultFragment.class);
-                startActivity(intent);
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("Result")
+                        .replace(R.id.fragmentContainerView, new ResultFragment())
+                        .commit();
             }
         });
 
+        //back Button
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
