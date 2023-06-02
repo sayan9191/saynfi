@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".ui.auth.LogInActivity">
+    tools:context=".ui.auth.login.LogInActivity">
 
     <FrameLayout
         android:id="@+id/card"
@@ -46,24 +46,27 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/login_animation" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/MyTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center_horizontal"
-                android:hint="Email id"
-                app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/person_icon">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailIdEditTxt"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/MyTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:gravity="center_horizontal"
+                    android:layout_margin="5dp"
+                    android:hint="Username"
+                    app:hintTextColor="@color/black"
+                    app:startIconDrawable="@drawable/person_icon">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/emailIdEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:inputType="phone"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/MyTextField"

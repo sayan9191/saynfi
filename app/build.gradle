@@ -91,5 +91,7 @@ dependencies {
     // Image Slider
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.2'
 
+    // Country code picker
+    implementation 'com.hbb20:ccp:2.7.2'
 
 }

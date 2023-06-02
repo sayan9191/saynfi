@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashBoardFragment"
-        android:name="com.example.sanify.ui.DashBoardFragment"
+        android:name="com.example.sanify.ui.home.DashBoardFragment"
         android:label="fragment_dash_board"
         tools:layout="@layout/fragment_dash_board" />
 </navigation>

@@ -46,13 +46,29 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/signup_animation" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            >
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/signUpCountryCodePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_showFlag="false"
+                app:ccp_showNameCode="false"
+                />
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/MyTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:hint="Email id"
-                app:startIconDrawable="@drawable/email_icon">
+                android:hint="Phone no."
+                app:startIconDrawable="@drawable/ic_phone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailIdEditTxt"
@@ -61,6 +77,9 @@
                     android:inputType="textEmailAddress"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/MyTextField"

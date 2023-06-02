@@ -1,4 +1,4 @@
-package com.example.sanify.ui
+package com.example.sanify.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -6,13 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.sanify.LotteryBuyFragment
 import com.example.sanify.Profile_Fragment
 import com.example.sanify.R
 import com.example.sanify.databinding.FragmentDashBoardBinding
+import com.example.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
+import com.example.sanify.ui.dialogbox.LoadingScreen.Companion.showLoadingDialog
 import com.example.sanify.ui.spin.LuckyDrawActivity
 import com.example.sanify.utils.StorageUtil
 
@@ -20,22 +24,42 @@ class DashBoardFragment : Fragment() {
 
 
     lateinit var binding: FragmentDashBoardBinding
-    lateinit var localStorage: StorageUtil
-//    private val repo = Repository()
+
+    lateinit var viewModel: DashBoardViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         binding = FragmentDashBoardBinding.inflate(layoutInflater, container, false)
 
-        localStorage = StorageUtil()
-        localStorage.sharedPref = requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
+        // Initiate viewModel
+        viewModel = ViewModelProvider(this)[DashBoardViewModel::class.java]
 
-        binding.coinAmount.text = localStorage.coins.toString()
+        viewModel.getCoinBalance()
 
-        binding.lotteryOption.setOnClickListener {
-//            repo.getAllItems()
-//            val intent = Intent(requireContext(), LotteryBuyFragment::class.java)
-//            startActivity
+        viewModel.coinBalance.observe(viewLifecycleOwner) {
+            binding.coinAmount.text = it.toString()
+        }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) { s ->
+            if (s != "") {
+                Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                showLoadingDialog(requireContext())
+            } else {
+                try {
+                    hideLoadingDialog()
+                }catch (e : Exception){
+                    e.stackTrace
+                }
+            }
+        }
+
+
+    binding.lotteryOption.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .addToBackStack("Home")
@@ -93,7 +117,7 @@ class DashBoardFragment : Fragment() {
     }
 
     override fun onResume() {
-        binding.coinAmount.text = localStorage.coins.toString()
+        viewModel.getCoinBalance()
         super.onResume()
     }
 

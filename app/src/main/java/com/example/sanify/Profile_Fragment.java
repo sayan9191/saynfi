@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.sanify.ui.DashBoardFragment;
-import com.example.sanify.ui.auth.LogInActivity;
+import com.example.sanify.ui.home.DashBoardFragment;
+import com.example.sanify.ui.auth.login.LogInActivity;
 import com.example.sanify.utils.StorageUtil;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +22,7 @@ public class Profile_Fragment extends Fragment {
     ImageView backBtn;
     FirebaseAuth firebaseAuth;
     View view;
-    StorageUtil localStorage = new StorageUtil();
+    StorageUtil localStorage =  StorageUtil.Companion.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

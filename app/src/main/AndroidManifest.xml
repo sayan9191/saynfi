@@ -9,7 +9,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/tin_patti"
         android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -33,7 +33,7 @@
             android:name=".ui.spin.LuckyDrawActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.LogInActivity"
+            android:name=".ui.auth.login.LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

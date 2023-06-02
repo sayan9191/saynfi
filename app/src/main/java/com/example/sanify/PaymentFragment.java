@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.sanify.databinding.FragmentPaymentActivityBinding;
-import com.example.sanify.ui.DashBoardFragment;
+import com.example.sanify.ui.home.DashBoardFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;

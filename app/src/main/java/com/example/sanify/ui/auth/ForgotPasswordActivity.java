@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sanify.R;
+import com.example.sanify.ui.auth.login.LogInActivity;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 

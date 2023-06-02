@@ -7,16 +7,16 @@ import com.example.sanify.utils.StorageUtil
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: com.example.sanify.databinding.ActivityMainBinding
-    val localStorage = StorageUtil()
+//    val localStorage = StorageUtil.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = com.example.sanify.databinding.ActivityMainBinding.inflate(layoutInflater)
-        localStorage.sharedPref = getSharedPreferences("sharedPref", MODE_PRIVATE)
+//        localStorage.sharedPref = getSharedPreferences("sharedPref", MODE_PRIVATE)
         setContentView(binding.root)
-
-        if (localStorage.coins == -1){
-            localStorage.coins = 1000
-        }
+//-
+//        if (localStorage.coins == -1){
+//            localStorage.coins = 1000
+//        }
 
 //        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 //        val navController = navHostFragment.navController

@@ -15,6 +15,7 @@ import com.example.sanify.MainActivity;
 import com.example.sanify.R;
 import com.example.sanify.ui.auth.bottomsheet.BottomSheetPP;
 import com.example.sanify.ui.auth.bottomsheet.BottomSheetTC;
+import com.example.sanify.ui.auth.login.LogInActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

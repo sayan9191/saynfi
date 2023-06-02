@@ -23,7 +23,7 @@ class LuckyDrawActivity : AppCompatActivity() {
 
     var targetValue = (1..6).random()
     var total = 0;
-    var localStorage = StorageUtil()
+    var localStorage = StorageUtil.getInstance()
 
     lateinit var binding: ActivityLuckyDrawBinding
     @SuppressLint("ClickableViewAccessibility")
@@ -62,16 +62,16 @@ class LuckyDrawActivity : AppCompatActivity() {
 
         binding.spinBtn.setOnClickListener {
             if (NetworkUtils.isOnline(this)){
-                if (localStorage.coins!! < 10){
-                    Toast.makeText(this, "Insufficient balance", Toast.LENGTH_SHORT).show()
-                }else{
-                    localStorage.deductCoin(10)
-                    binding.spinBtn.isClickable = false
-                    binding.lwv.rotateWheelTo(targetValue)
-//            binding.playAnimation.isClickable = false
-                    binding.playAnimation.pauseAnimation()
-                    binding.coinAmount.text = localStorage.coins.toString()
-                }
+//                if (localStorage.coins!! < 10){
+//                    Toast.makeText(this, "Insufficient balance", Toast.LENGTH_SHORT).show()
+//                }else{
+//                    localStorage.deductCoin(10)
+//                    binding.spinBtn.isClickable = false
+//                    binding.lwv.rotateWheelTo(targetValue)
+////            binding.playAnimation.isClickable = false
+//                    binding.playAnimation.pauseAnimation()
+//                    binding.coinAmount.text = localStorage.coins.toString()
+//                }
             }else{
                 Toast.makeText(this, "Please connect to the internet", Toast.LENGTH_SHORT).show()
             }
@@ -83,7 +83,7 @@ class LuckyDrawActivity : AppCompatActivity() {
 
             if (textItems[targetValue-1] != "Better luck next time"){
                 total += textItems[targetValue-1].toInt()
-                localStorage.addCoins(textItems[targetValue-1].toInt())
+//                localStorage.addCoins(textItems[targetValue-1].toInt())
                 val bottomSheetLottery = LuckyDrawBottomSheet(textItems[targetValue-1])
                 bottomSheetLottery.show(supportFragmentManager, "TAG")
             }
@@ -94,10 +94,10 @@ class LuckyDrawActivity : AppCompatActivity() {
 //            binding.playAnimation.isClickable = true
             binding.playAnimation.playAnimation()
             binding.spinBtn.isClickable = true
-            binding.coinAmount.text = localStorage.coins.toString()
+//            binding.coinAmount.text = localStorage.coins.toString()
         }
 
-        binding.coinAmount.text = localStorage.coins.toString()
+//        binding.coinAmount.text = localStorage.coins.toString()
 
 
         binding.backBtn.setOnClickListener {

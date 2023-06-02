@@ -4,56 +4,68 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.sanify.retrofit.RemoteApi
 import com.example.sanify.retrofit.models.CommonErrorModel
-import com.example.sanify.retrofit.models.login.LoginResponse
+import com.example.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.example.sanify.utils.NetworkUtils
+import com.example.sanify.utils.StorageUtil
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+class CoinRepository private constructor(){
 
-class Repository {
+    companion object{
+        private var instance : CoinRepository? = null
+
+        fun getInstance() : CoinRepository {
+            return if (instance != null)
+                instance as CoinRepository
+            else{
+                instance = CoinRepository()
+                instance as CoinRepository
+            }
+        }
+    }
+
+    private var localStorage = StorageUtil.getInstance()
+
     private val api: RemoteApi = NetworkUtils.getRetrofitInstance().create(RemoteApi::class.java)
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val errorMessage: MutableLiveData<String> = MutableLiveData()
 
-    val loginToken: MutableLiveData<String> = MutableLiveData("")
+
+    val currentCoinBalance: MutableLiveData<Int> = MutableLiveData()
 
 
-    fun login(username: String, password: String) {
+    fun getCoinBalance(){
         isLoading.postValue(true)
-
-        api.login(username, password).enqueue(object : Callback<LoginResponse> {
-
+        api.getCoinBalance("Bearer " + localStorage.token).enqueue(object : Callback<CoinBalanceResponseModel>{
             override fun onResponse(
-                call: Call<LoginResponse>,
-                response: Response<LoginResponse>
+                call: Call<CoinBalanceResponseModel>,
+                response: Response<CoinBalanceResponseModel>
             ) {
-                if (response.isSuccessful) {
-
-                    val loginResponse = response.body()
-                    if (loginResponse != null) {
+                if (response.isSuccessful){
+                    val coinBalanceData = response.body()
+                    if (coinBalanceData != null){
+                        currentCoinBalance.postValue(coinBalanceData.num_of_coins)
                         isLoading.postValue(false)
-                        errorMessage.postValue("")
-                        loginToken.postValue(loginResponse.access_token)
-                        Log.d("Login: ", "success")
                     }
-                } else {
+                }else{
                     isLoading.postValue(false)
                     response.errorBody()?.let { errorBody ->
                         errorBody.string().let {
+                            Log.e("Error: ", it)
                             val errorResponse: CommonErrorModel =
                                 Gson().fromJson(it, CommonErrorModel::class.java)
                             errorMessage.postValue(errorResponse.detail)
-                            Log.d("Login error: ", it)
                         }
                     }
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            override fun onFailure(call: Call<CoinBalanceResponseModel>, t: Throwable) {
                 Log.d("Request Failed. Error: ", t.message.toString())
                 isLoading.postValue(false)
                 errorMessage.postValue("Something went wrong")
@@ -61,5 +73,6 @@ class Repository {
 
         })
     }
+
 
 }
