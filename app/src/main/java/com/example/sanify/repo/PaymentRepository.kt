@@ -1,38 +1,93 @@
 package com.example.sanify.repo
 
-import android.content.Context
-import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.sanify.retrofit.RemoteApi
+import com.example.sanify.retrofit.models.transaction.TransactionRequestModel
+import com.example.sanify.utils.NetworkUtils
+import com.example.sanify.utils.StorageUtil
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
 class PaymentRepository {
+    private var localStorage = StorageUtil.getInstance()
 
-    val uploadStatus: MutableLiveData<Boolean> = MutableLiveData()
+    private val api: RemoteApi = NetworkUtils.getRetrofitInstance().create(RemoteApi::class.java)
 
-    fun uploadImage(context: Context, imageUri: Uri) {
+    val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    val errorMessage: MutableLiveData<String> = MutableLiveData()
+
+    val uploadStatus: MutableLiveData<Boolean> = MutableLiveData(false)
+
+
+    fun uploadImage(imageUri: Uri, transactionId: String, transactionMedium: String, amount: Int) {
+        isLoading.postValue(true)
+
         val simpleDateFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA)
         val now = Date()
         val fileName = simpleDateFormat.format(now)
         val storageRef = FirebaseStorage.getInstance().getReference("transaction_images/$fileName")
         storageRef.putFile(imageUri)
             .addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot?> {
-                val url: String = storageRef.getDownloadUrl().getResult().toString()
-                Toast.makeText(context, "upload", Toast.LENGTH_SHORT).show()
-                uploadStatus.postValue(true)
+                storageRef.downloadUrl.let {
+                    if (it.isSuccessful) {
+                        val url = it.result
+                        if (url != null)
+                            transact(url.toString(), transactionId, transactionMedium, amount)
+                    }
+                }
             }).addOnFailureListener(OnFailureListener {
-                Toast.makeText(
-                    context,
-                    "Failed to upload",
-                    Toast.LENGTH_SHORT
-                ).show()
                 uploadStatus.postValue(false)
+                errorMessage.postValue("Something went wrong")
+                isLoading.postValue(false)
             })
+    }
+
+
+    private fun transact(
+        screenshotUrl: String,
+        transactionId: String,
+        transactionMedium: String,
+        amount: Int
+    ) {
+
+        Log.d("_________________", "Inside transact")
+        val body =
+            TransactionRequestModel(amount, true, screenshotUrl, transactionMedium, transactionId)
+
+        api.transaction("Bearer " + localStorage.token, body).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("_________________", "Inside response")
+
+                if (response.isSuccessful) {
+
+                    errorMessage.postValue("")
+                    isLoading.postValue(false)
+                    uploadStatus.postValue(true)
+                } else {
+                    isLoading.postValue(false)
+                    uploadStatus.postValue(false)
+                    errorMessage.postValue("Something went wrong")
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                isLoading.postValue(false)
+                uploadStatus.postValue(false)
+                errorMessage.postValue("Something went wrong")
+                Log.d("_________________", "Inside failure: ${t.message}")
+
+            }
+
+        })
     }
 }

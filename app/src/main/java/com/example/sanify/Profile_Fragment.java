@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.sanify.ui.addmoney.AddMoneyFragment;
 import com.example.sanify.ui.home.DashBoardFragment;
 import com.example.sanify.ui.auth.login.LogInActivity;
 import com.example.sanify.utils.StorageUtil;
