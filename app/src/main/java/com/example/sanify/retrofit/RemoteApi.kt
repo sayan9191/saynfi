@@ -3,6 +3,7 @@ package com.example.sanify.retrofit
 import com.example.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.example.sanify.retrofit.models.login.LoginResponse
 import com.example.sanify.retrofit.models.transaction.TransactionRequestModel
+import com.example.sanify.retrofit.models.transaction.TransactionResponseModel
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -22,5 +23,5 @@ interface RemoteApi {
     fun getCoinBalance(@Header("Authorization") token : String) : Call<CoinBalanceResponseModel>
 
     @POST("transaction/")
-    fun transaction(@Header("Authorization") token: String, @Body body: TransactionRequestModel) : Call<String>
+    fun transaction(@Header("Authorization") token: String, @Body body: TransactionRequestModel) : Call<TransactionResponseModel>
 }

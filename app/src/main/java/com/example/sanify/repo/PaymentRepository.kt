@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.sanify.retrofit.RemoteApi
 import com.example.sanify.retrofit.models.CommonErrorModel
 import com.example.sanify.retrofit.models.transaction.TransactionRequestModel
+import com.example.sanify.retrofit.models.transaction.TransactionResponseModel
 import com.example.sanify.utils.NetworkUtils
 import com.example.sanify.utils.StorageUtil
 import com.google.android.gms.tasks.OnFailureListener
@@ -42,10 +43,7 @@ class PaymentRepository {
             .addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot?> {
                 storageRef.downloadUrl.addOnSuccessListener {
                     if (it != null){
-                        Log.d("_________________", "Inside url get")
                         transact(it.toString(), transactionId, transactionMedium, amount)
-                    }else{
-                        Log.d("_________________", "Inside url not get")
                     }
                 }
             }).addOnFailureListener(OnFailureListener {
@@ -62,14 +60,11 @@ class PaymentRepository {
         transactionMedium: String,
         amount: Int
     ) {
-
-        Log.d("_________________", "Inside transact")
         val body =
             TransactionRequestModel(amount, true, screenshotUrl, transactionMedium, transactionId)
 
-        api.transaction("Bearer " + localStorage.token, body).enqueue(object : Callback<String> {
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                Log.d("_________________", "Inside response")
+        api.transaction("Bearer " + localStorage.token, body).enqueue(object : Callback<TransactionResponseModel> {
+            override fun onResponse(call: Call<TransactionResponseModel>, response: Response<TransactionResponseModel>) {
 
                 if (response.isSuccessful) {
 
@@ -91,11 +86,10 @@ class PaymentRepository {
                 }
             }
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
+            override fun onFailure(call: Call<TransactionResponseModel>, t: Throwable) {
                 isLoading.postValue(false)
                 uploadStatus.postValue(false)
                 errorMessage.postValue("Something went wrong")
-                Log.d("_________________", "Inside failure: ${t.message}")
                 t.stackTrace
 
             }
