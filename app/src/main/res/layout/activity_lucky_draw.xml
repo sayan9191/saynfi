@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.spin.LuckyDrawActivity"
-    android:background="@drawable/background">
+    android:background="#51459E">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
@@ -69,36 +69,63 @@
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <com.bluehomestudio.luckywheel.LuckyWheel
-        android:id="@+id/lwv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-
-        app:background_color="@color/white"
+    <RelativeLayout
+        android:id="@+id/Relativespin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/background_wheel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolBar"
-        app:layout_constraintBottom_toTopOf="@+id/spinBtn"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4">
 
+    </RelativeLayout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layoutspin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Relativespin"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Relativespin"
+        app:layout_constraintVertical_bias="0.4">
+
+        <rubikstudio.library.LuckyWheelView
+            android:id="@+id/luckyWheel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lkwBackgroundColor="@android:color/transparent"
+            app:lkwCenterImage="@drawable/wheel"
+            app:lkwCursor="@drawable/spin"
+            app:lkwTextColor="#F8F8F8">
+
+
+        </rubikstudio.library.LuckyWheelView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/congoAnimation"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+
         android:elevation="5dp"
-        android:layout_marginTop="-150dp"
-        app:lottie_rawRes="@raw/money_rain"
-        app:lottie_autoPlay="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
+        app:layout_constraintTop_toTopOf="@+id/Relativespin"
+        app:lottie_autoPlay="false"
+        app:lottie_rawRes="@raw/money_rain" />
 
     <LinearLayout
         android:id="@+id/spinBtn"
@@ -111,7 +138,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal"
         android:background="@drawable/square"
-        android:backgroundTint="@color/yellow">
+        android:backgroundTint="@color/teal_200">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/playAnimation"
@@ -134,7 +161,7 @@
             android:layout_marginBottom="2dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_gravity="center"/>
 
         <!--<ImageView

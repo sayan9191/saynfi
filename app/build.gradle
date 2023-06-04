@@ -47,6 +47,7 @@ android {
             classpath "com.android.tools.build:gradle:4.2.2"
         }
     }
+    buildToolsVersion '30.0.3'
 
 }
 
@@ -93,5 +94,8 @@ dependencies {
 
     // Country code picker
     implementation 'com.hbb20:ccp:2.7.2'
+
+    //module
+    implementation project(':luckyWheel')
 
 }
