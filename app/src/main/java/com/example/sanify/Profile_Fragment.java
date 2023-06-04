@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile_Fragment extends Fragment {
 
-    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn, balanceAmount;
+    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn, balanceAmount,withDrawMoneyBtn;
     ImageView backBtn;
     FirebaseAuth firebaseAuth;
     View view;
@@ -34,6 +34,8 @@ public class Profile_Fragment extends Fragment {
         helpCenterBtn = view.findViewById(R.id.helpCenterBtn);
         tcBtn = view.findViewById(R.id.tcBtn);
         logOutBtn = view.findViewById(R.id.logOutBtn);
+        withDrawMoneyBtn = view.findViewById(R.id.withDrawMoneyBtn);
+
         backBtn = view.findViewById(R.id.backBtn);
 
         localStorage.setSharedPref(requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE));
@@ -45,8 +47,19 @@ public class Profile_Fragment extends Fragment {
                 getParentFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack("Profile")
-                        .replace(R.id.fragmentContainerView, new PaymentFragment())
+                        .replace(R.id.fragmentContainerView, new AddMoneyFragment())
                         .commit();            }
+        });
+
+        withDrawMoneyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("Profile")
+                        .replace(R.id.fragmentContainerView, new WithDrawFragmentFragment())
+                        .commit();
+            }
         });
 
         helpCenterBtn.setOnClickListener(new View.OnClickListener() {
