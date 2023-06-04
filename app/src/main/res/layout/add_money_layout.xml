@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/myTicketNumber"
+        android:id="@+id/amount"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="@drawable/square"
