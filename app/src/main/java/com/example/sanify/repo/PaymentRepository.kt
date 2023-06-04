@@ -4,6 +4,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.sanify.retrofit.RemoteApi
+import com.example.sanify.retrofit.models.CommonErrorModel
 import com.example.sanify.retrofit.models.transaction.TransactionRequestModel
 import com.example.sanify.utils.NetworkUtils
 import com.example.sanify.utils.StorageUtil
@@ -11,6 +12,7 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,11 +40,12 @@ class PaymentRepository {
         val storageRef = FirebaseStorage.getInstance().getReference("transaction_images/$fileName")
         storageRef.putFile(imageUri)
             .addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot?> {
-                storageRef.downloadUrl.let {
-                    if (it.isSuccessful) {
-                        val url = it.result
-                        if (url != null)
-                            transact(url.toString(), transactionId, transactionMedium, amount)
+                storageRef.downloadUrl.addOnSuccessListener {
+                    if (it != null){
+                        Log.d("_________________", "Inside url get")
+                        transact(it.toString(), transactionId, transactionMedium, amount)
+                    }else{
+                        Log.d("_________________", "Inside url not get")
                     }
                 }
             }).addOnFailureListener(OnFailureListener {
@@ -74,9 +77,17 @@ class PaymentRepository {
                     isLoading.postValue(false)
                     uploadStatus.postValue(true)
                 } else {
-                    isLoading.postValue(false)
                     uploadStatus.postValue(false)
-                    errorMessage.postValue("Something went wrong")
+                    isLoading.postValue(false)
+                    response.errorBody()?.let { errorBody ->
+                        errorBody.string().let {
+                            Log.e("Error: ", it)
+                            val errorResponse: CommonErrorModel =
+                                Gson().fromJson(it, CommonErrorModel::class.java)
+                            errorMessage.postValue(errorResponse.detail)
+                        }
+                    }
+
                 }
             }
 
@@ -85,6 +96,7 @@ class PaymentRepository {
                 uploadStatus.postValue(false)
                 errorMessage.postValue("Something went wrong")
                 Log.d("_________________", "Inside failure: ${t.message}")
+                t.stackTrace
 
             }
 
