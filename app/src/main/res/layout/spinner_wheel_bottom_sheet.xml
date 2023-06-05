@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
-
+    
     <View
         android:layout_width="100dp"
         android:layout_height="3dp"
@@ -13,20 +13,43 @@
         android:background="@color/black" />
 
     <TextView
+        android:id="@+id/congoTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="Congratulations"
+        android:text="Oops !"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold" />
+    
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/winningAnimation"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        app:lottie_rawRes="@raw/anim_congratulations_cone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-15dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loosingAnimation"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:lottie_rawRes="@raw/anim_better_luck_next_time"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_margin="20dp"/>
 
     <TextView
         android:id="@+id/luckyDrawWinningText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You own 1 coins"
+        android:text="Better luck next time"
         android:layout_gravity="center"
         android:textColor="@color/white"
 
