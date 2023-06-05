@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Add Money"
+            android:text="WithDraw Money"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -41,33 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/backBtn" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/corner_rectangle"
-            android:backgroundTint="#B3000000"
-            android:gravity="end"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/appName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/appName">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:src="@drawable/wallet_icon" />
-
-            <TextView
-                android:id="@+id/coinAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:text="100"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -93,7 +67,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/appName"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/payment_lottie" />
+                app:lottie_rawRes="@raw/transaction_history" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -106,7 +80,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/payment_process"
+                android:text="Please fill all details. Your money will be shared in Your Account with in 10-15 minutes"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textColor="@color/black"

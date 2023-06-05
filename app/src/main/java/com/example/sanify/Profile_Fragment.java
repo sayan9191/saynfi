@@ -6,24 +6,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.sanify.ui.addmoney.AddMoneyFragment;
-import com.example.sanify.ui.home.DashBoardFragment;
 import com.example.sanify.ui.auth.login.LogInActivity;
+import com.example.sanify.ui.home.DashBoardFragment;
+import com.example.sanify.ui.transactionhistory.TransactionFragment;
+import com.example.sanify.ui.withdraw.WithDrawFragmentFragment;
+import com.example.sanify.ui.withdrawHistory.WithDrawHistoryFragment;
 import com.example.sanify.utils.StorageUtil;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Profile_Fragment extends Fragment {
 
-    TextView addMoneyBtn, transactionHistoryBtn, helpCenterBtn, tcBtn, logOutBtn, balanceAmount,withDrawMoneyBtn;
+    FrameLayout addMoneyBtn, addMoneyHistoryBtn, helpCenterBtn, withDrawHistoryBtn, logOutBtn, withDrawMoneyBtn;
     ImageView backBtn;
     FirebaseAuth firebaseAuth;
     View view;
-    StorageUtil localStorage =  StorageUtil.Companion.getInstance();
+    StorageUtil localStorage = StorageUtil.Companion.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,9 +34,9 @@ public class Profile_Fragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile__activity, container, false);
         addMoneyBtn = view.findViewById(R.id.addMoneyBtn);
-        transactionHistoryBtn = view.findViewById(R.id.transactionHistoryBtn);
+        addMoneyHistoryBtn = view.findViewById(R.id.addMoneyHistoryBtn);
         helpCenterBtn = view.findViewById(R.id.helpCenterBtn);
-        tcBtn = view.findViewById(R.id.tcBtn);
+        withDrawHistoryBtn = view.findViewById(R.id.withDrawHistoryBtn);
         logOutBtn = view.findViewById(R.id.logOutBtn);
         withDrawMoneyBtn = view.findViewById(R.id.withDrawMoneyBtn);
 
@@ -42,6 +45,16 @@ public class Profile_Fragment extends Fragment {
         localStorage.setSharedPref(requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE));
 
 
+        addMoneyHistoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("Profile")
+                        .replace(R.id.fragmentContainerView, new TransactionFragment())
+                        .commit();
+            }
+        });
         addMoneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,9 +62,20 @@ public class Profile_Fragment extends Fragment {
                         .setReorderingAllowed(true)
                         .addToBackStack("Profile")
                         .replace(R.id.fragmentContainerView, new AddMoneyFragment())
-                        .commit();            }
+                        .commit();
+            }
         });
 
+        withDrawHistoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("Profile")
+                        .replace(R.id.fragmentContainerView, new WithDrawHistoryFragment())
+                        .commit();
+            }
+        });
         withDrawMoneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
