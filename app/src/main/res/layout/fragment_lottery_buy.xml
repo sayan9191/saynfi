@@ -141,7 +141,7 @@
                 android:weightSum="2">
 
                 <TextView
-                    android:id="@+id/totalTicket"
+                    android:id="@+id/allParticipantBtn"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_margin="20dp"

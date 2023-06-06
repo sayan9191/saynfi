@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sanify.R;
 
 public class PrizePoolViewHolder extends RecyclerView.ViewHolder {
-    TextView rankTxt, prizeMoneyTxt, ticketNoTxt;
+    TextView prizePoolRank, prizePoolMoney;
 
     public PrizePoolViewHolder(@NonNull View itemView) {
         super(itemView);
-        rankTxt = itemView.findViewById(R.id.rankTxt);
-        prizeMoneyTxt = itemView.findViewById(R.id.prizeMoneyTxt);
-        ticketNoTxt = itemView.findViewById(R.id.ticketNoTxt);
+        prizePoolRank = itemView.findViewById(R.id.prizePoolRank);
+        prizePoolMoney = itemView.findViewById(R.id.prizePoolMoney);
     }
 }

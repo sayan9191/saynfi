@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sanify.R;
 
 public class ResultViewHolder extends RecyclerView.ViewHolder {
-    TextView rankName,prizeMoney,ticketNo;
+    TextView winnerRank,  winnerTicketNo;
+
     public ResultViewHolder(@NonNull View itemView) {
         super(itemView);
-        rankName = itemView.findViewById(R.id.rankName);
-        prizeMoney = itemView.findViewById(R.id.prizeMoney);
-        ticketNo = itemView.findViewById(R.id.ticketNo);
+        winnerRank = itemView.findViewById(R.id.winnerRank);
+        winnerTicketNo = itemView.findViewById(R.id.winnerTicketNo);
     }
 }

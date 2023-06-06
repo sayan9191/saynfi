@@ -19,9 +19,6 @@
         <activity
             android:name=".ui.auth.ForgotPasswordActivity"
             android:exported="false" />
-        <activity
-            android:name=".FaqActivity"
-            android:exported="false" />
 
         <activity
             android:name=".ui.auth.OTPVerifyActivity"

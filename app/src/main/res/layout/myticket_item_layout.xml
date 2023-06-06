@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingEnd="24dp"
+    android:elevation="5dp"
+    android:layout_marginBottom="5dp"
+    android:backgroundTint="#99000000"
+    android:orientation="vertical"
+    android:background="@drawable/small_border_radious">
+
+
+    <TextView
+        android:id="@+id/myTicketNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Ticket No.500500"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+
+</RelativeLayout>

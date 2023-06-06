@@ -1,66 +1,113 @@
 package com.example.sanify.ui.lottery.allParticipants;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.example.sanify.R;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ParticipantFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.sanify.adapter.lottery.AllParticipantAdapter;
+import com.example.sanify.databinding.FragmentParticipantBinding;
+import com.example.sanify.retrofit.models.lottery.AllParticipantResponseModel;
+import com.example.sanify.ui.dialogbox.LoadingScreen;
+
+import java.util.Objects;
+
 public class ParticipantFragment extends Fragment {
+    FragmentParticipantBinding binding;
+    AllParticipantViewModel viewModel;
+    AllParticipantAdapter adapter;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ParticipantFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ParticipantFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ParticipantFragment newInstance(String param1, String param2) {
-        ParticipantFragment fragment = new ParticipantFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    int pageNo = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_participant, container, false);
+        binding = FragmentParticipantBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(this).get(AllParticipantViewModel.class);
+        adapter = new AllParticipantAdapter();
+
+        //SET ADAPTER
+        binding.recyclerviewParticipant.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerviewParticipant.setAdapter(adapter);
+
+
+        // Get all perticipatns
+        viewModel.getAllParticipant(pageNo, "");
+
+
+        binding.nextPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pageNo += 1;
+                viewModel.getAllParticipant(pageNo, "");
+            }
+        });
+
+        binding.prevPageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pageNo > 1) {
+                    pageNo -= 1;
+                    viewModel.getAllParticipant(pageNo, "");
+                }
+            }
+        });
+
+        viewModel.getAllParticipant().observe(requireActivity(), new Observer<AllParticipantResponseModel>() {
+            @Override
+            public void onChanged(AllParticipantResponseModel allParticipantResponseModelItems) {
+                adapter.updateAllList(allParticipantResponseModelItems);
+                binding.pageNumberTextView.setText(String.valueOf(pageNo));
+                if (pageNo > 1) {
+                    binding.prevPageBtn.setVisibility(View.VISIBLE);
+                } else {
+                    binding.prevPageBtn.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        viewModel.getErrorMessage().observe(requireActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if (!Objects.equals(s, "")) {
+                    Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
+                    if (s.equals("Transactions not found")) {
+                        binding.nextPageBtn.setVisibility(View.INVISIBLE);
+                        pageNo -= 1;
+                    }
+                }
+            }
+        });
+
+        viewModel.isLoading().observe(requireActivity(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoading) {
+                if (isLoading) {
+                    LoadingScreen.Companion.showLoadingDialog(requireContext());
+                } else {
+                    try {
+                        LoadingScreen.Companion.hideLoadingDialog();
+                    } catch (Exception e) {
+                        e.getStackTrace();
+                    }
+                }
+            }
+        });
+
+        //back btn
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().popBackStackImmediate();
+            }
+        });
+
+        return binding.getRoot();
     }
 }

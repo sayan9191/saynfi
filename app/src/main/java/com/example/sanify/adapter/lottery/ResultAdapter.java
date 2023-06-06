@@ -1,6 +1,5 @@
 package com.example.sanify.adapter.lottery;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -8,36 +7,35 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sanify.R;
-import com.example.sanify.model.lottery.ResultInformation;
+import com.example.sanify.retrofit.models.lottery.AllParticipantResponseModelItem;
+import com.example.sanify.retrofit.models.lottery.AllWinnerResponseModelItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultViewHolder> {
-    Context context;
-    List<ResultInformation> items;
-
-    public ResultAdapter(Context context, List<ResultInformation> items) {
-        this.context = context;
-        this.items = items;
-    }
-
+    List<AllWinnerResponseModelItem> items = new ArrayList<>();
 
     @NonNull
     @Override
     public ResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ResultViewHolder(LayoutInflater.from(context).inflate(R.layout.lottery_profile, parent, false));
+        return new ResultViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.winner_item_layout, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
 
-        holder.rankName.setText(items.get(position).getRank());
-        holder.prizeMoney.setText(items.get(position).getPrizeMoney().toString());
-        holder.ticketNo.setText(items.get(position).getTicketNo().toString());
+        holder.winnerRank.setText(items.get(position).getPosition());
+        holder.winnerTicketNo.setText(items.get(position).getLottery_token_no());
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+    public void updateAllList(List<AllWinnerResponseModelItem> list) {
+        items.clear();
+        items.addAll(list);
+        this.notifyDataSetChanged();
     }
 }

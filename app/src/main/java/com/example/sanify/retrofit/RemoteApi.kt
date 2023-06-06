@@ -4,6 +4,7 @@ import com.example.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.example.sanify.retrofit.models.coin.UpdateCoinRequestModel
 import com.example.sanify.retrofit.models.coin.UpdateCoinResponseModel
 import com.example.sanify.retrofit.models.login.LoginResponse
+import com.example.sanify.retrofit.models.lottery.*
 import com.example.sanify.retrofit.models.transaction.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -38,8 +39,10 @@ interface RemoteApi {
     ): Call<AllTransactionsResponseModel>
 
     @POST("withdraw/")
-    fun withdraw(@Header("Authorization") token : String,
-    @Body body: WithDrawRequestModel): Call<TransactionResponseModel>
+    fun withdraw(
+        @Header("Authorization") token: String,
+        @Body body: WithDrawRequestModel
+    ): Call<TransactionResponseModel>
 
     @GET("withdraw/my_requests")
     fun getAllWithDraw(
@@ -47,4 +50,25 @@ interface RemoteApi {
         @Query("pageNo") pageNo: Int,
         @Query("search_withdraw_request_id") search_withdraw_request_id: String
     ): Call<AllWithDrawResponseModel>
+
+    @GET("lottery/participants")
+    fun getAllParticipants(
+        @Header("Authorization") token: String,
+        @Query("pageNo") pageNo: Int, @Query("search") search: String
+    ): Call<AllParticipantResponseModel>
+
+    @GET("lottery/get_lottery_prizepool")
+    fun getPrizePool(): Call<PrizePoolResponseModel>
+
+    @GET("lottery/get_all_my_entries")
+    fun getMyTickets(
+        @Header("Authorization") token: String,
+        @Query("search") search: String
+    ): Call<MyTicketResponseModel>
+
+    @GET("lottery/get_time_left_in_millis")
+    fun getTimeLeft(@Header("Authorization") token: String): Call<CountDownTimeResponseModel>
+
+    @GET("lottery/get_all_winners")
+    fun getAllWinner():Call<AllWinnerResponseModel>
 }

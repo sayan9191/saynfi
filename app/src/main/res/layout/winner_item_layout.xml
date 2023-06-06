@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingEnd="24dp"
-    android:elevation="5dp"
     android:layout_marginBottom="5dp"
+    android:background="@drawable/small_border_radious"
     android:backgroundTint="#99000000"
+    android:elevation="5dp"
     android:orientation="vertical"
-    android:background="@drawable/small_border_radious">
+    android:paddingEnd="24dp">
 
 
     <LinearLayout
@@ -17,28 +17,29 @@
         android:weightSum="2">
 
         <TextView
-            android:id="@+id/prizePoolRank"
+            android:id="@+id/winnerRank"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:padding="10dp"
             android:text="Rank 1"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <TextView
-            android:id="@+id/prizePoolMoney"
+            android:id="@+id/winnerTicketNo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:padding="10dp"
             android:gravity="right"
-            android:textStyle="bold"
+            android:padding="10dp"
             android:text="10000"
             android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

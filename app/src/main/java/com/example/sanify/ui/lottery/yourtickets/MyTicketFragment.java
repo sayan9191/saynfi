@@ -1,4 +1,4 @@
-package com.example.sanify.ui.lottery.prizepool;
+package com.example.sanify.ui.lottery.yourtickets;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,41 +11,38 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.sanify.adapter.lottery.PrizePoolAdapter;
-import com.example.sanify.databinding.FragmentPrizePoolBinding;
-import com.example.sanify.retrofit.models.lottery.PrizePoolResponseModel;
+import com.example.sanify.adapter.lottery.MyTicketAdapter;
+import com.example.sanify.databinding.FragmentYourTicketsBinding;
+import com.example.sanify.retrofit.models.lottery.MyTicketResponseModel;
 import com.example.sanify.ui.dialogbox.LoadingScreen;
 
 import java.util.Objects;
 
-public class PrizePoolFragment extends Fragment {
-
-    FragmentPrizePoolBinding binding;
-    PrizePoolViewModel viewModel;
-    PrizePoolAdapter adapter;
+public class MyTicketFragment extends Fragment {
+    FragmentYourTicketsBinding binding;
+    MyTicketViewModel viewModel;
+    MyTicketAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentPrizePoolBinding.inflate(getLayoutInflater(), container, false);
-        viewModel = new ViewModelProvider(this).get(PrizePoolViewModel.class);
-        adapter = new PrizePoolAdapter();
+        binding = FragmentYourTicketsBinding.inflate(getLayoutInflater(), container, false);
+        viewModel = new ViewModelProvider(this).get(MyTicketViewModel.class);
+        adapter = new MyTicketAdapter();
 
-        //set adapter
-        binding.recyclerviewPrizePool.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.recyclerviewPrizePool.setAdapter(adapter);
+        //set Adapter
+        binding.recyclerviewYourTicket.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerviewYourTicket.setAdapter(adapter);
 
-        // Get all perticipatns
-        viewModel.getAllPrizePoolDetails();
+        // Get all my Tickets
+        viewModel.getAllMyTicket("");
 
-        viewModel.getAllPrizePool().observe(getViewLifecycleOwner(), new Observer<PrizePoolResponseModel>() {
+        viewModel.getMyTicketList().observe(getViewLifecycleOwner(), new Observer<MyTicketResponseModel>() {
             @Override
-            public void onChanged(PrizePoolResponseModel prizePoolResponseModelItems) {
-                adapter.updateList(prizePoolResponseModelItems);
+            public void onChanged(MyTicketResponseModel myTicketResponseModelItems) {
+                adapter.updateList(myTicketResponseModelItems);
             }
         });
-
         viewModel.getErrorMessage().observe(requireActivity(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -69,14 +66,13 @@ public class PrizePoolFragment extends Fragment {
             }
         });
 
-        //back Button
+        //back btn
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getParentFragmentManager().popBackStackImmediate();
             }
         });
-
         return binding.getRoot();
     }
 }
