@@ -1,4 +1,4 @@
-package com.example.sanify.adapter.lottery;
+package com.example.sanify.ui.lottery.prizepool;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.sanify.LotteryBuyFragment;
+import com.example.sanify.adapter.lottery.PrizePoolAdapter;
+import com.example.sanify.ui.lottery.LotteryBuyFragment;
 import com.example.sanify.databinding.FragmentPrizePoolBinding;
 import com.example.sanify.model.lottery.PrizePoolInformation;
 

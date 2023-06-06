@@ -1,6 +1,5 @@
 package com.example.sanify.ui.home
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,14 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.sanify.LotteryBuyFragment
+import com.example.sanify.ui.lottery.LotteryBuyFragment
 import com.example.sanify.Profile_Fragment
 import com.example.sanify.R
 import com.example.sanify.databinding.FragmentDashBoardBinding
 import com.example.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
 import com.example.sanify.ui.dialogbox.LoadingScreen.Companion.showLoadingDialog
 import com.example.sanify.ui.spin.LuckyDrawActivity
-import com.example.sanify.utils.StorageUtil
 
 class DashBoardFragment : Fragment() {
 

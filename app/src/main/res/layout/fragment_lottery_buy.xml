@@ -148,7 +148,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/circular_shape"
                     android:gravity="center"
-                    android:text="Total Slots:20000"
+                    android:text="All Participants"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />

@@ -1,11 +1,8 @@
-package com.example.sanify.adapter.lottery;
+package com.example.sanify.ui.lottery.result;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -13,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sanify.LotteryBuyFragment;
-import com.example.sanify.databinding.FragmentLotteryBuyBinding;
+import com.example.sanify.adapter.lottery.ResultAdapter;
+import com.example.sanify.ui.lottery.LotteryBuyFragment;
 import com.example.sanify.databinding.FragmentResultBinding;
 import com.example.sanify.model.lottery.ResultInformation;
 
