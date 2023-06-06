@@ -8,9 +8,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bluehomestudio.luckywheel.WheelItem
 import com.example.sanify.databinding.ActivityLuckyDrawBinding
-import com.example.sanify.ui.auth.bottomsheet.LuckyDrawBottomSheet
+import com.example.sanify.ui.bottomsheet.LuckyDrawBottomSheet
+import com.example.sanify.ui.dialogbox.LoadingScreen
 import com.example.sanify.utils.NetworkUtils
 import com.example.sanify.utils.StorageUtil
 import rubikstudio.library.model.LuckyItem
@@ -25,10 +27,13 @@ class LuckyDrawActivity : AppCompatActivity() {
     private var coin = 0
 
     lateinit var binding: ActivityLuckyDrawBinding
-    @SuppressLint("ClickableViewAccessibility")
+    lateinit var viewModel : LuckyDrawActivityViewModel
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLuckyDrawBinding.inflate(layoutInflater)
+        viewModel = ViewModelProvider(this)[LuckyDrawActivityViewModel::class.java]
         setContentView(binding.root)
         localStorage.sharedPref = getSharedPreferences("sharedPref", MODE_PRIVATE)
 
@@ -39,16 +44,31 @@ class LuckyDrawActivity : AppCompatActivity() {
         binding.congoAnimation.visibility = View.GONE
 
 
+        // Initial balance check
+        viewModel.getCoinBalance()
 
 
-        /*binding.spinBtn.setOnClickListener {
-            if (NetworkUtils.isOnline(this)){
+        viewModel.coinBalance.observe(this) {
+            binding.coinAmount.text = it.toString()
+        }
 
-            }else{
-                Toast.makeText(this, "Please connect to the internet", Toast.LENGTH_SHORT).show()
+        viewModel.errorMessage.observe(this) { s ->
+            if (s != "") {
+                Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
             }
-        }*/
+        }
 
+        viewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                LoadingScreen.showLoadingDialog(this)
+            } else {
+                try {
+                    LoadingScreen.hideLoadingDialog()
+                }catch (e : Exception){
+                    e.stackTrace
+                }
+            }
+        }
 
         binding.backBtn.setOnClickListener {
             finish()
@@ -61,37 +81,37 @@ class LuckyDrawActivity : AppCompatActivity() {
         data.add(luckyItem1)
 
         val luckyItem2 = LuckyItem()
-        luckyItem2.text = "20"
+        luckyItem2.text = "1"
         luckyItem2.color = Color.parseColor("#8E84FF")
         data.add(luckyItem2)
 
         val luckyItem3 = LuckyItem()
-        luckyItem3.text = "40"
+        luckyItem3.text = "2"
         luckyItem3.color = Color.parseColor("#752BEF")
         data.add(luckyItem3)
 
         val luckyItem4 = LuckyItem()
-        luckyItem4.text = "60"
+        luckyItem4.text = "5"
         luckyItem4.color = ContextCompat.getColor(applicationContext, com.example.sanify.R.color.Spinwell140)
         data.add(luckyItem4)
 
         val luckyItem5 = LuckyItem()
-        luckyItem5.text = "80"
+        luckyItem5.text = "7"
         luckyItem5.color = Color.parseColor("#8574F1")
         data.add(luckyItem5)
 
         val luckyItem6 = LuckyItem()
-        luckyItem6.text = "100"
+        luckyItem6.text = "10"
         luckyItem6.color = Color.parseColor("#8E84FF")
         data.add(luckyItem6)
 
         val luckyItem7 = LuckyItem()
-        luckyItem7.text = "120"
+        luckyItem7.text = "15"
         luckyItem7.color = Color.parseColor("#752BEF")
         data.add(luckyItem7)
 
         val luckyItem8 = LuckyItem()
-        luckyItem8.text = "140"
+        luckyItem8.text = "20"
         luckyItem8.color = ContextCompat.getColor(applicationContext, com.example.sanify.R.color.Spinwell140)
         data.add(luckyItem8)
 
@@ -100,13 +120,38 @@ class LuckyDrawActivity : AppCompatActivity() {
 
 
         binding.spinBtn.setOnClickListener {
-            val index = getRandomIndex()
-            binding.luckyWheel.startLuckyWheelWithTargetIndex(index)
+            if (NetworkUtils.isOnline(this)){
 
-            binding.spinBtn.isEnabled = false
-            binding.playAnimation.pauseAnimation()
-            binding.spinBtn.alpha = .5f
 
+                viewModel.deductCoin(10);
+            }else {
+                Toast.makeText(this, "Please Connect to the internet first", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        viewModel.isCoinDeducted.observe(this) {
+            if (it){
+                val index = getRandomIndex()
+                binding.luckyWheel.startLuckyWheelWithTargetIndex(index)
+
+                binding.spinBtn.isEnabled = false
+                binding.playAnimation.pauseAnimation()
+                binding.spinBtn.alpha = .5f
+            }
+        }
+
+        viewModel.isCoinAdded.observe(this) {
+            if (it) {
+                val bottomSheetLottery = LuckyDrawBottomSheet(coin.toString())
+                bottomSheetLottery.show(supportFragmentManager, "TAG")
+
+                binding.spinBtn.isEnabled = true
+                binding.playAnimation.playAnimation()
+                binding.spinBtn.alpha = 1f
+
+                binding.congoAnimation.visibility = View.VISIBLE
+                binding.congoAnimation.playAnimation()
+            }
         }
 
 
@@ -115,46 +160,50 @@ class LuckyDrawActivity : AppCompatActivity() {
                 coin = 0
             }
             if (index == 2) {
-            coin = 20
+            coin = 1
             }
             if (index == 3) {
-            coin = 40
+            coin = 2
             }
             if (index == 4) {
-            coin = 60
+            coin = 5
             }
             if (index == 5) {
-            coin = 80
+            coin = 7
             }
             if (index == 6) {
-            coin = 100
+            coin = 10
             }
             if (index == 7) {
-            coin = 120
+            coin = 15
             }
             if (index == 8) {
-            coin = 140
+            coin = 20
             }
 
-            Toast.makeText(applicationContext, "+ $coin Coins", Toast.LENGTH_SHORT).show()
 
-            val bottomSheetLottery = LuckyDrawBottomSheet(coin.toString())
-            bottomSheetLottery.show(supportFragmentManager, "TAG")
+            if (coin == 0){
+                val bottomSheetLottery = LuckyDrawBottomSheet(coin.toString())
+                bottomSheetLottery.show(supportFragmentManager, "TAG")
 
-            binding.spinBtn.isEnabled = true
-            binding.playAnimation.playAnimation()
-            binding.spinBtn.alpha = 1f
-
-            binding.congoAnimation.visibility = View.VISIBLE
-            binding.congoAnimation.playAnimation()
-
+                binding.spinBtn.isEnabled = true
+                binding.playAnimation.playAnimation()
+                binding.spinBtn.alpha = 1f
+            }else{
+                viewModel.addCoin(coin)
+            }
         }
 
     }
 
     private fun getRandomIndex(): Int {
         val ind = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8)
-        val rand: Int = Random().nextInt(ind.size)
+        var rand: Int = Random().nextInt(ind.size)
+
+        /*if (ind[rand] == 8){
+            rand = Random().nextInt(ind.size);
+        }*/
+
         return ind[rand]
     }
 

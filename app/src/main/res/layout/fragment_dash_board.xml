@@ -134,76 +134,112 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMyGame">
 
-        <FrameLayout
-            android:id="@+id/spinOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
 
-            android:backgroundTint="#73000000"
-            android:background="@drawable/corner_rectangle"
-            android:layout_margin="10dp">
-
-            <LinearLayout
+            <FrameLayout
+                android:id="@+id/spinOption"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
+                android:layout_height="200dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:backgroundTint="#73000000"
+                android:background="@drawable/corner_rectangle"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/wheel_logo" />
+                    android:layout_height="match_parent"
+                    >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center"
-                    android:text="Lucky Draw"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_margin="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-            </LinearLayout>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:src="@drawable/wheel_logo" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:backgroundTint="@color/purple_500"
+                        android:background="@drawable/fading_gradiant"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_margin="15dp"
+                        android:gravity="center"
+                        android:text="Lucky Draw"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </FrameLayout>
+
+            </FrameLayout>
+
+
+
+
 
         <FrameLayout
             android:id="@+id/lotteryOption"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_weight="1"
             android:backgroundTint="#73000000"
             android:background="@drawable/corner_rectangle"
             android:layout_margin="10dp">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                >
 
-                <ImageView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/lottery" />
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:src="@drawable/lottery" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/fading_gradiant"
+                    android:backgroundTint="#0D8E3C"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="15dp"
                     android:gravity="center"
                     android:text="Lottery"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
 
     </LinearLayout>

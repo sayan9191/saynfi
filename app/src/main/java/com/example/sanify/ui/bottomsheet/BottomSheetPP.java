@@ -1,4 +1,4 @@
-package com.example.sanify.ui.auth.bottomsheet;
+package com.example.sanify.ui.bottomsheet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +11,14 @@ import androidx.annotation.Nullable;
 import com.example.sanify.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class BottomSheetLottery extends BottomSheetDialogFragment {
-    public BottomSheetLottery() {
+public class BottomSheetPP extends BottomSheetDialogFragment {
+    public BottomSheetPP(){
 
     }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.lottery_no, container, false);
+        View view= inflater.inflate(R.layout.privacyandpolicy,container,false);
         return view;
     }
 }
