@@ -1,6 +1,7 @@
 package com.example.sanify.ui.addmoney;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,13 +14,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sanify.R;
 import com.example.sanify.databinding.FragmentAddMoneyBinding;
-import com.example.sanify.ui.auth.login.LogInActivity;
 import com.example.sanify.ui.dialogbox.LoadingScreen;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -40,7 +41,7 @@ public class AddMoneyFragment extends Fragment {
         binding = FragmentAddMoneyBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(AddMoneyViewModel.class);
 
-        String[] paymentMethods = new String[]{"BIKSH   PHONE NO.9876543210", "PAY PAL   ACCOUNT NO.9874563210", ""};
+        String[] paymentMethods = new String[]{"G-Pay : 76548375543", "Bkash : 01918092438", "Nagad : 01918092438", "PayPal : sumon1200@gmail.com", "Cash App: 9175641287"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), R.layout.drop_downitem_layout, paymentMethods);
         binding.paymentMethod.setAdapter(arrayAdapter);
         binding.paymentMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,6 +49,55 @@ public class AddMoneyFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //here save the payment method
                 Toast.makeText(requireContext(), binding.paymentMethod.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int unselectColor = ContextCompat.getColor(requireContext(), R.color.unselect);
+                int selectColor = ContextCompat.getColor(requireContext(), R.color.select);
+                binding.btn2.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn3.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn4.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.addAmountTxt.setText("100");
+                binding.btn1.setBackgroundTintList(ColorStateList.valueOf(selectColor));
+            }
+        });
+        binding.btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int unselectColor = ContextCompat.getColor(requireContext(), R.color.unselect);
+                int selectColor = ContextCompat.getColor(requireContext(), R.color.select);
+                binding.btn1.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn3.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn4.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.addAmountTxt.setText("200");
+                binding.btn2.setBackgroundTintList(ColorStateList.valueOf(selectColor));
+            }
+        });
+        binding.btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int unselectColor = ContextCompat.getColor(requireContext(), R.color.unselect);
+                int selectColor = ContextCompat.getColor(requireContext(), R.color.select);
+                binding.btn1.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn2.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn4.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.addAmountTxt.setText("500");
+                binding.btn3.setBackgroundTintList(ColorStateList.valueOf(selectColor));
+            }
+        });
+        binding.btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int unselectColor = ContextCompat.getColor(requireContext(), R.color.unselect);
+                int selectColor = ContextCompat.getColor(requireContext(), R.color.select);
+                binding.btn1.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn2.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.btn3.setBackgroundTintList(ColorStateList.valueOf(unselectColor));
+                binding.addAmountTxt.setText("1000");
+                binding.btn4.setBackgroundTintList(ColorStateList.valueOf(selectColor));
             }
         });
 

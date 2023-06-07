@@ -87,5 +87,12 @@ interface RemoteApi {
     fun getTimeLeft(@Header("Authorization") token: String): Call<CountDownTimeResponseModel>
 
     @GET("lottery/get_all_winners")
-    fun getAllWinner():Call<AllWinnerResponseModel>
+    fun getAllWinner(): Call<AllWinnerResponseModel>
+
+    @POST("lottery/buy")
+    fun getLotteryBuy(
+        @Header("Authorization") token: String
+    ):Call<LotteryBuyResponseModel>
+
+
 }

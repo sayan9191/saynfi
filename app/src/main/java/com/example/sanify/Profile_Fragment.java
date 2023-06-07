@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.sanify.ui.addmoney.AddMoneyFragment;
 import com.example.sanify.ui.auth.login.LogInActivity;
-import com.example.sanify.ui.home.DashBoardFragment;
 import com.example.sanify.ui.transactionhistory.TransactionFragment;
 import com.example.sanify.ui.withdraw.WithDrawFragmentFragment;
 import com.example.sanify.ui.withdrawHistory.WithDrawHistoryFragment;
@@ -109,7 +108,7 @@ public class Profile_Fragment extends Fragment {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(requireContext(), DashBoardFragment.class));
+                getParentFragmentManager().popBackStackImmediate();
             }
         });
 

@@ -24,4 +24,7 @@
     <color name="purple_btn">#6817CD</color>
 
     <color name="Spinwell140">#EBBEBDFC</color>
+
+    <color name="unselect">#3CC8C3C3</color>
+    <color name="select">#2DEC34</color>
 </resources>

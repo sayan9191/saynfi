@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="3">
 
         <TextView
             android:id="@+id/winnerRank"
@@ -28,6 +28,17 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/winnerName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="SAYAN mONDAL"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/winnerTicketNo"
             android:layout_width="match_parent"

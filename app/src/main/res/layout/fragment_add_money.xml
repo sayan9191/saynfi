@@ -164,11 +164,71 @@
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/amountRecyclerView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="10dp"/>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+
+                <TextView
+                    android:id="@+id/btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/money_item_layout"
+                    android:backgroundTint="#3CC8C3C3"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="৳ 100"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/money_item_layout"
+                    android:backgroundTint="#3CC8C3C3"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="৳ 200"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/money_item_layout"
+                    android:backgroundTint="#3CC8C3C3"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="৳ 500"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/money_item_layout"
+                    android:backgroundTint="#3CC8C3C3"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=" ৳1000"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/transactionImageSubmit"
@@ -213,7 +273,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Submit"
-                android:textColor="@color/black"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -54,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:lines="2"
-                android:text="Get quick customer support by selecting your item"
+                android:text="We are always available for you. 24X7 Chat Support"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -87,7 +87,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:background="#25D366"
                 android:src="@drawable/whatsapp" />
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:background="#25D366"
                 android:gravity="center"
-                android:text="Chat with U"
+                android:text="Chat With Us"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -142,7 +142,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please Use nogod and bikas" />
+                android:text="Using GPAY, Bkash,Nagad, PayPal, CashApp, You can pay us." />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -166,14 +166,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="What is the payment Number?"
+                android:text="What is the payment Numbers?"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Our nogod and bikas number is 9876543210" />
+                android:text="All details in Add Money Section" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -197,14 +197,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="How much time it will take too cpmplete the payment?"
+                android:text="How much time it will take too complete the payment?"
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="It will take 15 to30 minutes" />
+                android:text="It will take 15 to 30 minutes" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

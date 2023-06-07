@@ -101,7 +101,7 @@ public class LotteryBuyFragment extends Fragment {
         binding.buyLotteryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //call the api here Please
             }
         });
         //all participants

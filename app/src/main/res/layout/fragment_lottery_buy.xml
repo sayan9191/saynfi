@@ -17,10 +17,10 @@
 
         <ImageView
             android:id="@+id/backBtn"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
-            android:src="@drawable/back_icon"
             android:padding="5dp"
+            android:src="@drawable/back_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.041"
@@ -35,7 +35,7 @@
             android:gravity="center"
             android:text="Lottery"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/backBtn"
             app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +118,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Lottery closes at: 10:00:21"
                 android:textAlignment="center"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -130,7 +130,7 @@
                 android:textStyle="bold"
                 android:text="You can win upto 1 Lakh"
                 android:textColor="#F6D00A"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
 
             <LinearLayout

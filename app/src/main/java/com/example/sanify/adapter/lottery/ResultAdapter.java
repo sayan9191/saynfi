@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sanify.R;
-import com.example.sanify.retrofit.models.lottery.AllParticipantResponseModelItem;
 import com.example.sanify.retrofit.models.lottery.AllWinnerResponseModelItem;
 
 import java.util.ArrayList;
@@ -25,7 +24,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
 
-        holder.winnerRank.setText(items.get(position).getPosition());
+        holder.winnerRank.setText("Rank" + items.get(position).getPosition());
+        holder.winnerName.setText("৳" + items.get(position).getUser().getName());
         holder.winnerTicketNo.setText(items.get(position).getLottery_token_no());
     }
 

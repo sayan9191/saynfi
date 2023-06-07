@@ -29,7 +29,7 @@ public class WithDrawFragmentFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentWithDrawFragmentBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(WithDrawViewModel.class);
-        String[] paymentMethods = new String[]{"BIKSH ", "PAY PAL", "NAGAD"};
+        String[] paymentMethods = new String[]{"GPay", "Bkash ", "Nagad", "PayPal", "Cash App"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), R.layout.drop_downitem_layout, paymentMethods);
         binding.paymentMethod.setAdapter(arrayAdapter);
 
