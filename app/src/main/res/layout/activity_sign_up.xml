@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.auth.SignUpActivity"
+    tools:context=".ui.auth.signup.SignUpActivity"
     android:background="@drawable/background">
 
     <FrameLayout
@@ -71,7 +71,7 @@
                 app:startIconDrawable="@drawable/ic_phone">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailIdEditTxt"
+                    android:id="@+id/signUpPhoneNumberEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -90,7 +90,7 @@
                 app:startIconDrawable="@drawable/person_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/nameIdEditTxt"
+                    android:id="@+id/signUpNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
@@ -108,7 +108,7 @@
                 app:startIconDrawable="@drawable/password_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passWordEditText"
+                    android:id="@+id/signUpPasswordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -180,7 +180,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/signInBtn"
+                    android:id="@+id/loginRedirectionBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"

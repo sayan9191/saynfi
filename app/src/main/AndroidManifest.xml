@@ -21,10 +21,10 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.auth.OTPVerifyActivity"
+            android:name=".ui.auth.otp.OTPVerifyActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.SignUpActivity"
+            android:name=".ui.auth.signup.SignUpActivity"
             android:exported="false" />
 
         <activity

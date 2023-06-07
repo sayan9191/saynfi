@@ -121,7 +121,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/signUpBtn"
+                    android:id="@+id/signUpRedirectionBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"

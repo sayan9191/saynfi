@@ -16,10 +16,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.sanify.MainActivity;
 import com.example.sanify.databinding.ActivityLogInBinding;
 import com.example.sanify.ui.auth.ForgotPasswordActivity;
-import com.example.sanify.ui.auth.SignUpActivity;
+import com.example.sanify.ui.auth.signup.SignUpActivity;
 import com.example.sanify.ui.dialogbox.LoadingScreen;
 import com.example.sanify.utils.NetworkUtils;
 import com.example.sanify.utils.StorageUtil;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 
 import java.util.Objects;
 
@@ -39,6 +42,10 @@ public class LogInActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
+        FirebaseApp.initializeApp(/*context=*/ this);
+        FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
+        firebaseAppCheck.installAppCheckProviderFactory(
+                PlayIntegrityAppCheckProviderFactory.getInstance());
 
         // Set the shared pref editable
         localStorage.setSharedPref(getSharedPreferences("sharedPref", Context.MODE_PRIVATE));
@@ -76,7 +83,7 @@ public class LogInActivity extends AppCompatActivity {
             finish();
         }
 
-        binding.signUpBtn.setOnClickListener(new View.OnClickListener() {
+        binding.signUpRedirectionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);

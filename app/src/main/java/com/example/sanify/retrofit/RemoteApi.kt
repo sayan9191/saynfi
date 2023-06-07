@@ -1,5 +1,8 @@
 package com.example.sanify.retrofit
 
+import com.example.sanify.retrofit.models.auth.CreateUserRequestModel
+import com.example.sanify.retrofit.models.auth.CreateUserResponseModel
+import com.example.sanify.retrofit.models.changepassword.ChangePasswordRequestModel
 import com.example.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.example.sanify.retrofit.models.coin.UpdateCoinRequestModel
 import com.example.sanify.retrofit.models.coin.UpdateCoinResponseModel
@@ -50,6 +53,20 @@ interface RemoteApi {
         @Query("pageNo") pageNo: Int,
         @Query("search_withdraw_request_id") search_withdraw_request_id: String
     ): Call<AllWithDrawResponseModel>
+
+
+    /**
+     * Create User
+      */
+    @POST("users/")
+    fun createNewUser(@Body body : CreateUserRequestModel) : Call<CreateUserResponseModel>
+
+    /**
+     * Change Password
+     */
+    @POST("change_password")
+    fun changePassword(@Body body : ChangePasswordRequestModel) : Call<LoginResponse>
+
 
     @GET("lottery/participants")
     fun getAllParticipants(

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.spin.LuckyDrawActivity"
-    android:background="#401270">
+    android:background="@drawable/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
@@ -74,6 +74,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="20dp"
+        android:elevation="5dp"
         android:background="@drawable/background_wheel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
@@ -89,6 +90,7 @@
         android:id="@+id/layoutspin"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:elevation="6dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
@@ -137,13 +139,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal"
+        android:elevation="5dp"
         android:background="@drawable/square"
         android:backgroundTint="@color/teal_200">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/playAnimation"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -155,8 +158,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Spin now"
-            android:textSize="28sp"
+            android:text="Spin now (৳10)"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:layout_marginBottom="2dp"
             android:layout_marginStart="10dp"
