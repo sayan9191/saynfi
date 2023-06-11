@@ -20,7 +20,7 @@
         android:textStyle="bold"
         android:text="Ticket No.500500"
         android:textColor="@color/white"
-        android:textSize="22sp" />
+        android:textSize="18sp" />
 
 
 </RelativeLayout>

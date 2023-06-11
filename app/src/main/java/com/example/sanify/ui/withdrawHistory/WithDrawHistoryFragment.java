@@ -91,7 +91,7 @@ public class WithDrawHistoryFragment extends Fragment {
             public void onChanged(String s) {
                 if (!Objects.equals(s, "")) {
                     Toast.makeText(requireActivity(), s, Toast.LENGTH_SHORT).show();
-                    if (s.equals("Transactions not found")) {
+                    if (s.equals("No withdraw requests has been made")) {
                         binding.nextPageBtn.setVisibility(View.INVISIBLE);
                         pageNo -= 1;
                     }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.spin.LuckyDrawActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/spinner_background_1"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Lottery"
+            android:text="Lucky Draw"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/backBtn"
@@ -74,7 +75,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="20dp"
-        android:elevation="5dp"
+        android:elevation="4dp"
         android:background="@drawable/background_wheel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
@@ -116,6 +117,18 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="-37dp"
+
+        android:elevation="8dp"
+        android:src="@drawable/wheel_frame_golden"
+        app:layout_constraintBottom_toBottomOf="@+id/Relativespin"
+        app:layout_constraintEnd_toEndOf="@+id/Relativespin"
+        app:layout_constraintStart_toStartOf="@+id/Relativespin"
+        app:layout_constraintTop_toTopOf="@+id/Relativespin" />
+
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/congoAnimation"
@@ -140,8 +153,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal"
         android:elevation="5dp"
-        android:background="@drawable/square"
-        android:backgroundTint="@color/teal_200">
+        android:background="@drawable/spin_btn_background"
+        >
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/playAnimation"

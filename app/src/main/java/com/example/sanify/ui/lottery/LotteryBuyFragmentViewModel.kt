@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.sanify.repo.CountDownRepository
 import com.example.sanify.retrofit.models.lottery.CountDownTimeResponseModel
-import com.example.sanify.retrofit.models.lottery.LotteryBuyResponseModel
 
 class LotteryBuyFragmentViewModel : ViewModel() {
     private val repo = CountDownRepository()
@@ -12,18 +11,18 @@ class LotteryBuyFragmentViewModel : ViewModel() {
     val errorMessage: LiveData<String> = repo.errorMessage
     val countDownTime: LiveData<CountDownTimeResponseModel> = repo.countDownTimerList
     val coinBalance: LiveData<Int> = repo.currentCoinBalance
-    val lotteryBuy: LiveData<LotteryBuyResponseModel> = repo.lotteryBuy;
+    val isBuyLotterySuccess : LiveData<Boolean> = repo.isBuySuccess
 
 
     fun getCountDownDetails() {
         repo.getCountDownTime()
     }
 
-    fun getLotteryBuy() {
-        repo.getLotteryBuy()
+    fun buyLottery() {
+        repo.buyLottery()
     }
 
-    fun getCoinBalance() {
+    fun getCurrentCoinBalance() {
         repo.getCoinBalance()
     }
 }

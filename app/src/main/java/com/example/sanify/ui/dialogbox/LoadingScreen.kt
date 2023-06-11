@@ -10,7 +10,7 @@ import com.example.sanify.R
 
 class LoadingScreen {
     companion object{
-        lateinit var mAlertDialog: AlertDialog
+        var mAlertDialog: AlertDialog? = null
 
         fun showLoadingDialog(context: Context){
             val mDialogView: View = LayoutInflater.from(context).inflate(R.layout.loading_dialog_box, null)
@@ -19,10 +19,19 @@ class LoadingScreen {
                 .setView(mDialogView)
                 .setCancelable(false)
 
-            mAlertDialog = mBuilder.show()
-            mAlertDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+            if (mAlertDialog != null){
+                if (!mAlertDialog?.isShowing!!){
+                    mAlertDialog = mBuilder.show()
+                }
+            }else{
+                mAlertDialog = mBuilder.show()
+            }
 
-            mAlertDialog.setOnKeyListener { dialog, keyCode, event ->
+
+
+            mAlertDialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            mAlertDialog?.setOnKeyListener { dialog, keyCode, event ->
                 if (keyCode == KeyEvent.KEYCODE_BACK){
                     dialog.dismiss()
                     (context as Activity).finish()
@@ -35,8 +44,8 @@ class LoadingScreen {
 
 
         fun hideLoadingDialog(){
-            if (mAlertDialog.isShowing)
-                mAlertDialog.dismiss()
+            if (mAlertDialog?.isShowing == true)
+                mAlertDialog?.dismiss()
         }
     }
 }

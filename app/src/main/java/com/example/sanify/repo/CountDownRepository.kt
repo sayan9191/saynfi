@@ -5,14 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import com.example.sanify.retrofit.RemoteApi
 import com.example.sanify.retrofit.models.CommonErrorModel
 import com.example.sanify.retrofit.models.coin.CoinBalanceResponseModel
+import com.example.sanify.retrofit.models.lottery.BuyLotteryRequestModel
+import com.example.sanify.retrofit.models.lottery.BuyLotteryResponseModel
 import com.example.sanify.retrofit.models.lottery.CountDownTimeResponseModel
-import com.example.sanify.retrofit.models.lottery.LotteryBuyResponseModel
 import com.example.sanify.utils.NetworkUtils
 import com.example.sanify.utils.StorageUtil
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class CountDownRepository {
     private var localStorage = StorageUtil.getInstance()
@@ -21,7 +23,8 @@ class CountDownRepository {
     val countDownTimerList: MutableLiveData<CountDownTimeResponseModel> = MutableLiveData()
     val errorMessage: MutableLiveData<String> = MutableLiveData()
     val currentCoinBalance: MutableLiveData<Int> = MutableLiveData()
-    val lotteryBuy: MutableLiveData<LotteryBuyResponseModel> = MutableLiveData()
+//    val lotteryBuy: MutableLiveData<LotteryBuyResponseModel> = MutableLiveData()
+    val isBuySuccess : MutableLiveData<Boolean> = MutableLiveData()
 
     fun getCountDownTime() {
         isLoading.postValue(true)
@@ -60,44 +63,6 @@ class CountDownRepository {
         })
     }
 
-    fun getLotteryBuy() {
-        isLoading.postValue(true)
-        api.getLotteryBuy("Bearer " + localStorage.token)
-            .enqueue(object : Callback<LotteryBuyResponseModel> {
-                override fun onResponse(
-                    call: Call<LotteryBuyResponseModel>,
-                    response: Response<LotteryBuyResponseModel>
-                ) {
-                    if (response.isSuccessful) {
-                        isLoading.postValue(false)
-                        errorMessage.postValue("")
-                        response.body()?.let {
-                            lotteryBuy.postValue(it)
-                        }
-                    } else {
-                        isLoading.postValue(false)
-                        response.errorBody()?.let { errorBody ->
-                            errorBody.string().let {
-                                Log.e("Error: ", it)
-                                val errorResponse: CommonErrorModel =
-                                    Gson().fromJson(it, CommonErrorModel::class.java)
-                                errorMessage.postValue(errorResponse.detail)
-
-                                Log.e("Error: ", errorResponse.detail)
-                            }
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<LotteryBuyResponseModel>, t: Throwable) {
-                    Log.d("Request Failed. Error: ", t.message.toString())
-                    isLoading.postValue(false)
-                    errorMessage.postValue("Something went wrong")
-                }
-
-            })
-    }
-
 
     fun getCoinBalance() {
         isLoading.postValue(true)
@@ -133,6 +98,48 @@ class CountDownRepository {
             }
 
         })
+    }
+
+    fun buyLottery() {
+        isBuySuccess.postValue(false)
+        isLoading.postValue(true)
+
+        val tz = TimeZone.getDefault()
+        val now = Date()
+        val offsetFromUtc = tz.getOffset(now.time).toLong()
+
+        val body = BuyLotteryRequestModel(amount = 20, offsetFromUtc)
+        api.buyLottery("Bearer " + localStorage.token, body).enqueue(object : Callback<BuyLotteryResponseModel>{
+            override fun onResponse(
+                call: Call<BuyLotteryResponseModel>,
+                response: Response<BuyLotteryResponseModel>
+            ) {
+                if (response.isSuccessful) {
+                    val coinBalanceData = response.body()
+                    if (coinBalanceData != null) {
+                        isLoading.postValue(false)
+                        isBuySuccess.postValue(true)
+                    }
+                } else {
+                    isLoading.postValue(false)
+                    response.errorBody()?.let { errorBody ->
+                        errorBody.string().let {
+                            Log.e("Error: ", it)
+                            val errorResponse: CommonErrorModel =
+                                Gson().fromJson(it, CommonErrorModel::class.java)
+                            errorMessage.postValue(errorResponse.detail)
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<BuyLotteryResponseModel>, t: Throwable) {
+                Log.d("Request Failed. Error: ", t.message.toString())
+                isLoading.postValue(false)
+                errorMessage.postValue("Something went wrong")
+            }
+        }
+        )
     }
 
 }

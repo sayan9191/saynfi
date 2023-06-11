@@ -3,6 +3,7 @@ package com.example.sanify.ui.lottery;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,37 +23,61 @@ import com.example.sanify.ui.lottery.prizepool.PrizePoolFragment;
 import com.example.sanify.ui.lottery.result.ResultFragment;
 import com.example.sanify.ui.lottery.yourtickets.MyTicketFragment;
 
+import java.util.Date;
 import java.util.Objects;
+import java.util.TimeZone;
 
 public class LotteryBuyFragment extends Fragment {
 
     FragmentLotteryBuyBinding binding;
-    private CountDownTimer countDownTimer;
-    public String lotteryNo;
+    private CountDownTimer countDownTimer = null;
     LotteryBuyFragmentViewModel viewModel;
+    long remainingMillis =0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentLotteryBuyBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(LotteryBuyFragmentViewModel.class);
-//        long currentTimeMillis = System.currentTimeMillis();
-//        long ninePmMillis;
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.set(Calendar.HOUR_OF_DAY, 22); // Set the hour to 9 p.m.
-//        calendar.set(Calendar.MINUTE, 0);
-//        calendar.set(Calendar.SECOND, 0);
-//        calendar.set(Calendar.MILLISECOND, 0);
-//        ninePmMillis = calendar.getTimeInMillis();
+        binding = FragmentLotteryBuyBinding.inflate(getLayoutInflater(), container, false);
 
-        // Calculate the remaining time in milliseconds
-        ;
-        viewModel.getCountDownDetails();
+        viewModel = new ViewModelProvider(this).get(LotteryBuyFragmentViewModel.class);
+
+        viewModel.getCurrentCoinBalance();
+
+        viewModel.getCoinBalance().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer balance) {
+                binding.coinAmount.setText(String.valueOf(balance));
+                viewModel.getCountDownDetails();
+            }
+        });
+
+        viewModel.isBuyLotterySuccess().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isSuccess) {
+                if (isSuccess) {
+                    Toast.makeText(requireContext(), "Lottery entry (+1)", Toast.LENGTH_SHORT).show();
+                    viewModel.getCurrentCoinBalance();
+                }
+            }
+        });
+
+
+//
         viewModel.getCountDownTime().observe(getViewLifecycleOwner(), new Observer<CountDownTimeResponseModel>() {
             @Override
             public void onChanged(CountDownTimeResponseModel countDownTimeResponseModel) {
-                long remainingMillis = Long.parseLong(countDownTimeResponseModel.getTime_left_in_millis());
+
+                TimeZone tz = TimeZone.getDefault();
+                Date now = new Date();
+                long offsetFromUtc = tz.getOffset(now.getTime());
+
+                Log.d("___________ offset", String.valueOf(offsetFromUtc));
+
+                remainingMillis = Long.parseLong(countDownTimeResponseModel.getTime_left_in_millis()) - offsetFromUtc;
+                if (countDownTimer != null){
+                    countDownTimer.cancel();
+                }
+
                 countDownTimer = new CountDownTimer(remainingMillis, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -60,7 +85,7 @@ public class LotteryBuyFragment extends Fragment {
                         long minutes = seconds / 60;
                         long hours = minutes / 60;
 
-                        String countdownText = "Lottery closes at: " + String.format("%02d", hours % 24) + "h " + String.format("%02d", minutes % 60) + "m " + String.format("%02d", seconds % 60) + "s";
+                        String countdownText = "Lottery closes in: " + String.format("%02d", hours % 24) + "h " + String.format("%02d", minutes % 60) + "m " + String.format("%02d", seconds % 60) + "s";
 
                         binding.countdownTextView.setText(countdownText);
                     }
@@ -102,6 +127,7 @@ public class LotteryBuyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //call the api here Please
+                viewModel.buyLottery();
             }
         });
         //all participants
@@ -133,11 +159,18 @@ public class LotteryBuyFragment extends Fragment {
         binding.resultBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getParentFragmentManager().beginTransaction()
-                        .setReorderingAllowed(true)
-                        .addToBackStack("Result")
-                        .replace(R.id.fragmentContainerView, new ResultFragment())
-                        .commit();
+
+                Log.d("___________", String.valueOf(remainingMillis));
+                if (remainingMillis - 18000000 > 0 || remainingMillis < 0) {
+                    getParentFragmentManager().beginTransaction()
+                            .setReorderingAllowed(true)
+                            .addToBackStack("Result")
+                            .replace(R.id.fragmentContainerView, new ResultFragment())
+                            .commit();
+                }else {
+                    Toast.makeText(requireContext(), "Winner will be announced after lottery completion", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

@@ -24,7 +24,7 @@ public class MyTicketAdapter extends RecyclerView.Adapter<MyTicketViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyTicketViewHolder holder, int position) {
-        holder.myTicketNo.setText(String.valueOf(items.get(position).getLottery_token()));
+        holder.myTicketNo.setText("Ticket number: " + String.valueOf(items.get(position).getLottery_token()));
     }
 
     @Override

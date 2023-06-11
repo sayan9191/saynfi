@@ -23,7 +23,7 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/cursorView"
             android:layout_width="47dp"
-
+            android:visibility="invisible"
             android:layout_height="47dp" />
 
 

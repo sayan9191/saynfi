@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lucky Draw Result: 20.05.2023"
+            android:text="Last Lottery Results"
             android:textColor="@color/black"
             android:gravity="center"
             android:textStyle="bold"
@@ -67,7 +67,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewResult"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>

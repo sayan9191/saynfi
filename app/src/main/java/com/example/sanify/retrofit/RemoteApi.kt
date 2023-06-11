@@ -1,5 +1,6 @@
 package com.example.sanify.retrofit
 
+import com.example.sanify.retrofit.models.UserInfoResponseModel
 import com.example.sanify.retrofit.models.auth.CreateUserRequestModel
 import com.example.sanify.retrofit.models.auth.CreateUserResponseModel
 import com.example.sanify.retrofit.models.changepassword.ChangePasswordRequestModel
@@ -49,8 +50,7 @@ interface RemoteApi {
 
     @GET("withdraw/my_requests")
     fun getAllWithDraw(
-        @Header("Authorization") token: String,
-        @Query("pageNo") pageNo: Int,
+        @Header("Authorization") token: String, @Query("page_no") pageNo: Int,
         @Query("search_withdraw_request_id") search_withdraw_request_id: String
     ): Call<AllWithDrawResponseModel>
 
@@ -90,9 +90,12 @@ interface RemoteApi {
     fun getAllWinner(): Call<AllWinnerResponseModel>
 
     @POST("lottery/buy")
-    fun getLotteryBuy(
-        @Header("Authorization") token: String
-    ):Call<LotteryBuyResponseModel>
+    fun buyLottery(
+        @Header("Authorization") token: String, @Body body : BuyLotteryRequestModel
+    ):Call<BuyLotteryResponseModel>
 
+
+    @GET("users/")
+    fun getUserInfo(@Header("Authorization") token: String) : Call<UserInfoResponseModel>
 
 }

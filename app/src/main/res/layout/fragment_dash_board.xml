@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.DashBoardFragment"
-    android:background="@drawable/app_background">
+    android:background="@drawable/app_background"
+    android:backgroundTint="#3A0B65">
 
 
     <LinearLayout
@@ -35,7 +36,7 @@
             android:layout_marginStart="10dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
                 android:textColor="@color/white"
@@ -43,9 +44,11 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/dashBoardUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SAYAN MONDAL"
+                android:text="SAYAN"
+                android:layout_gravity="start"
                 android:textSize="12sp"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -118,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:text="My Game"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +144,7 @@
                 android:layout_height="200dp"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:backgroundTint="#73000000"
+                android:backgroundTint="#73FFFFFF"
                 android:background="@drawable/corner_rectangle"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -197,7 +200,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_weight="1"
-            android:backgroundTint="#73000000"
+            android:backgroundTint="#73FFFFFF"
             android:background="@drawable/corner_rectangle"
             android:layout_margin="10dp">
 

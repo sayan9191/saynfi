@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.sanify.retrofit.RemoteApi
 import com.example.sanify.retrofit.models.CommonErrorModel
+import com.example.sanify.retrofit.models.UserInfoResponseModel
 import com.example.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.example.sanify.retrofit.models.coin.UpdateCoinRequestModel
 import com.example.sanify.retrofit.models.coin.UpdateCoinResponseModel
@@ -43,6 +44,8 @@ class CoinRepository {
     val isCoinAdded : MutableLiveData<Boolean> = MutableLiveData()
 
     val isCoinDeducted : MutableLiveData<Boolean> = MutableLiveData()
+
+    val userInfo : MutableLiveData<UserInfoResponseModel> = MutableLiveData()
 
 
     fun getCoinBalance(){
@@ -159,6 +162,44 @@ class CoinRepository {
             }
 
         })
+    }
+
+    fun getUserInfo(){
+        isLoading.postValue(true)
+        api.getUserInfo("Bearer " + localStorage.token).enqueue(object : Callback<UserInfoResponseModel>{
+            override fun onResponse(
+                call: Call<UserInfoResponseModel>,
+                response: Response<UserInfoResponseModel>
+            ) {
+                if (response.isSuccessful) {
+                    isLoading.postValue(false)
+                    errorMessage.postValue("")
+                    response.body()?.let{
+                        userInfo.postValue(it)
+                    }
+                } else {
+                    isLoading.postValue(false)
+                    isCoinDeducted.postValue(false)
+                    response.errorBody()?.let { errorBody ->
+                        errorBody.string().let {
+                            Log.e("Error: ", it)
+                            val errorResponse: CommonErrorModel =
+                                Gson().fromJson(it, CommonErrorModel::class.java)
+                            errorMessage.postValue(errorResponse.detail)
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<UserInfoResponseModel>, t: Throwable) {
+                Log.d("Request Failed. Error: ", t.message.toString())
+                isLoading.postValue(false)
+                isCoinDeducted.postValue(false)
+                errorMessage.postValue("Something went wrong")
+            }
+
+        }
+        )
     }
 
 }

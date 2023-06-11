@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
@@ -32,6 +33,8 @@ public class PielView extends View {
     private int mRadius;
 
     private Paint mArcPaint;
+    RadialGradient gradient;
+
     private Paint mBackgroundPaint;
     private Paint mTextPaint;
 
@@ -70,6 +73,10 @@ public class PielView extends View {
         mArcPaint.setAntiAlias(true);
         mArcPaint.setDither(true);
 
+        gradient = new RadialGradient(mCenter, mCenter, mCenter, 0xFFFFFFFF,
+                mLuckyItemList.get(0).color, android.graphics.Shader.TileMode.CLAMP);
+        mArcPaint.setShader(gradient);
+
         mTextPaint = new Paint();
         mTextPaint.setColor(textColor);
         mTextPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,20,
@@ -79,6 +86,7 @@ public class PielView extends View {
         mTextPaint.setTypeface(font);
         mTextPaint.setLetterSpacing((float) 0.3);
                 mRange = new RectF(mPadding, mPadding, mPadding+mRadius, mPadding+mRadius);
+
     }
 
     public void setData(List<LuckyItem> luckyItemList) {
@@ -127,6 +135,11 @@ public class PielView extends View {
 
         for(int i = 0; i < mLuckyItemList.size(); i++) {
             mArcPaint.setColor(mLuckyItemList.get(i).color);
+
+            gradient = new RadialGradient(mCenter, mCenter, mCenter, 0xFFebe99d,
+                    mLuckyItemList.get(i).color, android.graphics.Shader.TileMode.CLAMP);
+            mArcPaint.setShader(gradient);
+
             canvas.drawArc(mRange, tmpAngle, sweepAngle, true, mArcPaint);
 
             drawText(canvas, tmpAngle, sweepAngle, mLuckyItemList.get(i).text);
@@ -143,6 +156,7 @@ public class PielView extends View {
             return;
         mBackgroundPaint = new Paint();
         mBackgroundPaint.setColor(color);
+
         canvas.drawCircle(mCenter, mCenter, mCenter, mBackgroundPaint);
     }
 

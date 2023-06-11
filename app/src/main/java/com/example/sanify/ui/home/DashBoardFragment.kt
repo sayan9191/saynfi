@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.sanify.ui.lottery.LotteryBuyFragment
-import com.example.sanify.Profile_Fragment
+import com.example.sanify.ui.profile.Profile_Fragment
 import com.example.sanify.R
 import com.example.sanify.databinding.FragmentDashBoardBinding
 import com.example.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
@@ -32,7 +32,15 @@ class DashBoardFragment : Fragment() {
         // Initiate viewModel
         viewModel = ViewModelProvider(this)[DashBoardViewModel::class.java]
 
-        viewModel.getCoinBalance()
+        viewModel.getCurrentUserInfo()
+
+        viewModel.userInfo.observe(viewLifecycleOwner) {
+            if (it != null){
+                binding.dashBoardUserName.text = it.name
+            }
+
+            viewModel.getCoinBalance()
+        }
 
         viewModel.coinBalance.observe(viewLifecycleOwner) {
             binding.coinAmount.text = it.toString()
