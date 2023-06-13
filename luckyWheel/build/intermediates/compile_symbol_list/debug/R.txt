@@ -1,0 +1,17 @@
+int attr font 0x0
+int attr lkwBackgroundColor 0x0
+int attr lkwCenterImage 0x0
+int attr lkwCursor 0x0
+int attr lkwTextColor 0x0
+int font font 0x0
+int id cursorView 0x0
+int id pieView 0x0
+int layout lucky_wheel_layout 0x0
+int string app_name 0x0
+int[] styleable LuckyWheelView { 0x0, 0x0, 0x0, 0x0 }
+int styleable LuckyWheelView_lkwBackgroundColor 0
+int styleable LuckyWheelView_lkwCenterImage 1
+int styleable LuckyWheelView_lkwCursor 2
+int styleable LuckyWheelView_lkwTextColor 3
+int[] styleable MyTextView { 0x0 }
+int styleable MyTextView_font 0

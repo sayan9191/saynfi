@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">library</string>
+    <declare-styleable name="LuckyWheelView">
+        <attr format="color" name="lkwBackgroundColor"/>
+        <attr format="reference" name="lkwCursor"/>
+        <attr format="reference" name="lkwCenterImage"/>
+        <attr format="color" name="lkwTextColor"/>
+    </declare-styleable>
+    <declare-styleable name="MyTextView">
+        <attr format="reference" name="font"/>
+    </declare-styleable>
+</resources>

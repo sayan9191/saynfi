@@ -108,6 +108,7 @@ public class AddMoneyFragment extends Fragment {
             }
         });
 
+
         binding.submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

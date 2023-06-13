@@ -34,71 +34,15 @@ public class ParticipantFragment extends Fragment {
         adapter = new AllParticipantAdapter();
 
         //SET ADAPTER
-        binding.recyclerviewParticipant.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.recyclerviewParticipant.setAdapter(adapter);
+//        binding.recyclerviewParticipant.setLayoutManager(new LinearLayoutManager(getContext()));
+//        binding.recyclerviewParticipant.setAdapter(adapter);
 
 
         // Get all perticipatns
         viewModel.getAllParticipant(pageNo, "");
 
 
-        binding.nextPageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pageNo += 1;
-                viewModel.getAllParticipant(pageNo, "");
-            }
-        });
 
-        binding.prevPageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (pageNo > 1) {
-                    pageNo -= 1;
-                    viewModel.getAllParticipant(pageNo, "");
-                }
-            }
-        });
-
-        viewModel.getAllParticipant().observe(requireActivity(), new Observer<AllParticipantResponseModel>() {
-            @Override
-            public void onChanged(AllParticipantResponseModel allParticipantResponseModelItems) {
-                adapter.updateAllList(allParticipantResponseModelItems);
-                binding.pageNumberTextView.setText(String.valueOf(pageNo));
-                if (pageNo > 1) {
-                    binding.prevPageBtn.setVisibility(View.VISIBLE);
-                } else {
-                    binding.prevPageBtn.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-        viewModel.getErrorMessage().observe(requireActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                if (!Objects.equals(s, "")) {
-                    Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
-                    if (s.equals("Transactions not found")) {
-                        binding.nextPageBtn.setVisibility(View.INVISIBLE);
-                        pageNo -= 1;
-                    }
-                }
-            }
-        });
-
-        viewModel.isLoading().observe(requireActivity(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean isLoading) {
-                if (isLoading) {
-                    LoadingScreen.Companion.showLoadingDialog(requireContext());
-                } else {
-                    try {
-                        LoadingScreen.Companion.hideLoadingDialog();
-                    } catch (Exception e) {
-                        e.getStackTrace();
-                    }
-                }
-            }
-        });
 
         //back btn
         binding.backBtn.setOnClickListener(new View.OnClickListener() {

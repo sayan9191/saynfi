@@ -23,28 +23,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="25dp"
-
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="Welcome Back"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <com.airbnb.lottie.LottieAnimationView
+            <ImageView
                 android:id="@+id/lottieAnimation"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/login_animation" />
+                android:src="@drawable/back_icon"/>
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -53,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_margin="5dp"
-                    android:hint="Username"
+                    android:hint="Mobile No."
                     app:hintTextColor="@color/black"
                     app:startIconDrawable="@drawable/person_icon">
 

@@ -1,0 +1,13 @@
+rubikstudio.library
+attr font
+attr lkwBackgroundColor
+attr lkwCenterImage
+attr lkwCursor
+attr lkwTextColor
+font font
+id cursorView
+id pieView
+layout lucky_wheel_layout
+string app_name
+styleable LuckyWheelView lkwBackgroundColor lkwCenterImage lkwCursor lkwTextColor
+styleable MyTextView font
