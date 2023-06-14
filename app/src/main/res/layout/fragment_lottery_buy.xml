@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/spinner_background_1"
-
     tools:context=".ui.lottery.LotteryBuyFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,7 +66,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:text="100"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -261,9 +260,9 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="20dp"
-                        android:padding="5dp"
                         android:background="@drawable/circular_shape_teal"
                         android:gravity="center"
+                        android:padding="5dp"
                         android:text="Result"
                         android:textColor="@color/black"
                         android:textSize="18sp"

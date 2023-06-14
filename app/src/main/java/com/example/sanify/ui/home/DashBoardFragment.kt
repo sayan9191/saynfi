@@ -16,6 +16,7 @@ import com.example.sanify.R
 import com.example.sanify.databinding.FragmentDashBoardBinding
 import com.example.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
 import com.example.sanify.ui.dialogbox.LoadingScreen.Companion.showLoadingDialog
+import com.example.sanify.ui.horserace.HorseRaceFragment
 import com.example.sanify.ui.spin.LuckyDrawActivity
 
 class DashBoardFragment : Fragment() {
@@ -78,6 +79,13 @@ class DashBoardFragment : Fragment() {
         binding.spinOption.setOnClickListener {
             val intent = Intent(requireContext(), LuckyDrawActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.horseOption.setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .setReorderingAllowed(true)
+                .addToBackStack("Home")
+                .replace(R.id.fragmentContainerView,HorseRaceFragment()).commit()
         }
 
         binding.profileImage.setOnClickListener {
