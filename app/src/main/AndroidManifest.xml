@@ -17,21 +17,21 @@
         android:enableOnBackInvokedCallback="true"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".ui.auth.ForgotPasswordActivity"
+            android:name="com.realteenpatti.sanify.ui.auth.ForgotPasswordActivity"
             android:exported="false" />
 
         <activity
-            android:name=".ui.auth.otp.OTPVerifyActivity"
+            android:name="com.realteenpatti.sanify.ui.auth.otp.OTPVerifyActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.signup.SignUpActivity"
+            android:name="com.realteenpatti.sanify.ui.auth.signup.SignUpActivity"
             android:exported="false" />
 
         <activity
-            android:name=".ui.spin.LuckyDrawActivity"
+            android:name="com.realteenpatti.sanify.ui.spin.LuckyDrawActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.login.LogInActivity"
+            android:name="com.realteenpatti.sanify.ui.auth.login.LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.realteenpatti.sanify.MainActivity"
             android:exported="false" />
     </application>
 

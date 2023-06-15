@@ -1,4 +1,4 @@
-package com.example.sanify;
+package com.realteenpatti.sanify;
 
 import android.content.Context;
 

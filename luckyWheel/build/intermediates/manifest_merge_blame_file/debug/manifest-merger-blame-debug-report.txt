@@ -4,18 +4,18 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="24"
-6-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml
+6-->C:\Users\HP\AndroidStudioProjects\saynfi\luckyWheel\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="33" />
-7-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml
+7-->C:\Users\HP\AndroidStudioProjects\saynfi\luckyWheel\src\main\AndroidManifest.xml
 8
 9    <application
-9-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:5-6:19
+9-->C:\Users\HP\AndroidStudioProjects\saynfi\luckyWheel\src\main\AndroidManifest.xml:3:5-6:19
 10        android:allowBackup="true"
-10-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:18-44
+10-->C:\Users\HP\AndroidStudioProjects\saynfi\luckyWheel\src\main\AndroidManifest.xml:3:18-44
 11        android:label="@string/app_name"
-11-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:45-77
+11-->C:\Users\HP\AndroidStudioProjects\saynfi\luckyWheel\src\main\AndroidManifest.xml:3:45-77
 12        android:supportsRtl="true" >
-12-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:4:9-35
+12-->C:\Users\HP\AndroidStudioProjects\saynfi\luckyWheel\src\main\AndroidManifest.xml:4:9-35
 13    </application>
 14
 15</manifest>

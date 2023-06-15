@@ -1,0 +1,75 @@
+package com.realteenpatti.sanify.utils
+
+import android.content.SharedPreferences
+
+class StorageUtil private constructor() {
+
+    companion object{
+        private var instance : StorageUtil? = null
+
+        fun getInstance() : StorageUtil {
+            return if (instance != null)
+                instance as StorageUtil
+            else{
+                instance = StorageUtil()
+                instance as StorageUtil
+            }
+        }
+    }
+
+    var sharedPref: SharedPreferences? = null
+
+    var token: String?
+        get() {
+            return sharedPref?.getString("token", "")
+        }
+        set(value) {
+            sharedPref?.edit()?.putString("token", value)?.apply()
+        }
+
+//    var coins: Int?
+//        get() {
+//            return sharedPref?.getInt("coins", -1)
+//        }
+//        set(value) {
+//            sharedPref?.edit()?.putInt("coins", value!!)?.apply()
+//        }
+//
+//    var tickets: String?
+//        get() {
+//            return sharedPref?.getString("tickets", "")
+//        }
+//        set(value) {
+//            sharedPref?.edit()?.putString("tickets", value)?.apply()
+//        }
+//
+//    fun saveTokenLocally(token : String){
+//        this.token = token
+//    }
+//
+//    fun getUserStatus() : String {
+//        return if (this.token != null)
+//            this.token!!
+//        else
+//            ""
+//    }
+//
+//    fun generateCoin(){
+//        if (coins == -1){
+//            coins = 1000
+//        }
+//    }
+//
+//    fun deductCoin(amount : Int) : Boolean{
+//        if (coins!! < amount){
+//            return false
+//        }else{
+//            coins = coins!! - amount
+//            return true
+//        }
+//    }
+//
+//    fun addCoins(amount: Int){
+//        coins = coins?.plus(amount)
+//    }
+}
