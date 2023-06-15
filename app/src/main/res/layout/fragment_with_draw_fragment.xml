@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/spinner_background_1"
     tools:context=".ui.addmoney.AddMoneyFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Read the instruction very carefully "
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -83,69 +84,87 @@
                 android:text="Please fill all details. Your money will be shared in Your Account with in 10-15 minutes"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/black"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/white"
+                android:layout_margin="10dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Select Your Payment Method"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                app:cardMaxElevation="12dp"
+                app:cardPreventCornerOverlap="true">
 
-                <AutoCompleteTextView
-                    android:id="@+id/paymentMethod"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/MyTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal"
-                android:hint="Enter Your Reciving Mobile No."
-                app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/person_icon">
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:hint="Select Your Payment Method">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/addAmountTransactionIdTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:inputType="number"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
+                        <AutoCompleteTextView
+                            android:id="@+id/paymentMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/MyTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal"
-                android:hint="Enter With WithDraw Amount"
-                app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/person_icon">
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/MyTextField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center_horizontal"
+                        android:hint="Enter Your Reciving Mobile No."
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/person_icon">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/addAmountTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:inputType="number"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/addAmountTransactionIdTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/MyTextField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center_horizontal"
+                        android:hint="Enter With WithDraw Amount"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/person_icon">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/addAmountTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
-            <Button
-                android:id="@+id/submitBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Submit"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                    <Button
+                        android:id="@+id/submitBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Submit"
+                        android:layout_margin="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

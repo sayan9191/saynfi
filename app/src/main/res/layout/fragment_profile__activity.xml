@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/spinner_background_1"
     tools:context=".ui.profile.Profile_Fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -88,7 +89,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
-                        android:text="SAYAN MONDAL"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -100,7 +100,6 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Phone No. 9876543210"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />

@@ -102,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:textSize="18sp"
+                android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:text="lottery notice will be displayed here" />

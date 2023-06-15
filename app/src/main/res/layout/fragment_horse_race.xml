@@ -119,6 +119,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Horse 1"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -134,6 +136,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Horse 2"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -149,6 +153,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Horse 3"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -164,6 +170,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Horse 4"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -179,6 +187,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Horse 5"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -194,6 +204,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Horse 6"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -293,8 +305,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="20dp"
-
-                                android:text="0"
+                                android:text="10"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
@@ -392,7 +403,7 @@
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="20dp"
 
-                                android:text="0"
+                                android:text="10"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
@@ -490,7 +501,7 @@
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="20dp"
 
-                                android:text="0"
+                                android:text="10"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
@@ -587,7 +598,7 @@
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="20dp"
 
-                                android:text="0"
+                                android:text="10"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
@@ -684,7 +695,7 @@
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="20dp"
 
-                                android:text="0"
+                                android:text="10"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
@@ -781,7 +792,7 @@
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="20dp"
 
-                                android:text="0"
+                                android:text="10"
                                 android:textColor="@color/black"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
