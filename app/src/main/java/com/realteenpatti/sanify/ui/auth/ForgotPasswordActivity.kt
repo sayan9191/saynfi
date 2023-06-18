@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sanify.databinding.ActivityForgotPasswordBinding
 
 
 import com.realteenpatti.sanify.ui.auth.otp.OTPVerifyActivity
@@ -15,6 +14,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
+import com.realteenpatti.sanify.databinding.ActivityForgotPasswordBinding
 import java.util.concurrent.TimeUnit
 
 class ForgotPasswordActivity : AppCompatActivity() {

@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.sanify.databinding.FragmentPrizePoolBinding;
+import com.realteenpatti.sanify.databinding.FragmentPrizePoolBinding;
 import com.realteenpatti.sanify.adapter.lottery.PrizePoolAdapter;
 
 import com.realteenpatti.sanify.retrofit.models.lottery.PrizePoolResponseModel;

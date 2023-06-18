@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sanify.databinding.ActivitySignUpBinding;
+import com.realteenpatti.sanify.databinding.ActivitySignUpBinding;
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.ui.auth.otp.OTPVerifyActivity;
 import com.realteenpatti.sanify.ui.bottomsheet.BottomSheetPP;

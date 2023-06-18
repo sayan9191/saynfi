@@ -2,7 +2,8 @@ package com.realteenpatti.sanify
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sanify.databinding.ActivityMainBinding
+import com.realteenpatti.sanify.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 

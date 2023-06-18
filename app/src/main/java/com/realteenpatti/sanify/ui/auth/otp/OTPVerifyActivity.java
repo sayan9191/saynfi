@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.sanify.R;
+import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 import com.realteenpatti.sanify.utils.StorageUtil;

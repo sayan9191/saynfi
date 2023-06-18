@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.sanify.databinding.FragmentPaymentActivityBinding;
+import com.realteenpatti.sanify.databinding.FragmentPaymentActivityBinding;
 import com.realteenpatti.sanify.ui.home.DashBoardFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

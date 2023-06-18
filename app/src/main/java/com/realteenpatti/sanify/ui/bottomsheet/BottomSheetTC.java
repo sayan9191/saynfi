@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.sanify.R;
+import com.realteenpatti.sanify.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class BottomSheetTC extends BottomSheetDialogFragment {

@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    namespace 'com.example.sanify'
+    namespace 'com.realteenpatti.sanify'
     compileSdk 33
 
 
 
     defaultConfig {
-        applicationId "com.example.sanify"
+        applicationId "com.realteenpatti.sanify"
         minSdk 24
         targetSdk 33
         versionCode 1

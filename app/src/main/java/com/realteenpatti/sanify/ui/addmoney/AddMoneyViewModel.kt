@@ -1,5 +1,6 @@
 package com.realteenpatti.sanify.ui.addmoney
 
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -12,8 +13,8 @@ class AddMoneyViewModel: ViewModel() {
     val errorMessage : LiveData<String> = repo.errorMessage
     val uploadStatus :LiveData<Boolean> = repo.uploadStatus
 
-    fun transaction(imageUri: Uri, transactionId: String, transactionMedium: String, amount: Int){
-        repo.uploadImage(imageUri, transactionId, transactionMedium, amount)
+    fun transaction(imageBitmap: Bitmap, transactionId: String, transactionMedium: String, amount: Int){
+        repo.uploadImage(imageBitmap, transactionId, transactionMedium, amount)
     }
 
 }

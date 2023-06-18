@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sanify.databinding.ActivityLogInBinding;
+import com.realteenpatti.sanify.databinding.ActivityLogInBinding;
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.ui.auth.ForgotPasswordActivity;
 import com.realteenpatti.sanify.ui.auth.signup.SignUpActivity;

@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sanify.R;
-import com.example.sanify.databinding.FragmentWithDrawFragmentBinding;
+import com.realteenpatti.sanify.R;
+import com.realteenpatti.sanify.databinding.FragmentWithDrawFragmentBinding;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 
 import java.util.Objects;

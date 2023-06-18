@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.sanify.databinding.FragmentWithDrawHistoryBinding;
+import com.realteenpatti.sanify.databinding.FragmentWithDrawHistoryBinding;
 import com.realteenpatti.sanify.adapter.transactionadapter.WithDrawHistoryAdapter;
 import com.realteenpatti.sanify.retrofit.models.transaction.AllWithDrawResponseModel;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;

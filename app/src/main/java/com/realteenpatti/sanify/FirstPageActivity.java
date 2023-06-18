@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.sanify.R;
+import com.realteenpatti.sanify.R;
 
 public class FirstPageActivity extends AppCompatActivity {
 

@@ -10,8 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.sanify.R
-import com.example.sanify.databinding.FragmentDashBoardBinding
+import com.realteenpatti.sanify.R
+import com.realteenpatti.sanify.databinding.FragmentDashBoardBinding
+
 import com.realteenpatti.sanify.ui.lottery.LotteryBuyFragment
 import com.realteenpatti.sanify.ui.profile.Profile_Fragment
 
@@ -70,7 +71,8 @@ class DashBoardFragment : Fragment() {
             parentFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .addToBackStack("Home")
-                .replace(R.id.fragmentContainerView,
+                .replace(
+                    R.id.fragmentContainerView,
                     LotteryBuyFragment()
                 )
                 .commit()

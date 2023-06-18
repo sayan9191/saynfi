@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bluehomestudio.luckywheel.WheelItem
-import com.example.sanify.R
-import com.example.sanify.databinding.ActivityLuckyDrawBinding
+import com.realteenpatti.sanify.R
+import com.realteenpatti.sanify.databinding.ActivityLuckyDrawBinding
 
 import com.realteenpatti.sanify.ui.bottomsheet.LuckyDrawBottomSheet
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen

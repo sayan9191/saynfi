@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sanify.R;
+import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.HelpCenterActivity;
 import com.realteenpatti.sanify.retrofit.models.UserInfoResponseModel;
 import com.realteenpatti.sanify.ui.addmoney.AddMoneyFragment;

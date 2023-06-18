@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.sanify.databinding.FragmentResultBinding;
+import com.realteenpatti.sanify.databinding.FragmentResultBinding;
 import com.realteenpatti.sanify.adapter.lottery.ResultAdapter;
 import com.realteenpatti.sanify.retrofit.models.lottery.AllWinnerResponseModel;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;

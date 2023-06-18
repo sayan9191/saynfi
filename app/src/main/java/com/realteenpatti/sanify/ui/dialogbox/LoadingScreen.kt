@@ -6,7 +6,7 @@ import android.content.Context
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
-import com.example.sanify.R
+import com.realteenpatti.sanify.R
 
 
 class LoadingScreen {

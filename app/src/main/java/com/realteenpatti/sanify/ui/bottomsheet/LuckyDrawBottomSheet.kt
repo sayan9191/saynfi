@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
-import com.example.sanify.R
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.realteenpatti.sanify.R
 
 class LuckyDrawBottomSheet(val coins: String) : BottomSheetDialogFragment() {
 

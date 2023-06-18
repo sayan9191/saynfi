@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sanify.databinding.FragmentHelpCenterActivityBinding;
+import com.realteenpatti.sanify.databinding.FragmentHelpCenterActivityBinding;
 
 
 public class HelpCenterActivity extends Fragment {

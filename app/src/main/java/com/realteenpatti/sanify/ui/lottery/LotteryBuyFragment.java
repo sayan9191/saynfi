@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sanify.R;
-import com.example.sanify.databinding.FragmentLotteryBuyBinding;
+import com.realteenpatti.sanify.R;
+import com.realteenpatti.sanify.databinding.FragmentLotteryBuyBinding;
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;

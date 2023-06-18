@@ -2,6 +2,7 @@ package com.realteenpatti.sanify.ui.addmoney;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,12 +20,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sanify.R;
-import com.example.sanify.databinding.FragmentAddMoneyBinding;
+import com.realteenpatti.sanify.R;
+import com.realteenpatti.sanify.databinding.FragmentAddMoneyBinding;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.realteenpatti.sanify.utils.ImageResizer;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class AddMoneyFragment extends Fragment {
@@ -121,7 +124,13 @@ public class AddMoneyFragment extends Fragment {
                         !amount.isEmpty() &&
                         !paymentMethod.isEmpty() && imageUri != null
                 ){
-                    viewModel.transaction(imageUri, transactionId, paymentMethod, Integer.parseInt(amount));
+                    try {
+                        Bitmap bitmap = ImageResizer.getThumbnail(imageUri, 650000, requireContext());
+                        viewModel.transaction(bitmap, transactionId, paymentMethod, Integer.parseInt(amount));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
                 else {
                     Toast.makeText(requireContext(),"Please fill all the fields", Toast.LENGTH_SHORT).show();

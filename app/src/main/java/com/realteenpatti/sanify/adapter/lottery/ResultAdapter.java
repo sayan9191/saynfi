@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sanify.R;
+import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.retrofit.models.lottery.AllWinnerResponseModelItem;
 
 import java.util.ArrayList;

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "830890631638",
-    "project_id": "sanify-b0113",
-    "storage_bucket": "sanify-b0113.appspot.com"
+    "project_number": "1066197116831",
+    "project_id": "real-teenpatti-79bfb",
+    "storage_bucket": "real-teenpatti-79bfb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:830890631638:android:9ff1f7c9f0c2b228c5c477",
+        "mobilesdk_app_id": "1:1066197116831:android:ee48370fcfc76284fc7faa",
         "android_client_info": {
-          "package_name": "com.example.sanify"
+          "package_name": "com.realteenpatti.sanify"
         }
       },
       "oauth_client": [
         {
-          "client_id": "830890631638-gqto0fap80pmesghb2hc0ca4c969hsct.apps.googleusercontent.com",
+          "client_id": "1066197116831-ejff561squ98nuar3m9f7854cuq40ggc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCuPdykQ-RL8m24iz8ILs4qd3X3FqTw-to"
+          "current_key": "AIzaSyApfExMnFuC3oam3LukiQeKdTwsmlg2p1A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "830890631638-gqto0fap80pmesghb2hc0ca4c969hsct.apps.googleusercontent.com",
+              "client_id": "1066197116831-ejff561squ98nuar3m9f7854cuq40ggc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
