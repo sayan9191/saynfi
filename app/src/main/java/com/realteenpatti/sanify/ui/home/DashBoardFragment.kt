@@ -1,4 +1,4 @@
-package com.realteenpatti.sanify.ui.home
+package com.example.sanify.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -81,6 +81,13 @@ class DashBoardFragment : Fragment() {
         binding.spinOption.setOnClickListener {
             val intent = Intent(requireContext(), LuckyDrawActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.horseOption.setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .setReorderingAllowed(true)
+                .addToBackStack("Home")
+                .replace(R.id.fragmentContainerView,HorseRaceFragment()).commit()
         }
 
         binding.profileImage.setOnClickListener {

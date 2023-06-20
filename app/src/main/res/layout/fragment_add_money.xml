@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/spinner_background_1"
     tools:context=".ui.addmoney.AddMoneyFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Read the instruction very carefully "
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
 
             <TextView
@@ -83,175 +84,193 @@
                 android:text="@string/payment_process"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_margin="10dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="Select Your Payment Method"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
-
-                <AutoCompleteTextView
-                    android:id="@+id/paymentMethod"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/MyTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal"
-                android:hint="Transaction Id"
-                app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/person_icon">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/addAmountTransactionIdTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:inputType="number"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/MyTextField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center_horizontal"
-                android:hint="Add Amount"
-                app:hintTextColor="@color/black"
-                app:startIconDrawable="@drawable/person_icon">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/addAmountTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:inputType="number"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:weightSum="4">
-
-
-                <TextView
-                    android:id="@+id/btn1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/money_item_layout"
-                    android:backgroundTint="#3CC8C3C3"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="৳ 100"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/btn2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/money_item_layout"
-                    android:backgroundTint="#3CC8C3C3"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="৳ 200"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/btn3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/money_item_layout"
-                    android:backgroundTint="#3CC8C3C3"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="৳ 500"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/btn4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/money_item_layout"
-                    android:backgroundTint="#3CC8C3C3"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text=" ৳1000"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
             <androidx.cardview.widget.CardView
-                android:id="@+id/transactionImageSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
+                android:layout_margin="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="10dp"
-                app:cardMaxElevation="1dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintTop_toBottomOf="@+id/transactionId">
+                >
 
                 <LinearLayout
-                    android:id="@+id/fileChoose"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center_horizontal"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/transactionImage"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/image_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text="Drop Your Screenshot of Payment here"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:layout_margin="10dp"
+                        android:hint="Select Your Payment Method">
 
+                        <AutoCompleteTextView
+                            android:id="@+id/paymentMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/MyTextField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center_horizontal"
+                        android:hint="Transaction Id"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/person_icon">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/addAmountTransactionIdTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/MyTextField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center_horizontal"
+                        android:hint="Add Amount"
+                        app:hintTextColor="@color/black"
+                        app:startIconDrawable="@drawable/person_icon">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/addAmountTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textColor="@color/black" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+
+                        <TextView
+                            android:id="@+id/btn1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/money_item_layout"
+                            android:backgroundTint="#3CC8C3C3"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="৳ 100"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btn2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="2dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/money_item_layout"
+                            android:backgroundTint="#3CC8C3C3"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="৳ 200"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btn3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/money_item_layout"
+                            android:backgroundTint="#3CC8C3C3"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="৳ 500"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btn4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/money_item_layout"
+                            android:backgroundTint="#3CC8C3C3"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text=" ৳1000"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/transactionImageSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp"
+                        app:cardMaxElevation="1dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:cardUseCompatPadding="true"
+                        app:layout_constraintTop_toBottomOf="@+id/transactionId">
+
+                        <LinearLayout
+                            android:id="@+id/fileChoose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/transactionImage"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/image_icon" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:text="Drop Your Screenshot of Payment here"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <Button
+                        android:id="@+id/submitBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="10dp"
+                        android:text="Submit"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/submitBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Submit"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
