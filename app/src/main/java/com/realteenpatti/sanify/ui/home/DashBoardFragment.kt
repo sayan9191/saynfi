@@ -1,4 +1,4 @@
-package com.example.sanify.ui.home
+package com.realteenpatti.sanify.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,11 +13,14 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.realteenpatti.sanify.R
 import com.realteenpatti.sanify.databinding.FragmentDashBoardBinding
 
+import com.realteenpatti.sanify.ui.horserace.HorseRaceFragment
+
 import com.realteenpatti.sanify.ui.lottery.LotteryBuyFragment
 import com.realteenpatti.sanify.ui.profile.Profile_Fragment
 
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.showLoadingDialog
+import com.realteenpatti.sanify.ui.home.DashBoardViewModel
 import com.realteenpatti.sanify.ui.spin.LuckyDrawActivity
 
 class DashBoardFragment : Fragment() {
@@ -87,7 +90,7 @@ class DashBoardFragment : Fragment() {
             parentFragmentManager.beginTransaction()
                 .setReorderingAllowed(true)
                 .addToBackStack("Home")
-                .replace(R.id.fragmentContainerView,HorseRaceFragment()).commit()
+                .replace(R.id.fragmentContainerView, HorseRaceFragment()).commit()
         }
 
         binding.profileImage.setOnClickListener {

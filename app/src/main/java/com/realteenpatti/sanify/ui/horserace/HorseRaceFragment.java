@@ -1,4 +1,4 @@
-package com.example.sanify.ui.horserace;
+package com.realteenpatti.sanify.ui.horserace;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.sanify.MainActivity;
-import com.example.sanify.databinding.FragmentHorseRaceBinding;
+import com.realteenpatti.sanify.MainActivity;
+import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 
 public class HorseRaceFragment extends Fragment {
 
