@@ -191,7 +191,7 @@ public class HorseRaceFragment extends Fragment {
                 int horseFiveBidAmount = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + horseFiveBidAmount + " on Horse No.5", Toast.LENGTH_SHORT).show();
                 binding.bidAmountFive.setText("10");
-                viewModel.horseBid(horseFiveBidAmount, 4);
+                viewModel.horseBid(horseFiveBidAmount, 5);
             }
         });
 
@@ -224,7 +224,7 @@ public class HorseRaceFragment extends Fragment {
                 int horseSixBidAmount = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + horseSixBidAmount + " on Horse No.6", Toast.LENGTH_SHORT).show();
                 binding.bidAmountSix.setText("10");
-                viewModel.horseBid(horseSixBidAmount, 4);
+                viewModel.horseBid(horseSixBidAmount, 6);
             }
         });
 
