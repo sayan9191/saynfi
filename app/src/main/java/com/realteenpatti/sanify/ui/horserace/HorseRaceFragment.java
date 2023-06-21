@@ -3,9 +3,12 @@ package com.realteenpatti.sanify.ui.horserace;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -13,15 +16,24 @@ import androidx.fragment.app.Fragment;
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 public class HorseRaceFragment extends Fragment {
 
     FragmentHorseRaceBinding binding;
+    private CountDownTimer countDownTimer;
+    long localRemainingTime = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHorseRaceBinding.inflate(getLayoutInflater(), container, false);
+
+
+        randomProgress();
+
         binding.increaseOne.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -229,6 +241,173 @@ public class HorseRaceFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+
+    void randomProgress(){
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+
+        countDownTimer = new CountDownTimer(90000, 50) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                localRemainingTime = millisUntilFinished;
+
+                long seconds = millisUntilFinished / 1000;
+                long minutes = seconds / 60;
+                long hours = minutes / 60;
+
+                String countdownText = "Race closes in: " + String.format("%02d", hours % 24) + "h " + String.format("%02d", minutes % 60) + "m " + String.format("%02d", seconds % 60) + "s";
+
+                binding.countdownTextView.setText(countdownText);
+
+                changeProgress(binding.horseOne, 1, -1, 80, 0);
+                changeProgress(binding.horseTwo, 1, -1, 80, 0);
+                changeProgress(binding.horseThree, 1, -1, 80, 0);
+                changeProgress(binding.horseFour, 1, -1, 80, 0);
+                changeProgress(binding.horseFive, 1, -1, 80, 0);
+                changeProgress(binding.horseSix, 1, -1, 80, 0);
+
+                if (localRemainingTime < 20000){
+                    int winNum = ThreadLocalRandom.current().nextInt(1, 6);
+                    changeWinningProgress(winNum);
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                binding.countdownTextView.setText("Congratulations Winners");
+            }
+        };
+
+        countDownTimer.start();
+    }
+
+
+    void changeWinningProgress(int winningHorseNum){
+
+        Log.d("Winner", "Horse: " + winningHorseNum);
+
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+
+        countDownTimer = new CountDownTimer(localRemainingTime, 100) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                long seconds = millisUntilFinished / 1000;
+                long minutes = seconds / 60;
+                long hours = minutes / 60;
+
+                String countdownText = "Race closes in: " + String.format("%02d", hours % 24) + "h " + String.format("%02d", minutes % 60) + "m " + String.format("%02d", seconds % 60) + "s";
+
+                binding.countdownTextView.setText(countdownText);
+
+                if (winningHorseNum == 1){
+                    changeProgress(binding.horseOne, ThreadLocalRandom.current().nextInt(2, 4), -1, 97, 0);
+                }else{
+                    changeProgress(binding.horseOne, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
+                }
+
+                if (winningHorseNum == 2){
+                    changeProgress(binding.horseTwo, ThreadLocalRandom.current().nextInt(2, 4), -1, 98, 0);
+                }else{
+                    changeProgress(binding.horseTwo, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
+                }
+
+                if (winningHorseNum == 3){
+                    changeProgress(binding.horseThree, ThreadLocalRandom.current().nextInt(2, 4), -1, 97, 0);
+                }else{
+                    changeProgress(binding.horseThree, 2, -1, ThreadLocalRandom.current().nextInt(80, 96), 0);
+                }
+
+                if (winningHorseNum == 4){
+                    changeProgress(binding.horseFour, ThreadLocalRandom.current().nextInt(2, 4), -1, 98, 0);
+                }else{
+                    changeProgress(binding.horseFour, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
+                }
+
+                if (winningHorseNum == 5){
+                    changeProgress(binding.horseFive, ThreadLocalRandom.current().nextInt(2, 4), -1, 97, 0);
+                }else{
+                    changeProgress(binding.horseFive, 2, -1, ThreadLocalRandom.current().nextInt(80, 96), 0);
+                }
+
+                if (winningHorseNum == 6){
+                    changeProgress(binding.horseSix, ThreadLocalRandom.current().nextInt(2, 4), -1, 98, 0);
+                }else{
+                    changeProgress(binding.horseSix, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                binding.countdownTextView.setText("Congratulations Winners");
+
+                switch (winningHorseNum){
+                    case 1:
+                        binding.horseOne.setProgress(100, true);
+                        break;
+                    case 2:
+                        binding.horseTwo.setProgress(100, true);
+                        break;
+                    case 3:
+                        binding.horseThree.setProgress(100, true);
+                        break;
+                    case 4:
+                        binding.horseFour.setProgress(100, true);
+                        break;
+                    case 5:
+                        binding.horseFive.setProgress(100, true);
+                        break;
+                    case 6:
+                        binding.horseSix.setProgress(100, true);
+                        break;
+                }
+            }
+        };
+
+        countDownTimer.start();
+    }
+
+    private void changeProgress(ProgressBar view, int max, int min, int upperLimit, int initialLowerLimit){
+
+        int lowerLimit = initialLowerLimit;
+
+        int currentProgress = view.getProgress();
+
+        int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
+
+        if (currentProgress > 40){
+            lowerLimit = 40;
+        }else
+        if (currentProgress > 30){
+            randomNum += ThreadLocalRandom.current().nextInt(-1, 2);
+            lowerLimit = 30;
+        }else
+        if (currentProgress > 20){
+            lowerLimit = 20;
+            randomNum += ThreadLocalRandom.current().nextInt(0, 2);
+        }else
+        if (currentProgress > 10){
+            lowerLimit = 10;
+            randomNum += ThreadLocalRandom.current().nextInt(1, 2);
+        }else if (currentProgress < 10){
+            randomNum += ThreadLocalRandom.current().nextInt(1, 3);
+        }
+
+
+        if (currentProgress + randomNum < lowerLimit){
+            view.setProgress(lowerLimit, true);
+        }
+        else if(currentProgress + randomNum > upperLimit){
+            view.setProgress(upperLimit, true);
+        } else {
+            view.setProgress(currentProgress + randomNum, true);
+        }
     }
 
 }
