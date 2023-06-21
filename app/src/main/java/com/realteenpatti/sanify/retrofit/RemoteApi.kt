@@ -13,6 +13,7 @@ import com.realteenpatti.sanify.retrofit.models.horse.HorseBidRequestModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
 import com.realteenpatti.sanify.retrofit.models.login.LoginResponse
 import com.realteenpatti.sanify.retrofit.models.lottery.*
+import com.realteenpatti.sanify.retrofit.models.refer.ReferResponseModel
 import com.realteenpatti.sanify.retrofit.models.transaction.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -112,5 +113,8 @@ interface RemoteApi {
 
     @GET("horse/get_result_details")
     fun getResultDetails(@Header("Authorization") token: String): Call<HorseWinnerResponseModel>
+
+    @GET("reffer/get_my_refferals")
+    fun getMyRefer(@Header("Authorization") token: String): Call<ReferResponseModel>
 
 }

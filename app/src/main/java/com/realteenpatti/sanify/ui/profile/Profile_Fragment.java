@@ -15,12 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.HelpCenterActivity;
+import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.retrofit.models.UserInfoResponseModel;
 import com.realteenpatti.sanify.ui.addmoney.AddMoneyFragment;
 import com.realteenpatti.sanify.ui.auth.login.LogInActivity;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
+import com.realteenpatti.sanify.ui.referearn.ReferandEarnFragment;
 import com.realteenpatti.sanify.ui.transactionhistory.TransactionFragment;
 import com.realteenpatti.sanify.ui.withdraw.WithDrawFragmentFragment;
 import com.realteenpatti.sanify.ui.withdrawHistory.WithDrawHistoryFragment;
@@ -30,7 +31,7 @@ import java.util.Objects;
 
 public class Profile_Fragment extends Fragment {
 
-    FrameLayout addMoneyBtn, addMoneyHistoryBtn, helpCenterBtn, withDrawHistoryBtn, logOutBtn, withDrawMoneyBtn;
+    FrameLayout addMoneyBtn, addMoneyHistoryBtn, helpCenterBtn, withDrawHistoryBtn, logOutBtn, withDrawMoneyBtn, referBtn;
     ImageView backBtn;
     View view;
     StorageUtil localStorage = StorageUtil.Companion.getInstance();
@@ -50,6 +51,7 @@ public class Profile_Fragment extends Fragment {
         logOutBtn = view.findViewById(R.id.logOutBtn);
         withDrawMoneyBtn = view.findViewById(R.id.withDrawMoneyBtn);
         backBtn = view.findViewById(R.id.backBtn);
+        referBtn = view.findViewById(R.id.referBtn);
         profileName = view.findViewById(R.id.profileName);
         profilePhoneNumber = view.findViewById(R.id.profilePhoneNumber);
 
@@ -76,6 +78,17 @@ public class Profile_Fragment extends Fragment {
                         .setReorderingAllowed(true)
                         .addToBackStack("Profile")
                         .replace(R.id.fragmentContainerView, new AddMoneyFragment())
+                        .commit();
+            }
+        });
+
+        referBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .addToBackStack("refer")
+                        .replace(R.id.fragmentContainerView, new ReferandEarnFragment())
                         .commit();
             }
         });

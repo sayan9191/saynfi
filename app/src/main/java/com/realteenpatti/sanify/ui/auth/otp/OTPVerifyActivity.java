@@ -39,7 +39,7 @@ public class OTPVerifyActivity extends AppCompatActivity {
     TextView mobile, verifyBtn, resendOtpBtn;
     ProgressBar progressBar1;
 
-    String name, verificationId;
+    String name, verificationId, referCode;
 
     VerifyOTPViewModel viewModel;
     StorageUtil localStorage = StorageUtil.Companion.getInstance();
@@ -112,7 +112,7 @@ public class OTPVerifyActivity extends AppCompatActivity {
                                     if (task.isSuccessful()){
 
                                         if (name != null){
-                                            viewModel.signUp(name, password, phone, countryCode);
+                                            viewModel.signUp(name, password, phone, countryCode, referCode);
                                         }else{
                                             viewModel.changePassword(password, countryCode+phone);
                                         }

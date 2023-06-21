@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sanify.databinding.FragmentHorseRaceBinding;
+import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.MainActivity;
 
 public class HorseRaceFragment extends Fragment {
