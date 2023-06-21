@@ -65,9 +65,9 @@ class Repository {
         })
     }
 
-    fun createUser(name : String, password : String, phoneNumber : String, countryCode : String){
+    fun createUser(name : String, password : String, phoneNumber : String, countryCode : String, referral : String){
         isLoading.postValue(true)
-        val body = CreateUserRequestModel(name, password, countryCode + phoneNumber)
+        val body = CreateUserRequestModel(name, password, countryCode + phoneNumber, referral)
         api.createNewUser(body).enqueue(object : Callback<CreateUserResponseModel>{
             override fun onResponse(
                 call: Call<CreateUserResponseModel>,

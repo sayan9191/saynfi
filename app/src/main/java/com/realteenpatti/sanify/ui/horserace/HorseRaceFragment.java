@@ -9,19 +9,22 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.MainActivity;
-import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 
 public class HorseRaceFragment extends Fragment {
 
     FragmentHorseRaceBinding binding;
+    HorseRaceViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHorseRaceBinding.inflate(getLayoutInflater(), container, false);
+        viewModel = new ViewModelProvider(this).get(HorseRaceViewModel.class);
         binding.increaseOne.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -49,9 +52,10 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer HorseOneBidAmount = Integer.valueOf(binding.bidAmountOne.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + HorseOneBidAmount + " on Horse No.1", Toast.LENGTH_SHORT).show();
+                Integer horseOneBidAmount = Integer.valueOf(binding.bidAmountOne.getText().toString().trim());
+                Toast.makeText(requireContext(), "You bid " + horseOneBidAmount + " on Horse No.1", Toast.LENGTH_SHORT).show();
                 binding.bidAmountOne.setText("10");
+                viewModel.horseBid(horseOneBidAmount, 1);
             }
         });
 
@@ -82,9 +86,10 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int HorseTwoBidAmount = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + HorseTwoBidAmount + " on Horse No.2", Toast.LENGTH_SHORT).show();
+                int horseTwoBidAmount = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
+                Toast.makeText(requireContext(), "You bid " + horseTwoBidAmount + " on Horse No.2", Toast.LENGTH_SHORT).show();
                 binding.bidAmountTwo.setText("10");
+                viewModel.horseBid(horseTwoBidAmount, 2);
             }
         });
 
@@ -115,9 +120,10 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int HorseThreeBidAmount = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + HorseThreeBidAmount + " on Horse No.3", Toast.LENGTH_SHORT).show();
+                int horseThreeBidAmount = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
+                Toast.makeText(requireContext(), "You bid " + horseThreeBidAmount + " on Horse No.3", Toast.LENGTH_SHORT).show();
                 binding.bidAmountThree.setText("10");
+                viewModel.horseBid(horseThreeBidAmount, 3);
             }
         });
 
@@ -148,9 +154,10 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int HorseFourBidAmount = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + HorseFourBidAmount + " on Horse No.4", Toast.LENGTH_SHORT).show();
+                int horseFourBidAmount = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
+                Toast.makeText(requireContext(), "You bid " + horseFourBidAmount + " on Horse No.4", Toast.LENGTH_SHORT).show();
                 binding.bidAmountFour.setText("10");
+                viewModel.horseBid(horseFourBidAmount, 4);
             }
         });
 
@@ -181,9 +188,10 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int HorseFiveBidAmount = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + HorseFiveBidAmount + " on Horse No.5", Toast.LENGTH_SHORT).show();
+                int horseFiveBidAmount = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
+                Toast.makeText(requireContext(), "You bid " + horseFiveBidAmount + " on Horse No.5", Toast.LENGTH_SHORT).show();
                 binding.bidAmountFive.setText("10");
+                viewModel.horseBid(horseFiveBidAmount, 4);
             }
         });
 
@@ -213,9 +221,10 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int HorseSixBidAmount = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + HorseSixBidAmount + " on Horse No.6", Toast.LENGTH_SHORT).show();
+                int horseSixBidAmount = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
+                Toast.makeText(requireContext(), "You bid " + horseSixBidAmount + " on Horse No.6", Toast.LENGTH_SHORT).show();
                 binding.bidAmountSix.setText("10");
+                viewModel.horseBid(horseSixBidAmount, 4);
             }
         });
 

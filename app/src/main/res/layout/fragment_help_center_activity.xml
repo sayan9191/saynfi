@@ -237,4 +237,8 @@
     </androidx.core.widget.NestedScrollView>
 
 
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

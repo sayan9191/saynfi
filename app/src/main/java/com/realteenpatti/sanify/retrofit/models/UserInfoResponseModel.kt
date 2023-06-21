@@ -4,5 +4,6 @@ data class UserInfoResponseModel(
     val created_at: String,
     val id: Int,
     val name: String,
-    val phone_no: String
+    val phone_no: String,
+    val refferal: String
 )

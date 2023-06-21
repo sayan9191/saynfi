@@ -2,6 +2,7 @@ package com.realteenpatti.sanify.repo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
 import com.realteenpatti.sanify.retrofit.RemoteApi
 import com.realteenpatti.sanify.retrofit.models.CommonErrorModel
 import com.realteenpatti.sanify.retrofit.models.coin.CoinBalanceResponseModel
@@ -10,7 +11,6 @@ import com.realteenpatti.sanify.retrofit.models.lottery.BuyLotteryResponseModel
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel
 import com.realteenpatti.sanify.utils.NetworkUtils
 import com.realteenpatti.sanify.utils.StorageUtil
-import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
