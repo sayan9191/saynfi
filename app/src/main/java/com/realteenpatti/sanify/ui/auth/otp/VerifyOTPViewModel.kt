@@ -7,15 +7,21 @@ import com.realteenpatti.sanify.repo.Repository
 class VerifyOTPViewModel : ViewModel() {
     val repo = Repository()
 
-    val isLoading : LiveData<Boolean> = repo.isLoading
-    val loginToken : LiveData<String> = repo.loginToken
-    val errorMessage : LiveData<String> = repo.errorMessage
+    val isLoading: LiveData<Boolean> = repo.isLoading
+    val loginToken: LiveData<String> = repo.loginToken
+    val errorMessage: LiveData<String> = repo.errorMessage
 
-    fun signUp(name : String, password : String, phoneNumber : String, countryCode : String){
-        repo.createUser(name, password, phoneNumber, countryCode)
+    fun signUp(
+        name: String,
+        password: String,
+        phoneNumber: String,
+        countryCode: String,
+        referral: String
+    ) {
+        repo.createUser(name, password, phoneNumber, countryCode, referral)
     }
 
-    fun changePassword(newPassword : String, phoneNumber: String){
+    fun changePassword(newPassword: String, phoneNumber: String) {
         repo.changePassword(newPassword, phoneNumber)
     }
 }

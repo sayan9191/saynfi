@@ -1,5 +1,6 @@
 package com.realteenpatti.sanify.retrofit
 
+import com.realteenpatti.sanify.retrofit.models.CommonErrorModel
 import com.realteenpatti.sanify.retrofit.models.UserInfoResponseModel
 import com.realteenpatti.sanify.retrofit.models.auth.CreateUserRequestModel
 import com.realteenpatti.sanify.retrofit.models.auth.CreateUserResponseModel
@@ -7,6 +8,9 @@ import com.realteenpatti.sanify.retrofit.models.changepassword.ChangePasswordReq
 import com.realteenpatti.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.realteenpatti.sanify.retrofit.models.coin.UpdateCoinRequestModel
 import com.realteenpatti.sanify.retrofit.models.coin.UpdateCoinResponseModel
+import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel
+import com.realteenpatti.sanify.retrofit.models.horse.HorseBidRequestModel
+import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
 import com.realteenpatti.sanify.retrofit.models.login.LoginResponse
 import com.realteenpatti.sanify.retrofit.models.lottery.*
 import com.realteenpatti.sanify.retrofit.models.transaction.*
@@ -91,11 +95,22 @@ interface RemoteApi {
 
     @POST("lottery/buy")
     fun buyLottery(
-        @Header("Authorization") token: String, @Body body : BuyLotteryRequestModel
-    ):Call<BuyLotteryResponseModel>
+        @Header("Authorization") token: String, @Body body: BuyLotteryRequestModel
+    ): Call<BuyLotteryResponseModel>
 
 
     @GET("users/")
-    fun getUserInfo(@Header("Authorization") token: String) : Call<UserInfoResponseModel>
+    fun getUserInfo(@Header("Authorization") token: String): Call<UserInfoResponseModel>
+
+    @GET("horse/get_slot_details")
+    fun getSlotDetails(): Call<GetSlotDetailsResponseModel>
+
+    @POST("horse/bid")
+    fun horseBid(
+        @Header("Authorization") token: String, @Body body: HorseBidRequestModel
+    ): Call<CommonErrorModel>
+
+    @GET("horse/get_result_details")
+    fun getResultDetails(@Header("Authorization") token: String): Call<HorseWinnerResponseModel>
 
 }

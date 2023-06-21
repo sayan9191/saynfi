@@ -12,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
@@ -22,6 +23,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class HorseRaceFragment extends Fragment {
 
     FragmentHorseRaceBinding binding;
+    HorseRaceViewModel viewModel;
     private CountDownTimer countDownTimer;
     long localRemainingTime = 0;
 
@@ -64,6 +66,7 @@ public class HorseRaceFragment extends Fragment {
                 Integer HorseOneBidAmount = Integer.valueOf(binding.bidAmountOne.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + HorseOneBidAmount + " on Horse No.1", Toast.LENGTH_SHORT).show();
                 binding.bidAmountOne.setText("10");
+                viewModel.horseBid(horseOneBidAmount, 1);
             }
         });
 
@@ -97,6 +100,7 @@ public class HorseRaceFragment extends Fragment {
                 int HorseTwoBidAmount = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + HorseTwoBidAmount + " on Horse No.2", Toast.LENGTH_SHORT).show();
                 binding.bidAmountTwo.setText("10");
+                viewModel.horseBid(horseTwoBidAmount, 2);
             }
         });
 
@@ -130,6 +134,7 @@ public class HorseRaceFragment extends Fragment {
                 int HorseThreeBidAmount = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + HorseThreeBidAmount + " on Horse No.3", Toast.LENGTH_SHORT).show();
                 binding.bidAmountThree.setText("10");
+                viewModel.horseBid(horseThreeBidAmount, 3);
             }
         });
 
@@ -163,6 +168,7 @@ public class HorseRaceFragment extends Fragment {
                 int HorseFourBidAmount = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + HorseFourBidAmount + " on Horse No.4", Toast.LENGTH_SHORT).show();
                 binding.bidAmountFour.setText("10");
+                viewModel.horseBid(horseFourBidAmount, 4);
             }
         });
 
@@ -196,6 +202,7 @@ public class HorseRaceFragment extends Fragment {
                 int HorseFiveBidAmount = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + HorseFiveBidAmount + " on Horse No.5", Toast.LENGTH_SHORT).show();
                 binding.bidAmountFive.setText("10");
+                viewModel.horseBid(horseFiveBidAmount, 4);
             }
         });
 
@@ -228,6 +235,7 @@ public class HorseRaceFragment extends Fragment {
                 int HorseSixBidAmount = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
                 Toast.makeText(requireContext(), "You bid " + HorseSixBidAmount + " on Horse No.6", Toast.LENGTH_SHORT).show();
                 binding.bidAmountSix.setText("10");
+                viewModel.horseBid(horseSixBidAmount, 4);
             }
         });
 

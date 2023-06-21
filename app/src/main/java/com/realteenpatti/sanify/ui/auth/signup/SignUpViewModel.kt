@@ -9,10 +9,10 @@ class SignUpViewModel : ViewModel(){
     val repo = Repository()
 
     val isLoading : LiveData<Boolean> = repo.isLoading
-    val loginToken : LiveData<String> = repo.loginToken
+//    val loginToken : LiveData<String> = repo.loginToken
     val errorMessage : LiveData<String> = repo.errorMessage
 
-    fun signUp(name : String, password : String, phoneNumber : String, countryCode : String){
+    /*fun signUp(name : String, password : String, phoneNumber : String, countryCode : String){
         repo.createUser(name, password, phoneNumber, countryCode)
-    }
+    }*/
 }
