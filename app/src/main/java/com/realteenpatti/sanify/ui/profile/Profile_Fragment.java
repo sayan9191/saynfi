@@ -89,6 +89,7 @@ public class Profile_Fragment extends Fragment {
                         .setReorderingAllowed(true)
                         .addToBackStack("refer")
                         .replace(R.id.fragmentContainerView, new ReferandEarnFragment())
+                        .replace(R.id.fragmentContainerView, new ReferandEarnFragment())
                         .commit();
             }
         });
@@ -170,6 +171,9 @@ public class Profile_Fragment extends Fragment {
                 if (userInfo != null){
                     profileName.setText(userInfo.getName());
                     profilePhoneNumber.setText("Phone no. " + userInfo.getPhone_no());
+                    Bundle bundle = new Bundle();
+                    bundle.putString("refer",userInfo.getRefferal());
+                    getParentFragmentManager().setFragmentResult("referKey",bundle);
                 }
             }
         });

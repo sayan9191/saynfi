@@ -144,6 +144,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/referCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -153,36 +154,23 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <LinearLayout
+
+                    <TextView
+                        android:id="@+id/copyBtn"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="2">
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/square"
+                        android:backgroundTint="#E19898"
+                        android:drawableStart="@drawable/copy_icon"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Copy to clipboard"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/select"
-                            android:gravity="center"
-                            android:padding="10dp"
-                            android:text="Share via Whatsapp"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/select"
-                            android:gravity="center"
-                            android:padding="10dp"
-                            android:text="Copy to clipboard"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
