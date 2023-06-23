@@ -11,13 +11,20 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.MainActivity;
+import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel;
+import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel;
+import com.realteenpatti.sanify.ui.bottomsheet.LuckyDrawBottomSheet;
+import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -29,14 +36,73 @@ public class HorseRaceFragment extends Fragment {
     long localRemainingTime = 0;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHorseRaceBinding.inflate(getLayoutInflater(), container, false);
         viewModel = new ViewModelProvider(this).get(HorseRaceViewModel.class);
 
+        viewModel.getSlotDetailsInfo();
 
-        randomProgress();
+        viewModel.getSlotDetails().observe(getViewLifecycleOwner(), new Observer<GetSlotDetailsResponseModel>() {
+            @Override
+            public void onChanged(GetSlotDetailsResponseModel timeSlot) {
+                if (timeSlot.is_horse_bidding_slot_open()){
+                    startRaceProgress(timeSlot.getRemaining_time_in_millis());
+                }else{
+                    nextSlotCountDown(timeSlot.getRemaining_time_in_millis());
+                }
+            }
+        });
+
+        viewModel.getWinnerDetail().observe(getViewLifecycleOwner(), new Observer<HorseWinnerResponseModel>() {
+            @Override
+            public void onChanged(HorseWinnerResponseModel winnerData) {
+                changeWinningProgress(winnerData.getWinnig_horse_id(), winnerData.getWin_money());
+            }
+        });
+
+        viewModel.getCoinBalance();
+
+        viewModel.getCurrentCoinBalance().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer balance) {
+                binding.coinAmount.setText(String.valueOf(balance));
+            }
+        });
+
+        viewModel.isBidSuccess().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isSuccess) {
+                if (isSuccess){
+                    viewModel.getCoinBalance();
+                }
+            }
+        });
+
+        viewModel.getErrorMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if (!Objects.equals(s, "")) {
+                    Toast.makeText(requireActivity(), s, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        viewModel.isLoading().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoading) {
+                if (isLoading) {
+                    LoadingScreen.Companion.showLoadingDialog(requireContext());
+                } else {
+                    try {
+                        LoadingScreen.Companion.hideLoadingDialog();
+                    } catch (Exception e) {
+                        e.getStackTrace();
+                    }
+                }
+            }
+        });
 
         binding.increaseOne.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -65,8 +131,7 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer horseOneBidAmount = Integer.valueOf(binding.bidAmountOne.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + horseOneBidAmount + " on Horse No.1", Toast.LENGTH_SHORT).show();
+                int horseOneBidAmount = Integer.parseInt(binding.bidAmountOne.getText().toString().trim());
                 binding.bidAmountOne.setText("10");
                 viewModel.horseBid(horseOneBidAmount, 1);
             }
@@ -100,7 +165,6 @@ public class HorseRaceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int horseTwoBidAmount = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + horseTwoBidAmount + " on Horse No.2", Toast.LENGTH_SHORT).show();
                 binding.bidAmountTwo.setText("10");
                 viewModel.horseBid(horseTwoBidAmount, 2);
             }
@@ -134,7 +198,6 @@ public class HorseRaceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int horseThreeBidAmount = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + horseThreeBidAmount + " on Horse No.3", Toast.LENGTH_SHORT).show();
                 binding.bidAmountThree.setText("10");
                 viewModel.horseBid(horseThreeBidAmount, 3);
             }
@@ -168,7 +231,6 @@ public class HorseRaceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int horseFourBidAmount = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + horseFourBidAmount + " on Horse No.4", Toast.LENGTH_SHORT).show();
                 binding.bidAmountFour.setText("10");
                 viewModel.horseBid(horseFourBidAmount, 4);
             }
@@ -202,7 +264,6 @@ public class HorseRaceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int horseFiveBidAmount = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + horseFiveBidAmount + " on Horse No.5", Toast.LENGTH_SHORT).show();
                 binding.bidAmountFive.setText("10");
                 viewModel.horseBid(horseFiveBidAmount, 5);
             }
@@ -235,7 +296,6 @@ public class HorseRaceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int horseSixBidAmount = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
-                Toast.makeText(requireContext(), "You bid " + horseSixBidAmount + " on Horse No.6", Toast.LENGTH_SHORT).show();
                 binding.bidAmountSix.setText("10");
                 viewModel.horseBid(horseSixBidAmount, 6);
             }
@@ -254,12 +314,61 @@ public class HorseRaceFragment extends Fragment {
     }
 
 
-    void randomProgress(){
+
+    void nextSlotCountDown(long countDownMilliSeconds){
         if (countDownTimer != null){
             countDownTimer.cancel();
         }
 
-        countDownTimer = new CountDownTimer(90000, 50) {
+        countDownTimer = new CountDownTimer(countDownMilliSeconds, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                localRemainingTime = millisUntilFinished;
+
+                long seconds = millisUntilFinished / 1000;
+                long minutes = seconds / 60;
+                long hours = minutes / 60;
+
+                String countdownText = "Race closes in: " + String.format("%02d", hours % 24) + "h " + String.format("%02d", minutes % 60) + "m " + String.format("%02d", seconds % 60) + "s";
+
+                binding.countdownTextView.setText(countdownText);
+            }
+
+            @Override
+            public void onFinish() {
+                viewModel.getSlotDetailsInfo();
+                binding.countdownTextView.setText("Race is starting");
+            }
+        };
+
+        countDownTimer.start();
+    }
+
+    void startRaceProgress(long remainingMilliSeconds){
+
+        if (remainingMilliSeconds < 30000){
+            setInitialProgress(50);
+        }else if(remainingMilliSeconds < 40000){
+            setInitialProgress(45);
+        }else if (remainingMilliSeconds < 50000){
+            setInitialProgress(40);
+        }else if (remainingMilliSeconds < 60000){
+            setInitialProgress(35);
+        }else if (remainingMilliSeconds < 70000){
+            setInitialProgress(30);
+        }else if (remainingMilliSeconds < 80000){
+            setInitialProgress(25);
+        }
+
+        if (countDownTimer != null){
+            countDownTimer.cancel();
+        }
+
+
+        final long[] timeDelay = {0};
+
+        countDownTimer = new CountDownTimer(remainingMilliSeconds, 50) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -280,15 +389,24 @@ public class HorseRaceFragment extends Fragment {
                 changeProgress(binding.horseFive, 1, -1, 80, 0);
                 changeProgress(binding.horseSix, 1, -1, 80, 0);
 
-                if (localRemainingTime < 20000){
-                    int winNum = ThreadLocalRandom.current().nextInt(1, 6);
-                    changeWinningProgress(winNum);
+
+                if (millisUntilFinished < 25000){
+                    if (timeDelay[0] == 0){
+                        viewModel.getWinnerDetails();
+                    }
+                    else{
+                        timeDelay[0] += 50;
+                    }
+
+                    if (timeDelay[0] > 1000){
+                        timeDelay[0] = 0;
+                    }
                 }
             }
 
             @Override
             public void onFinish() {
-                binding.countdownTextView.setText("Congratulations Winners");
+                binding.countdownTextView.setText("Something went wrong");
             }
         };
 
@@ -296,7 +414,7 @@ public class HorseRaceFragment extends Fragment {
     }
 
 
-    void changeWinningProgress(int winningHorseNum){
+    void changeWinningProgress(int winningHorseNum, int winMoney){
 
         Log.d("Winner", "Horse: " + winningHorseNum);
 
@@ -377,6 +495,11 @@ public class HorseRaceFragment extends Fragment {
                         binding.horseSix.setProgress(100, true);
                         break;
                 }
+
+                LuckyDrawBottomSheet bottomSheetLottery = new LuckyDrawBottomSheet(winMoney + "");
+                bottomSheetLottery.show(getParentFragmentManager(), "TAG");
+
+                viewModel.getCoinBalance();
             }
         };
 
@@ -418,6 +541,16 @@ public class HorseRaceFragment extends Fragment {
         } else {
             view.setProgress(currentProgress + randomNum, true);
         }
+    }
+
+
+    private void setInitialProgress(int percent){
+        changeProgress(binding.horseOne, percent, percent - 15, 80, 0);
+        changeProgress(binding.horseTwo, percent, percent - 15, 80, 0);
+        changeProgress(binding.horseThree, percent, percent - 15, 80, 0);
+        changeProgress(binding.horseFour, percent, percent - 15, 80, 0);
+        changeProgress(binding.horseFive, percent, percent - 15, 80, 0);
+        changeProgress(binding.horseSix, percent, percent - 15, 80, 0);
     }
 
 }

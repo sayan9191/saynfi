@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.realteenpatti.sanify.retrofit.RemoteApi
 import com.realteenpatti.sanify.retrofit.models.CommonErrorModel
+import com.realteenpatti.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseBidRequestModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
@@ -24,6 +25,7 @@ class HorseRaceRepository {
 
     val errorMessage: MutableLiveData<String> = MutableLiveData()
 
+    val currentCoinBalance: MutableLiveData<Int> = MutableLiveData()
     val slotDetails: MutableLiveData<GetSlotDetailsResponseModel> = MutableLiveData()
     val winnerDetail: MutableLiveData<HorseWinnerResponseModel> = MutableLiveData()
     val isBidSuccess: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -130,6 +132,41 @@ class HorseRaceRepository {
             }
 
             override fun onFailure(call: Call<CommonErrorModel>, t: Throwable) {
+                Log.d("Request Failed. Error: ", t.message.toString())
+                isLoading.postValue(false)
+                errorMessage.postValue("Something went wrong")
+            }
+
+        })
+    }
+
+    fun getCoinBalance(){
+        isLoading.postValue(true)
+        api.getCoinBalance("Bearer " + localStorage.token).enqueue(object : Callback<CoinBalanceResponseModel>{
+            override fun onResponse(
+                call: Call<CoinBalanceResponseModel>,
+                response: Response<CoinBalanceResponseModel>
+            ) {
+                if (response.isSuccessful){
+                    val coinBalanceData = response.body()
+                    if (coinBalanceData != null){
+                        currentCoinBalance.postValue(coinBalanceData.num_of_coins)
+                        isLoading.postValue(false)
+                    }
+                }else{
+                    isLoading.postValue(false)
+                    response.errorBody()?.let { errorBody ->
+                        errorBody.string().let {
+                            Log.e("Error: ", it)
+                            val errorResponse: CommonErrorModel =
+                                Gson().fromJson(it, CommonErrorModel::class.java)
+                            errorMessage.postValue(errorResponse.detail)
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<CoinBalanceResponseModel>, t: Throwable) {
                 Log.d("Request Failed. Error: ", t.message.toString())
                 isLoading.postValue(false)
                 errorMessage.postValue("Something went wrong")
