@@ -26,7 +26,7 @@ public class PrizePoolAdapter extends RecyclerView.Adapter<PrizePoolViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull PrizePoolViewHolder holder, int position) {
         holder.prizePoolMoney.setText("৳" + String.valueOf(items.get(position).getPrize_money()));
-        holder.prizePoolRank.setText("Rank" + String.valueOf(items.get(position).getRank_no()));
+        holder.prizePoolRank.setText(String.valueOf(items.get(position).getRank_no())+" Prize");
     }
 
     @Override
