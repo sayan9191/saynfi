@@ -17,8 +17,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.realteenpatti.sanify.MainActivity;
-import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.MainActivity;
+import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel;
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel;
 import com.realteenpatti.sanify.ui.bottomsheet.LuckyDrawBottomSheet;
@@ -54,6 +54,13 @@ public class HorseRaceFragment extends Fragment {
                 }
             }
         });
+
+        binding.horseOne.setEnabled(false);
+        binding.horseTwo.setEnabled(false);
+        binding.horseThree.setEnabled(false);
+        binding.horseFive.setEnabled(false);
+        binding.horseFour.setEnabled(false);
+        binding.horseSix.setEnabled(false);
 
         viewModel.getWinnerDetail().observe(getViewLifecycleOwner(), new Observer<HorseWinnerResponseModel>() {
             @Override
