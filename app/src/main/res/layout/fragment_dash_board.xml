@@ -283,7 +283,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/wheel_logo" />
+                            android:src="@drawable/horse_logo" />
 
                     </LinearLayout>
 
