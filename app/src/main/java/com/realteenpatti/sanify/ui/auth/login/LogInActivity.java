@@ -1,11 +1,11 @@
 package com.realteenpatti.sanify.ui.auth.login;
 
-import static com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.databinding.ActivityLogInBinding;
 import com.realteenpatti.sanify.ui.auth.ForgotPasswordActivity;
@@ -20,9 +23,6 @@ import com.realteenpatti.sanify.ui.auth.signup.SignUpActivity;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 import com.realteenpatti.sanify.utils.NetworkUtils;
 import com.realteenpatti.sanify.utils.StorageUtil;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.appcheck.FirebaseAppCheck;
-import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 
 import java.util.Objects;
 
@@ -33,6 +33,7 @@ public class LogInActivity extends AppCompatActivity {
     StorageUtil localStorage = StorageUtil.Companion.getInstance();
 
     ActivityLogInBinding binding;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,12 +84,12 @@ public class LogInActivity extends AppCompatActivity {
             finish();
         }
 
-        binding.signUpRedirectionBtn.setOnClickListener(new View.OnClickListener() {
+        binding.signUpRedirectionBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onTouch(View view, MotionEvent motionEvent) {
                 Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
                 startActivity(intent);
-                finish();
+                return true;
             }
         });
 

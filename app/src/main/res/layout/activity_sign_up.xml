@@ -123,14 +123,13 @@
                 android:layout_margin="5dp"
                 android:layout_marginTop="20dp"
                 android:hint="Referral Code"
-                app:endIconMode="password_toggle"
-                app:startIconDrawable="@drawable/person_icon">
+                app:startIconDrawable="@drawable/refer_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signUpReferralEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 

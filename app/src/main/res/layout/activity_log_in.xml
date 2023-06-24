@@ -124,6 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="Sign Up here"
+                    android:textStyle="bold"
                     android:textColor="@color/purple" />
             </LinearLayout>
         </LinearLayout>
