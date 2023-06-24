@@ -39,7 +39,7 @@ public class OTPVerifyActivity extends AppCompatActivity {
     TextView mobile, verifyBtn, resendOtpBtn;
     ProgressBar progressBar1;
 
-    String name, verificationId, referCode;
+    String name, verificationId, referral;
 
     VerifyOTPViewModel viewModel;
     StorageUtil localStorage = StorageUtil.Companion.getInstance();
@@ -74,6 +74,7 @@ public class OTPVerifyActivity extends AppCompatActivity {
         verificationId = getIntent().getStringExtra("verificationId");
         try{
             name = getIntent().getStringExtra("name");
+            referral = getIntent().getStringExtra("referral");
         } catch (Exception e){
             e.getStackTrace();
         }
@@ -112,7 +113,7 @@ public class OTPVerifyActivity extends AppCompatActivity {
                                     if (task.isSuccessful()){
 
                                         if (name != null){
-                                            viewModel.signUp(name, password, phone, countryCode, referCode);
+                                            viewModel.signUp(name, password, phone, countryCode, referral);
                                         }else{
                                             viewModel.changePassword(password, countryCode+phone);
                                         }

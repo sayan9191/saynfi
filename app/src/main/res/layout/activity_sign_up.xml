@@ -124,7 +124,7 @@
                 android:layout_marginTop="20dp"
                 android:hint="Referral Code"
                 app:endIconMode="password_toggle"
-                app:startIconDrawable="@drawable/password_icon">
+                app:startIconDrawable="@drawable/person_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/signUpReferralEditText"

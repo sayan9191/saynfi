@@ -4,5 +4,5 @@ data class CreateUserRequestModel(
     val name: String,
     val password: String,
     val phone_no: String,
-    val refferal: String
+    val refferal: String?
 )

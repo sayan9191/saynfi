@@ -134,6 +134,10 @@ public class SignUpActivity extends AppCompatActivity {
                         intent.putExtra("password", binding.signUpPasswordEditText.getText().toString().trim());
                         intent.putExtra("name", binding.signUpNameEditText.getText().toString().trim());
 
+                        String referral = binding.signUpReferralEditText.getText().toString().trim();
+                        intent.putExtra("referral", referral);
+
+
                         startActivity(intent);
                     }
                 });
