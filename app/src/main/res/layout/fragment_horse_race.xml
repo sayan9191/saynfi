@@ -73,6 +73,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,114 +109,191 @@
             app:cardMaxElevation="12dp"
             app:cardPreventCornerOverlap="true">
 
-            <LinearLayout
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:background="@drawable/ground_bg"
+                android:padding="15dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Horse 1"
-                    android:textStyle="bold"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
 
-                <ProgressBar
-                    android:id="@+id/horseOne"
-                    style="?android:attr/progressBarStyleHorizontal"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/progress_bar_bg" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Horse 2"
-                    android:textStyle="bold"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Horse 1"
+                        android:textStyle="bold"
+                        android:textColor="@color/Spinwell140"
+                        android:textSize="16sp" />
 
-                <ProgressBar
-                    android:id="@+id/horseTwo"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/progress_bar_bg" />
+                    <SeekBar
+                        android:id="@+id/horseOne"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:thumb="@drawable/progress_horse_logo"
+                        android:progressBackgroundTint="@color/brown"
+                        android:splitTrack="false"
+                        android:enabled="false"
+                        android:thumbOffset="20dp"
+                        android:thumbTint="#F34601"
+                        android:progressTint="#ED6035"
+                        />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Horse 3"
-                    android:textStyle="bold"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/purple_700"/>
 
-                <ProgressBar
-                    android:id="@+id/horseThree"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/progress_bar_bg" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Horse 2"
+                        android:textStyle="bold"
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Horse 4"
-                    android:textStyle="bold"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                        android:textColor="@color/Spinwell140"
+                        android:textSize="16sp" />
 
-                <ProgressBar
-                    android:id="@+id/horseFour"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/progress_bar_bg" />
+                    <SeekBar
+                        android:id="@+id/horseTwo"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:thumb="@drawable/progress_horse_logo"
+                        android:progressBackgroundTint="@color/brown"
+                        android:splitTrack="false"
+                        android:enabled="false"
+                        android:thumbTint="#CC9A03"
+                        android:progressTint="@color/yellow"
+                        android:thumbOffset="20dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Horse 5"
-                    android:textStyle="bold"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/purple_700"/>
 
-                <ProgressBar
-                    android:id="@+id/horseFive"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/progress_bar_bg" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Horse 3"
+                        android:textStyle="bold"
+                        android:textColor="@color/Spinwell140"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Horse 6"
-                    android:textStyle="bold"
-                    android:layout_margin="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <SeekBar
+                        android:id="@+id/horseThree"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:thumb="@drawable/progress_horse_logo"
+                        android:progressBackgroundTint="@color/brown"
+                        android:splitTrack="false"
+                        android:enabled="false"
+                        android:thumbTint="#34C500"
+                        android:progressTint="#5DB34A"
+                        android:thumbOffset="20dp"/>
 
-                <ProgressBar
-                    android:id="@+id/horseSix"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressDrawable="@drawable/progress_bar_bg" />
-            </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/purple_700"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Horse 4"
+                        android:textStyle="bold"
+                        android:textColor="@color/Spinwell140"
+                        android:textSize="16sp" />
+
+
+                    <SeekBar
+                        android:id="@+id/horseFour"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:thumb="@drawable/progress_horse_logo"
+                        android:progressBackgroundTint="@color/brown"
+                        android:splitTrack="false"
+                        android:progress="50"
+                        android:thumbTint="#00CFCD"
+                        android:progressTint="#44ACA1"
+                        android:enabled="false"
+                        android:thumbOffset="20dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/purple_700"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Horse 5"
+                        android:textStyle="bold"
+                        android:textColor="@color/Spinwell140"
+                        android:textSize="16sp" />
+
+                    <SeekBar
+                        android:id="@+id/horseFive"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:thumb="@drawable/progress_horse_logo"
+                        android:progressBackgroundTint="@color/brown"
+                        android:splitTrack="false"
+                        android:thumbTint="#D900FF"
+                        android:progressTint="#BA4BFF"
+                        android:enabled="false"
+                        android:thumbOffset="20dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/purple_700"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Horse 6"
+                        android:textStyle="bold"
+                        android:textColor="@color/Spinwell140"
+                        android:textSize="16sp" />
+
+
+                    <SeekBar
+                        android:id="@+id/horseSix"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:thumb="@drawable/progress_horse_logo"
+                        android:progressBackgroundTint="@color/brown"
+                        android:splitTrack="false"
+                        android:thumbTint="#FF0000"
+                        android:progressTint="#FF6060"
+                        android:enabled="false"
+                        android:thumbOffset="20dp"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/purple_700"/>
+
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.cardview.widget.CardView>
 
         <androidx.core.widget.NestedScrollView
