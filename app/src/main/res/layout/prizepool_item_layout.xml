@@ -27,18 +27,34 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="18sp" />
-        <TextView
-            android:id="@+id/prizePoolMoney"
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:padding="10dp"
-            android:gravity="right"
-            android:textStyle="bold"
-            android:text="10000"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:backgroundTint="#99000000"
+                android:src="@drawable/coinlogo" />
+
+            <TextView
+                android:id="@+id/prizePoolMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="10000"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

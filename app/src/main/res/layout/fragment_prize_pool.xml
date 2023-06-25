@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="First Prize is 1 lakhs"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 

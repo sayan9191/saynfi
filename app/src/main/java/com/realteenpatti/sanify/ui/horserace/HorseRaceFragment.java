@@ -17,7 +17,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.realteenpatti.sanify.MainActivity;
-import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel;
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel;
@@ -25,7 +24,6 @@ import com.realteenpatti.sanify.ui.bottomsheet.LuckyDrawBottomSheet;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 
 import java.util.Objects;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class HorseRaceFragment extends Fragment {
@@ -352,19 +350,40 @@ public class HorseRaceFragment extends Fragment {
         countDownTimer.start();
     }
 
-    void startRaceProgress(long remainingMilliSeconds){
+    //bid stop function--SAYAN
+    @SuppressLint("ResourceAsColor")
+    public void bidStop() {
+        binding.horseOneCard.setEnabled(false);
+        binding.horseTwoCard.setEnabled(false);
+        binding.horseThreeCard.setEnabled(false);
+        binding.horseFourCard.setEnabled(false);
+        binding.horseFiveCard.setEnabled(false);
+        binding.horseSixCard.setEnabled(false);
+    }
 
-        if (remainingMilliSeconds < 30000){
+    //bid start function--SAYAN
+    public void bidStart() {
+        binding.horseOneCard.setEnabled(true);
+        binding.horseTwoCard.setEnabled(true);
+        binding.horseThreeCard.setEnabled(true);
+        binding.horseFourCard.setEnabled(true);
+        binding.horseFiveCard.setEnabled(true);
+        binding.horseSixCard.setEnabled(true);
+    }
+
+    void startRaceProgress(long remainingMilliSeconds) {
+
+        if (remainingMilliSeconds < 30000) {
             setInitialProgress(50);
-        }else if(remainingMilliSeconds < 40000){
+        } else if (remainingMilliSeconds < 40000) {
             setInitialProgress(45);
-        }else if (remainingMilliSeconds < 50000){
+        } else if (remainingMilliSeconds < 50000) {
             setInitialProgress(40);
-        }else if (remainingMilliSeconds < 60000){
+        } else if (remainingMilliSeconds < 60000) {
             setInitialProgress(35);
-        }else if (remainingMilliSeconds < 70000){
+        } else if (remainingMilliSeconds < 70000) {
             setInitialProgress(30);
-        }else if (remainingMilliSeconds < 80000){
+        } else if (remainingMilliSeconds < 80000) {
             setInitialProgress(25);
         }
 

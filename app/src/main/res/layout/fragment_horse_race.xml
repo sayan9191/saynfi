@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/golden_border"
             android:padding="15dp"
@@ -116,8 +116,17 @@
                 android:background="@drawable/ground_bg"
                 android:padding="15dp">
 
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="35dp"
+                    android:background="@drawable/racelinefinish"
+                    app:layout_constraintBottom_toBottomOf="@id/horceLayout"
+                    app:layout_constraintStart_toStartOf="@id/horceLayout"
+                    app:layout_constraintTop_toTopOf="@id/horceLayout" />
 
                 <LinearLayout
+                    android:id="@+id/horceLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -132,9 +141,10 @@
                         android:layout_height="wrap_content"
                         android:gravity="start"
                         android:text="Horse 1"
-                        android:textStyle="bold"
                         android:textColor="@color/Spinwell140"
-                        android:textSize="16sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <SeekBar
                         android:id="@+id/horseOne"
@@ -145,25 +155,24 @@
                         android:progressBackgroundTint="@color/brown"
                         android:splitTrack="false"
                         android:enabled="false"
-                        android:thumbOffset="20dp"
-                        android:thumbTint="#F34601"
                         android:progressTint="#ED6035"
-                        />
+                        android:thumbTint="#F34601"
+                        android:thumbOffset="23dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/purple_700"/>
+                        android:background="@color/purple_700" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
                         android:text="Horse 2"
-                        android:textStyle="bold"
-
                         android:textColor="@color/Spinwell140"
-                        android:textSize="16sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <SeekBar
                         android:id="@+id/horseTwo"
@@ -176,21 +185,22 @@
                         android:enabled="false"
                         android:thumbTint="#CC9A03"
                         android:progressTint="@color/yellow"
-                        android:thumbOffset="20dp"/>
+                        android:thumbOffset="23dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/purple_700"/>
+                        android:background="@color/purple_700" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
                         android:text="Horse 3"
-                        android:textStyle="bold"
                         android:textColor="@color/Spinwell140"
-                        android:textSize="16sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <SeekBar
                         android:id="@+id/horseThree"
@@ -203,21 +213,22 @@
                         android:enabled="false"
                         android:thumbTint="#34C500"
                         android:progressTint="#5DB34A"
-                        android:thumbOffset="20dp"/>
+                        android:thumbOffset="23dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/purple_700"/>
+                        android:background="@color/purple_700" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
                         android:text="Horse 4"
-                        android:textStyle="bold"
                         android:textColor="@color/Spinwell140"
-                        android:textSize="16sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
 
                     <SeekBar
@@ -231,21 +242,22 @@
                         android:thumbTint="#00CFCD"
                         android:progressTint="#44ACA1"
                         android:enabled="false"
-                        android:thumbOffset="20dp"/>
+                        android:thumbOffset="23dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/purple_700"/>
+                        android:background="@color/purple_700" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
                         android:text="Horse 5"
-                        android:textStyle="bold"
                         android:textColor="@color/Spinwell140"
-                        android:textSize="16sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
                     <SeekBar
                         android:id="@+id/horseFive"
@@ -258,21 +270,22 @@
                         android:thumbTint="#D900FF"
                         android:progressTint="#BA4BFF"
                         android:enabled="false"
-                        android:thumbOffset="20dp"/>
+                        android:thumbOffset="23dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/purple_700"/>
+                        android:background="@color/purple_700" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
                         android:text="Horse 6"
-                        android:textStyle="bold"
                         android:textColor="@color/Spinwell140"
-                        android:textSize="16sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
 
 
                     <SeekBar
@@ -280,21 +293,29 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:thumb="@drawable/progress_horse_logo"
-                        android:progressBackgroundTint="@color/brown"
-                        android:splitTrack="false"
-                        android:thumbTint="#FF0000"
-                        android:progressTint="#FF6060"
                         android:enabled="false"
-                        android:thumbOffset="20dp"/>
+                        android:progressBackgroundTint="@color/brown"
+                        android:progressTint="#FF6060"
+                        android:splitTrack="false"
+                        android:thumb="@drawable/progress_horse_logo"
+                        android:thumbOffset="23dp"
+                        android:thumbTint="#FF0000" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/purple_700"/>
-
-
+                        android:background="@color/purple_700" />
                 </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/racelinefinish"
+                    app:layout_constraintBottom_toBottomOf="@id/horceLayout"
+                    app:layout_constraintEnd_toEndOf="@id/horceLayout"
+                    app:layout_constraintTop_toTopOf="@id/horceLayout" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -311,590 +332,575 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true">
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/horseOneCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp">
-
-                        <TextView
-                            android:id="@+id/bidBtnOne"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:layout_weight="1"
-                            android:background="@drawable/golden_border"
-                            android:paddingStart="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingEnd="15dp"
-                            android:paddingBottom="10dp"
-                            android:text="Bid"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp"
+                        app:cardMaxElevation="12dp"
+                        app:cardPreventCornerOverlap="true">
 
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-
-                            android:layout_marginEnd="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="@+id/bidBtnOne"
-                            app:layout_constraintEnd_toStartOf="@+id/bidBtnOne"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/bidBtnOne">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="7dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Horse No.1"
-                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:text="Horse 1"
+                                android:textColor="#F34601"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
-                            <Button
-                                android:id="@+id/decreaseOne"
-                                android:layout_width="50dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="-"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <Button
+                                    android:id="@+id/decreaseOne"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="-"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/bidAmountOne"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:text="10"
+                                    android:textColor="#F34601"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/increaseOne"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/bidAmountOne"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:id="@+id/bidBtnOne"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-                                android:text="10"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <Button
-                                android:id="@+id/increaseOne"
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="+"
-                                android:textColor="@color/black"
+                                android:background="@drawable/golden_border"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingBottom="10dp"
+                                android:text="Bid"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/horseTwoCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp">
-
-                        <TextView
-                            android:id="@+id/bidBtnTwo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:layout_weight="1"
-                            android:background="@drawable/golden_border"
-                            android:paddingStart="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingEnd="15dp"
-                            android:paddingBottom="10dp"
-                            android:text="Bid"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp"
+                        app:cardMaxElevation="12dp"
+                        app:cardPreventCornerOverlap="true">
 
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-
-                            android:layout_marginEnd="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="@+id/bidBtnTwo"
-                            app:layout_constraintEnd_toStartOf="@+id/bidBtnTwo"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/bidBtnTwo">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="7dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Horse No.2"
-                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:text="Horse 2"
+                                android:textColor="#CC9A03"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
-                            <Button
-                                android:id="@+id/decreaseTwo"
-                                android:layout_width="50dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="-"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <Button
+                                    android:id="@+id/decreaseTwo"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="-"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/bidAmountTwo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:text="10"
+                                    android:textColor="#CC9A03"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/increaseTwo"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/bidAmountTwo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:id="@+id/bidBtnTwo"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-
-                                android:text="10"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <Button
-                                android:id="@+id/increaseTwo"
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="+"
-                                android:textColor="@color/black"
+                                android:background="@drawable/golden_border"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingBottom="10dp"
+                                android:text="Bid"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true">
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/horseThreeCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp">
-
-                        <TextView
-                            android:id="@+id/bidBtnThree"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:layout_weight="1"
-                            android:background="@drawable/golden_border"
-                            android:paddingStart="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingEnd="15dp"
-                            android:paddingBottom="10dp"
-                            android:text="Bid"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp"
+                        app:cardMaxElevation="12dp"
+                        app:cardPreventCornerOverlap="true">
 
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-
-                            android:layout_marginEnd="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="@+id/bidBtnThree"
-                            app:layout_constraintEnd_toStartOf="@+id/bidBtnThree"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/bidBtnThree">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="7dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Horse No.3"
-                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:text="Horse 3"
+                                android:textColor="#34C500"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
-                            <Button
-                                android:id="@+id/decreaseThree"
-                                android:layout_width="50dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="-"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <Button
+                                    android:id="@+id/decreaseThree"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="-"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/bidAmountThree"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:text="10"
+                                    android:textColor="#34C500"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/increaseThree"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/bidAmountThree"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:id="@+id/bidBtnThree"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-
-                                android:text="10"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <Button
-                                android:id="@+id/increaseThree"
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="+"
-                                android:textColor="@color/black"
+                                android:background="@drawable/golden_border"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingBottom="10dp"
+                                android:text="Bid"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/horseFourCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp">
-
-                        <TextView
-                            android:id="@+id/bidBtnFour"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:layout_weight="1"
-                            android:background="@drawable/golden_border"
-                            android:paddingStart="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingEnd="15dp"
-                            android:paddingBottom="10dp"
-                            android:text="Bid"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp"
+                        app:cardMaxElevation="12dp"
+                        app:cardPreventCornerOverlap="true">
 
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="@+id/bidBtnFour"
-                            app:layout_constraintEnd_toStartOf="@+id/bidBtnFour"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/bidBtnFour">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="7dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Horse No.4"
-                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:text="Horse 4"
+                                android:textColor="#00CFCD"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
-                            <Button
-                                android:id="@+id/decreaseFour"
-                                android:layout_width="50dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="-"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <Button
+                                    android:id="@+id/decreaseFour"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="-"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/bidAmountFour"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:text="10"
+                                    android:textColor="#00CFCD"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/increaseFour"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/bidAmountFour"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:id="@+id/bidBtnFour"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-
-                                android:text="10"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <Button
-                                android:id="@+id/increaseFour"
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="+"
-                                android:textColor="@color/black"
+                                android:background="@drawable/golden_border"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingBottom="10dp"
+                                android:text="Bid"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true">
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/horseFiveCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp">
-
-                        <TextView
-                            android:id="@+id/bidBtnFive"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:layout_weight="1"
-                            android:background="@drawable/golden_border"
-                            android:paddingStart="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingEnd="15dp"
-                            android:paddingBottom="10dp"
-                            android:text="Bid"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp"
+                        app:cardMaxElevation="12dp"
+                        app:cardPreventCornerOverlap="true">
 
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="@+id/bidBtnFive"
-                            app:layout_constraintEnd_toStartOf="@+id/bidBtnFive"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/bidBtnFive">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="7dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Horse No.5"
-                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:text="Horse 5"
+                                android:textColor="#D900FF"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
-                            <Button
-                                android:id="@+id/decreaseFive"
-                                android:layout_width="50dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="-"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <Button
+                                    android:id="@+id/decreaseFive"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="-"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/bidAmountFive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:text="10"
+                                    android:textColor="#D900FF"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/increaseFive"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/bidAmountFive"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:id="@+id/bidBtnFive"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-
-                                android:text="10"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <Button
-                                android:id="@+id/increaseFive"
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="+"
-                                android:textColor="@color/black"
+                                android:background="@drawable/golden_border"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingBottom="10dp"
+                                android:text="Bid"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp"
-                    app:cardMaxElevation="12dp"
-                    app:cardPreventCornerOverlap="true">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/horseSixCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp">
-
-                        <TextView
-                            android:id="@+id/bidBtnSix"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:layout_weight="1"
-                            android:background="@drawable/golden_border"
-                            android:paddingStart="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingEnd="15dp"
-                            android:paddingBottom="10dp"
-                            android:text="Bid"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="10dp"
+                        app:cardMaxElevation="12dp"
+                        app:cardPreventCornerOverlap="true">
 
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="20dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintBottom_toBottomOf="@+id/bidBtnSix"
-                            app:layout_constraintEnd_toStartOf="@+id/bidBtnSix"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/bidBtnSix">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="7dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-                                android:layout_weight="1"
-                                android:text="Horse No.6"
-                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:text="Horse 6"
+                                android:textColor="#FF0000"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
-                            <Button
-                                android:id="@+id/decreaseSix"
-                                android:layout_width="50dp"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="-"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
+                                android:layout_margin="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <Button
+                                    android:id="@+id/decreaseSix"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="-"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/bidAmountSix"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
+                                    android:text="10"
+                                    android:textColor="#FF0000"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/increaseSix"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/white"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/bidAmountSix"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:id="@+id/bidBtnSix"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
-
-                                android:text="10"
-                                android:textColor="@color/black"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <Button
-                                android:id="@+id/increaseSix"
-                                android:layout_width="50dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/white"
-                                android:text="+"
-                                android:textColor="@color/black"
+                                android:background="@drawable/golden_border"
+                                android:paddingStart="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="15dp"
+                                android:paddingBottom="10dp"
+                                android:text="Bid"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
+                </LinearLayout>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
