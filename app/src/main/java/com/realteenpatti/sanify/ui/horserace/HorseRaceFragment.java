@@ -92,6 +92,9 @@ public class HorseRaceFragment extends Fragment {
             public void onChanged(String s) {
                 if (!Objects.equals(s, "")) {
                     Toast.makeText(requireActivity(), s, Toast.LENGTH_SHORT).show();
+                    if(Objects.equals(s, "You haven't participated in this slot")){
+                        isWinnerFetched = true;
+                    }
                 }
             }
         });
@@ -390,9 +393,11 @@ public class HorseRaceFragment extends Fragment {
     }
 
     boolean isWinnerFetched = false;
+    long fetchedTime = 90000;
 
     void startRaceProgress(long remainingMilliSeconds) {
         enableBidButtons();
+        resetProgress();
 
         if (remainingMilliSeconds < 30000) {
             disableBidButton();
@@ -439,10 +444,9 @@ public class HorseRaceFragment extends Fragment {
                     disableBidButton();
                 }
 
-
-                if (millisUntilFinished < 25000 && !isWinnerFetched && millisUntilFinished % 1000 == 0){
+                if (millisUntilFinished < 25001 && !isWinnerFetched && fetchedTime - millisUntilFinished > 2000){
                     viewModel.getWinnerDetails();
-                    isWinnerFetched = true;
+                    fetchedTime = millisUntilFinished;
                 }
 
 //                if (millisUntilFinished < 25000){
@@ -472,6 +476,7 @@ public class HorseRaceFragment extends Fragment {
 
     void changeWinningProgress(HorseWinnerResponseModel winnerData){
 
+        isWinnerFetched = true;
         Log.d("Winner", "Horse: " + winnerData.getWinnig_horse_id());
 
         if (countDownTimer != null){
@@ -612,6 +617,16 @@ public class HorseRaceFragment extends Fragment {
         changeProgress(binding.horseFour, percent, percent - 15, 80, 0);
         changeProgress(binding.horseFive, percent, percent - 15, 80, 0);
         changeProgress(binding.horseSix, percent, percent - 15, 80, 0);
+    }
+
+
+    private void resetProgress(){
+        binding.horseOne.setProgress(0, true);
+        binding.horseTwo.setProgress(0, true);
+        binding.horseThree.setProgress(0, true);
+        binding.horseFour.setProgress(0, true);
+        binding.horseFive.setProgress(0, true);
+        binding.horseSix.setProgress(0, true);
     }
 
 }
