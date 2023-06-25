@@ -76,6 +76,7 @@ class HorseRaceRepository {
                    errorMessage.postValue("")
                    response.body()?.let {
                        winnerDetail.postValue(it)
+                       Log.d("--------winner------: ", it.win_money.toString());
                    }
                } else {
                    isLoading.postValue(false)

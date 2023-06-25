@@ -142,7 +142,7 @@ class LuckyDrawActivity : AppCompatActivity() {
 
         viewModel.isCoinAdded.observe(this) {
             if (it) {
-                val bottomSheetLottery = LuckyDrawBottomSheet(coin.toString())
+                val bottomSheetLottery = LuckyDrawBottomSheet(coin)
                 bottomSheetLottery.show(supportFragmentManager, "TAG")
 
                 binding.spinBtn.isEnabled = true
@@ -183,7 +183,7 @@ class LuckyDrawActivity : AppCompatActivity() {
 
 
             if (coin == 0){
-                val bottomSheetLottery = LuckyDrawBottomSheet(coin.toString())
+                val bottomSheetLottery = LuckyDrawBottomSheet(coin)
                 bottomSheetLottery.show(supportFragmentManager, "TAG")
 
                 binding.spinBtn.isEnabled = true

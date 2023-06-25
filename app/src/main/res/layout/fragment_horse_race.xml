@@ -125,6 +125,14 @@
                     app:layout_constraintStart_toStartOf="@id/horceLayout"
                     app:layout_constraintTop_toTopOf="@id/horceLayout" />
 
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/racelinefinish"
+                    app:layout_constraintBottom_toBottomOf="@id/horceLayout"
+                    app:layout_constraintEnd_toEndOf="@id/horceLayout"
+                    app:layout_constraintTop_toTopOf="@id/horceLayout" />
+
                 <LinearLayout
                     android:id="@+id/horceLayout"
                     android:layout_width="match_parent"
@@ -307,14 +315,6 @@
                         android:background="@color/purple_700" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/racelinefinish"
-                    app:layout_constraintBottom_toBottomOf="@id/horceLayout"
-                    app:layout_constraintEnd_toEndOf="@id/horceLayout"
-                    app:layout_constraintTop_toTopOf="@id/horceLayout" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -354,7 +354,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="7dp"
+                            android:layout_margin="10dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -366,17 +366,22 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/unselect" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
                                 android:gravity="center"
+                                android:layout_marginTop="5dp"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
 
                                 <Button
                                     android:id="@+id/decreaseOne"
-                                    android:layout_width="50dp"
+                                    android:layout_width="40dp"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_weight="1"
@@ -399,7 +404,7 @@
 
                                 <Button
                                     android:id="@+id/increaseOne"
-                                    android:layout_width="50dp"
+                                    android:layout_width="40dp"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_weight="1"
@@ -414,9 +419,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/golden_border"
+                                android:background="@drawable/corner_rectangle"
+                                android:backgroundTint="#F34601"
                                 android:paddingStart="15dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="15dp"
@@ -445,7 +451,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="7dp"
+                            android:layout_margin="10dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -457,10 +463,15 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/unselect" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
@@ -505,9 +516,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/golden_border"
+                                android:background="@drawable/corner_rectangle"
+                                android:backgroundTint="#CC9A03"
                                 android:paddingStart="15dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="15dp"
@@ -544,7 +556,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="7dp"
+                            android:layout_margin="10dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -556,10 +568,15 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/unselect" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
@@ -604,9 +621,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/golden_border"
+                                android:background="@drawable/corner_rectangle"
+                                android:backgroundTint="#34C500"
                                 android:paddingStart="15dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="15dp"
@@ -635,7 +653,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="7dp"
+                            android:layout_margin="10dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -647,10 +665,15 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/unselect" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
@@ -695,9 +718,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/golden_border"
+                                android:background="@drawable/corner_rectangle"
+                                android:backgroundTint="#00CFCD"
                                 android:paddingStart="15dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="15dp"
@@ -734,7 +758,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="7dp"
+                            android:layout_margin="10dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -746,10 +770,15 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/unselect" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
@@ -794,9 +823,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/golden_border"
+                                android:background="@drawable/corner_rectangle"
+                                android:backgroundTint="#D900FF"
                                 android:paddingStart="15dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="15dp"
@@ -825,7 +855,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="7dp"
+                            android:layout_margin="10dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -837,10 +867,15 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/unselect" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
@@ -885,9 +920,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center"
-                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
                                 android:layout_weight="1"
-                                android:background="@drawable/golden_border"
+                                android:background="@drawable/corner_rectangle"
+                                android:backgroundTint="#FF0000"
                                 android:paddingStart="15dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="15dp"

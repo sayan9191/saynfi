@@ -10,7 +10,7 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.realteenpatti.sanify.R
 
-class LuckyDrawBottomSheet(val coins: String) : BottomSheetDialogFragment() {
+class LuckyDrawBottomSheet(val coins: Int) : BottomSheetDialogFragment() {
 
 
     override fun onCreateView(
@@ -25,9 +25,9 @@ class LuckyDrawBottomSheet(val coins: String) : BottomSheetDialogFragment() {
         val winningAnimation = view.findViewById<LottieAnimationView>(R.id.winningAnimation);
         val loosingAnimation = view.findViewById<LottieAnimationView>(R.id.loosingAnimation);
 
-        if (coins.toInt() > 0){
+        if (coins > 0){
             title.text = "Congratulations"
-            winningText.text = "You own ${coins.toInt()} coins"
+            winningText.text = "You own $coins coins"
             winningAnimation.visibility = View.VISIBLE
             loosingAnimation.visibility = View.GONE
         } else{

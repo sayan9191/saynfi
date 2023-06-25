@@ -60,10 +60,12 @@ public class HorseRaceFragment extends Fragment {
         binding.horseFour.setEnabled(false);
         binding.horseSix.setEnabled(false);
 
+        disableBidButton();
+
         viewModel.getWinnerDetail().observe(getViewLifecycleOwner(), new Observer<HorseWinnerResponseModel>() {
             @Override
             public void onChanged(HorseWinnerResponseModel winnerData) {
-                changeWinningProgress(winnerData.getWinnig_horse_id(), winnerData.getWin_money());
+                changeWinningProgress(winnerData);
             }
         });
 
@@ -351,29 +353,49 @@ public class HorseRaceFragment extends Fragment {
     }
 
     //bid stop function--SAYAN
-    @SuppressLint("ResourceAsColor")
-    public void bidStop() {
-        binding.horseOneCard.setEnabled(false);
-        binding.horseTwoCard.setEnabled(false);
-        binding.horseThreeCard.setEnabled(false);
-        binding.horseFourCard.setEnabled(false);
-        binding.horseFiveCard.setEnabled(false);
-        binding.horseSixCard.setEnabled(false);
+    public void disableBidButton() {
+        binding.bidBtnOne.setEnabled(false);
+        binding.bidBtnOne.setAlpha(0.5f);
+
+        binding.bidBtnTwo.setEnabled(false);
+        binding.bidBtnTwo.setAlpha(0.5f);
+
+        binding.bidBtnThree.setEnabled(false);
+        binding.bidBtnThree.setAlpha(0.5f);
+
+        binding.bidBtnFour.setEnabled(false);
+        binding.bidAmountFour.setAlpha(0.5f);
+
+        binding.bidBtnFive.setEnabled(false);
+        binding.bidBtnFive.setAlpha(0.5f);
+
+        binding.bidBtnSix.setEnabled(false);
+        binding.bidBtnSix.setAlpha(0.5f);
     }
 
     //bid start function--SAYAN
-    public void bidStart() {
-        binding.horseOneCard.setEnabled(true);
-        binding.horseTwoCard.setEnabled(true);
-        binding.horseThreeCard.setEnabled(true);
-        binding.horseFourCard.setEnabled(true);
-        binding.horseFiveCard.setEnabled(true);
-        binding.horseSixCard.setEnabled(true);
+    public void enableBidButtons() {
+        binding.bidBtnOne.setEnabled(true);
+        binding.bidBtnOne.setAlpha(1f);
+        binding.bidBtnTwo.setEnabled(true);
+        binding.bidBtnTwo.setAlpha(1f);
+        binding.bidBtnThree.setEnabled(true);
+        binding.bidBtnThree.setAlpha(1f);
+        binding.bidBtnFour.setEnabled(true);
+        binding.bidAmountFour.setAlpha(1f);
+        binding.bidBtnFive.setEnabled(true);
+        binding.bidBtnFive.setAlpha(1f);
+        binding.bidBtnSix.setEnabled(true);
+        binding.bidBtnSix.setAlpha(1f);
     }
 
+    boolean isWinnerFetched = false;
+
     void startRaceProgress(long remainingMilliSeconds) {
+        enableBidButtons();
 
         if (remainingMilliSeconds < 30000) {
+            disableBidButton();
             setInitialProgress(50);
         } else if (remainingMilliSeconds < 40000) {
             setInitialProgress(45);
@@ -391,8 +413,6 @@ public class HorseRaceFragment extends Fragment {
             countDownTimer.cancel();
         }
 
-
-        final long[] timeDelay = {0};
 
         countDownTimer = new CountDownTimer(remainingMilliSeconds, 50) {
             @Override
@@ -415,24 +435,34 @@ public class HorseRaceFragment extends Fragment {
                 changeProgress(binding.horseFive, 1, -1, 80, 0);
                 changeProgress(binding.horseSix, 1, -1, 80, 0);
 
-
-                if (millisUntilFinished < 25000){
-                    if (timeDelay[0] == 0){
-                        viewModel.getWinnerDetails();
-                    }
-                    else{
-                        timeDelay[0] += 50;
-                    }
-
-                    if (timeDelay[0] > 1000){
-                        timeDelay[0] = 0;
-                    }
+                if (millisUntilFinished < 30001){
+                    disableBidButton();
                 }
+
+
+                if (millisUntilFinished < 25000 && !isWinnerFetched && millisUntilFinished % 1000 == 0){
+                    viewModel.getWinnerDetails();
+                    isWinnerFetched = true;
+                }
+
+//                if (millisUntilFinished < 25000){
+//                    if (timeDelay[0] == 0){
+//                        viewModel.getWinnerDetails();
+//                    }
+//                    else{
+//                        timeDelay[0] += 50;
+//                    }
+//
+//                    if (timeDelay[0] > 1000){
+//                        timeDelay[0] = 0;
+//                    }
+//                }
             }
 
             @Override
             public void onFinish() {
                 binding.countdownTextView.setText("Something went wrong");
+                viewModel.getSlotDetailsInfo();
             }
         };
 
@@ -440,9 +470,9 @@ public class HorseRaceFragment extends Fragment {
     }
 
 
-    void changeWinningProgress(int winningHorseNum, int winMoney){
+    void changeWinningProgress(HorseWinnerResponseModel winnerData){
 
-        Log.d("Winner", "Horse: " + winningHorseNum);
+        Log.d("Winner", "Horse: " + winnerData.getWinnig_horse_id());
 
         if (countDownTimer != null){
             countDownTimer.cancel();
@@ -460,37 +490,37 @@ public class HorseRaceFragment extends Fragment {
 
                 binding.countdownTextView.setText(countdownText);
 
-                if (winningHorseNum == 1){
+                if (winnerData.getWinnig_horse_id() == 1){
                     changeProgress(binding.horseOne, ThreadLocalRandom.current().nextInt(2, 4), -1, 97, 0);
                 }else{
                     changeProgress(binding.horseOne, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
                 }
 
-                if (winningHorseNum == 2){
+                if (winnerData.getWinnig_horse_id() == 2){
                     changeProgress(binding.horseTwo, ThreadLocalRandom.current().nextInt(2, 4), -1, 98, 0);
                 }else{
                     changeProgress(binding.horseTwo, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
                 }
 
-                if (winningHorseNum == 3){
+                if (winnerData.getWinnig_horse_id() == 3){
                     changeProgress(binding.horseThree, ThreadLocalRandom.current().nextInt(2, 4), -1, 97, 0);
                 }else{
                     changeProgress(binding.horseThree, 2, -1, ThreadLocalRandom.current().nextInt(80, 96), 0);
                 }
 
-                if (winningHorseNum == 4){
+                if (winnerData.getWinnig_horse_id() == 4){
                     changeProgress(binding.horseFour, ThreadLocalRandom.current().nextInt(2, 4), -1, 98, 0);
                 }else{
                     changeProgress(binding.horseFour, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
                 }
 
-                if (winningHorseNum == 5){
+                if (winnerData.getWinnig_horse_id() == 5){
                     changeProgress(binding.horseFive, ThreadLocalRandom.current().nextInt(2, 4), -1, 97, 0);
                 }else{
                     changeProgress(binding.horseFive, 2, -1, ThreadLocalRandom.current().nextInt(80, 96), 0);
                 }
 
-                if (winningHorseNum == 6){
+                if (winnerData.getWinnig_horse_id() == 6){
                     changeProgress(binding.horseSix, ThreadLocalRandom.current().nextInt(2, 4), -1, 98, 0);
                 }else{
                     changeProgress(binding.horseSix, 2, -1, ThreadLocalRandom.current().nextInt(85, 96), 0);
@@ -500,8 +530,9 @@ public class HorseRaceFragment extends Fragment {
             @Override
             public void onFinish() {
                 binding.countdownTextView.setText("Congratulations Winners");
+                isWinnerFetched = false;
 
-                switch (winningHorseNum){
+                switch (winnerData.getWinnig_horse_id()){
                     case 1:
                         binding.horseOne.setProgress(100, true);
                         break;
@@ -522,10 +553,14 @@ public class HorseRaceFragment extends Fragment {
                         break;
                 }
 
-                LuckyDrawBottomSheet bottomSheetLottery = new LuckyDrawBottomSheet(winMoney + "");
-                bottomSheetLottery.show(getParentFragmentManager(), "TAG");
+                if (winnerData.getTotal_bid_money() > 0){
+                    LuckyDrawBottomSheet bottomSheetLottery = new LuckyDrawBottomSheet(winnerData.getWin_money());
+                    Log.d("_________", String.valueOf(winnerData.getWin_money()));
+                    bottomSheetLottery.show(getParentFragmentManager(), "TAG");
+                }
 
                 viewModel.getCoinBalance();
+                viewModel.getSlotDetailsInfo();
             }
         };
 
