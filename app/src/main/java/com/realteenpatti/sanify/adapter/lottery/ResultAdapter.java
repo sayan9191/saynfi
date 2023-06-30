@@ -24,18 +24,26 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
 
-        holder.winnerRank.setText("Rank" + items.get(position).getPosition());
-        holder.winnerName.setText("৳" + items.get(position).getUser().getName());
-        holder.winnerTicketNo.setText(items.get(position).getLottery_token_no());
+        AllWinnerResponseModelItem item = items.get(position);
+
+        if(item != null && item.getUser() != null){
+            holder.winnerName.setText("৳" + item.getUser().getName());
+        }
+
+        holder.winnerRank.setText("Rank" + item.getPosition());
+
+        holder.winnerTicketNo.setText(String.valueOf(items.get(position).getLottery_token_no()));
     }
 
     @Override
     public int getItemCount() {
         return items.size();
     }
+
     public void updateAllList(List<AllWinnerResponseModelItem> list) {
         items.clear();
         items.addAll(list);
-        this.notifyDataSetChanged();
+//        this.notifyDataSetChanged();
+        this.notifyItemInserted(list.size() - 1);
     }
 }

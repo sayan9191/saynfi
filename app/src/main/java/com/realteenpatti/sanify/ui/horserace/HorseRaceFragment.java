@@ -343,6 +343,11 @@ public class HorseRaceFragment extends Fragment {
                 String countdownText = "Race starts in: " + String.format("%02d", hours % 24) + "h " + String.format("%02d", minutes % 60) + "m " + String.format("%02d", seconds % 60) + "s";
 
                 binding.countdownTextView.setText(countdownText);
+
+                if (seconds < 207){
+                    resetProgress();
+                }
+
             }
 
             @Override
