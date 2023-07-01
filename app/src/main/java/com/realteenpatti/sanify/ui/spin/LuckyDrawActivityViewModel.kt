@@ -26,4 +26,8 @@ class LuckyDrawActivityViewModel : ViewModel() {
         coinRepo.deductCoin(amount)
     }
 
+    fun getCoins() {
+        coinRepo.getAllCoin()
+    }
+
 }

@@ -59,16 +59,14 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <com.airbnb.lottie.LottieAnimationView
+            <ImageView
                 android:id="@+id/lottieAnimation"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appName"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/transaction_history" />
+                android:src="@drawable/withdraw_money" />
 
             <TextView
                 android:layout_width="match_parent"

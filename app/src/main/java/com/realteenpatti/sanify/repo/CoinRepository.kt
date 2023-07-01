@@ -2,6 +2,7 @@ package com.realteenpatti.sanify.repo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.adminpannel.Retrofit.model.spinner.AllSpinnerCoinResponseModel
 import com.realteenpatti.sanify.retrofit.RemoteApi
 import com.realteenpatti.sanify.retrofit.models.CommonErrorModel
 import com.realteenpatti.sanify.retrofit.models.UserInfoResponseModel
@@ -18,19 +19,6 @@ import retrofit2.Response
 
 class CoinRepository {
 
-    /*companion object{
-        private var instance : CoinRepository? = null
-
-        fun getInstance() : CoinRepository {
-            return if (instance != null)
-                instance as CoinRepository
-            else{
-                instance = CoinRepository()
-                instance as CoinRepository
-            }
-        }
-    }*/
-
     private var localStorage = StorageUtil.getInstance()
 
     private val api: RemoteApi = NetworkUtils.getRetrofitInstance().create(RemoteApi::class.java)
@@ -46,6 +34,8 @@ class CoinRepository {
     val isCoinDeducted : MutableLiveData<Boolean> = MutableLiveData()
 
     val userInfo : MutableLiveData<UserInfoResponseModel> = MutableLiveData()
+
+    val allCoins: MutableLiveData<AllSpinnerCoinResponseModel> = MutableLiveData()
 
 
     fun getCoinBalance(){
@@ -201,5 +191,44 @@ class CoinRepository {
         }
         )
     }
+
+    fun getAllCoin() {
+        isLoading.postValue(true)
+        api.getAllCoinInfo()
+            .enqueue(object : Callback<AllSpinnerCoinResponseModel> {
+                override fun onResponse(
+                    call: Call<AllSpinnerCoinResponseModel>,
+                    response: Response<AllSpinnerCoinResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        isLoading.postValue(false)
+                        errorMessage.postValue("")
+                        response.body()?.let {
+                            allCoins.postValue(it)
+                        }
+                    } else {
+                        isLoading.postValue(false)
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+
+                                Log.e("Error: ", errorResponse.detail)
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<AllSpinnerCoinResponseModel>, t: Throwable) {
+                    Log.d("Request Failed. Error: ", t.message.toString())
+                    isLoading.postValue(false)
+                    errorMessage.postValue("Something went wrong")
+                }
+
+            })
+    }
+
 
 }

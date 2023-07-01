@@ -1,7 +1,9 @@
 package com.realteenpatti.sanify.retrofit
 
+import com.example.adminpannel.Retrofit.model.spinner.AllSpinnerCoinResponseModel
 import com.realteenpatti.sanify.retrofit.models.CommonErrorModel
 import com.realteenpatti.sanify.retrofit.models.UserInfoResponseModel
+import com.realteenpatti.sanify.retrofit.models.addmoney.PaymentGetResponseModel
 import com.realteenpatti.sanify.retrofit.models.auth.CreateUserRequestModel
 import com.realteenpatti.sanify.retrofit.models.auth.CreateUserResponseModel
 import com.realteenpatti.sanify.retrofit.models.changepassword.ChangePasswordRequestModel
@@ -121,5 +123,12 @@ interface RemoteApi {
 
     @GET("reffer/get_my_refferals")
     fun getMyRefer(@Header("Authorization") token: String): Call<ReferResponseModel>
+
+    @GET("lucky_draw/get_all_coin_values")
+    fun getAllCoinInfo(): Call<AllSpinnerCoinResponseModel>
+
+    @GET("transaction/get_all_transaction_mediums")
+    fun getAllTransactions(): Call<PaymentGetResponseModel>
+
 
 }

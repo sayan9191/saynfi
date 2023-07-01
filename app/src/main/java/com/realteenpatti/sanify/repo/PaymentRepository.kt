@@ -12,6 +12,7 @@ import com.google.firebase.storage.UploadTask
 import com.google.gson.Gson
 import com.realteenpatti.sanify.retrofit.RemoteApi
 import com.realteenpatti.sanify.retrofit.models.CommonErrorModel
+import com.realteenpatti.sanify.retrofit.models.addmoney.PaymentGetResponseModel
 import com.realteenpatti.sanify.retrofit.models.transaction.TransactionRequestModel
 import com.realteenpatti.sanify.retrofit.models.transaction.TransactionResponseModel
 import com.realteenpatti.sanify.utils.ImageResizer
@@ -35,6 +36,9 @@ class PaymentRepository {
     val errorMessage: MutableLiveData<String> = MutableLiveData()
 
     val uploadStatus: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    val getPaymentInfo: MutableLiveData<PaymentGetResponseModel> = MutableLiveData()
+
 
 
     fun uploadImage(imageBitmap: Bitmap, transactionId: String, transactionMedium: String, amount: Int) {
@@ -109,4 +113,43 @@ class PaymentRepository {
 
         return stream.toByteArray()
     }
+
+    fun getPayment() {
+        isLoading.postValue(true)
+        api.getAllTransactions()
+            .enqueue(object : Callback<PaymentGetResponseModel> {
+                override fun onResponse(
+                    call: Call<PaymentGetResponseModel>,
+                    response: Response<PaymentGetResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        isLoading.postValue(false)
+                        errorMessage.postValue("")
+                        response.body()?.let {
+                            getPaymentInfo.postValue(it)
+                        }
+                    } else {
+                        isLoading.postValue(false)
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+
+                                Log.e("Error: ", errorResponse.detail)
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<PaymentGetResponseModel>, t: Throwable) {
+                    Log.d("Request Failed. Error: ", t.message.toString())
+                    isLoading.postValue(false)
+                    errorMessage.postValue("Something went wrong")
+                }
+
+            })
+    }
+
 }

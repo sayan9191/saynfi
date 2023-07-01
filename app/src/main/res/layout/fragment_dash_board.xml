@@ -314,7 +314,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_margin="10dp"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_weight="1"
                 android:background="@drawable/corner_rectangle"
                 android:backgroundTint="#73FFFFFF">
@@ -322,6 +322,21 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Coming Soon.."
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/view"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -334,11 +349,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
-                            android:src="@drawable/lottery" />
+                            android:src="@drawable/jhandi_munda" />
 
                     </LinearLayout>
 
                     <View
+                        android:id="@+id/view"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:background="@drawable/fading_gradiant"
@@ -346,15 +362,17 @@
                         app:layout_constraintBottom_toBottomOf="parent" />
 
                     <TextView
+                        android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
                         android:gravity="center"
-                        android:text="Lottery"
+                        android:text="Jhandi Munda"
                         android:textColor="@color/white"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        tools:layout_editor_absoluteX="14dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>

@@ -23,7 +23,7 @@ import com.realteenpatti.sanify.ui.auth.login.LogInActivity;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 import com.realteenpatti.sanify.ui.referearn.ReferandEarnFragment;
 import com.realteenpatti.sanify.ui.transactionhistory.TransactionFragment;
-import com.realteenpatti.sanify.ui.withdraw.WithDrawFragmentFragment;
+import com.realteenpatti.sanify.ui.withdraw.WithDrawFragment;
 import com.realteenpatti.sanify.ui.withdrawHistory.WithDrawHistoryFragment;
 import com.realteenpatti.sanify.utils.StorageUtil;
 
@@ -120,7 +120,7 @@ public class Profile_Fragment extends Fragment {
                 getParentFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .addToBackStack("Profile")
-                        .replace(R.id.fragmentContainerView, new WithDrawFragmentFragment())
+                        .replace(R.id.fragmentContainerView, new WithDrawFragment())
                         .commit();
             }
         });

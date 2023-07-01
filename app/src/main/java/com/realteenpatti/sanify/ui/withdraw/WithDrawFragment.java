@@ -18,7 +18,7 @@ import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 
 import java.util.Objects;
 
-public class WithDrawFragmentFragment extends Fragment {
+public class WithDrawFragment extends Fragment {
 
     FragmentWithDrawFragmentBinding binding;
     private WithDrawViewModel viewModel;
