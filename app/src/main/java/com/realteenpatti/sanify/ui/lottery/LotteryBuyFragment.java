@@ -37,6 +37,7 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
     private CountDownTimer countDownTimer = null;
     LotteryBuyFragmentViewModel viewModel;
     long remainingMillis =0;
+    MediaPlayer mPlayer;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -47,8 +48,12 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
 
         viewModel.getCurrentCoinBalance();
 
-        MediaPlayer mPlayer = MediaPlayer.create(requireContext(), R.raw.sound_spinner);
-        mPlayer.start();
+        if (mPlayer == null || !mPlayer.isPlaying()) {
+            mPlayer = MediaPlayer.create(requireContext(), R.raw.sound_spinner);
+            mPlayer.setLooping(true);
+            mPlayer.start();
+        }
+
 
         viewModel.getCoinBalance().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
@@ -181,7 +186,7 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
             public void onClick(View view) {
 
                 Log.d("___________", String.valueOf(remainingMillis));
-//                if (remainingMillis - 18000000 > 0 || remainingMillis < 0) {
+                if (remainingMillis - 18000000 > 0 || remainingMillis < 0) {
 
                     ResultFragment resultFragment = new ResultFragment();
 
@@ -190,9 +195,9 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
                             .addToBackStack("Result")
                             .replace(R.id.fragmentContainerView, resultFragment)
                             .commit();
-//                }else {
-//                    Toast.makeText(requireContext(), "Winner will be announced after lottery completion", Toast.LENGTH_SHORT).show();
-//                }
+                }else {
+                    Toast.makeText(requireContext(), "Winner will be announced after lottery completion", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -201,8 +206,7 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), MainActivity.class);
-                startActivity(intent);
+                getParentFragmentManager().popBackStackImmediate();
             }
         });
 
@@ -213,5 +217,11 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
     @Override
     public void onMultipleLotteryBuySuccess() {
         viewModel.getCurrentCoinBalance();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPlayer.stop();
     }
 }

@@ -45,15 +45,18 @@ class LuckyDrawActivity : AppCompatActivity() {
         // Play Music
 
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.sound_spinner)
-        mediaPlayer?.let {
-            it.start();
+
+        try {
+            if (mediaPlayer == null || !mediaPlayer!!.isPlaying())
+            mediaPlayer = MediaPlayer.create(this, R.raw.sound_lottery)
+
+            mediaPlayer?.let {
+                it.isLooping = true
+                it.start();
+            }
+        } catch (e : Exception){
+            e.stackTrace
         }
-//        try {
-//
-//        } catch (e : Exception){
-//            e.stackTrace
-//        }
 
 
         // initially hide the animation
@@ -254,6 +257,11 @@ class LuckyDrawActivity : AppCompatActivity() {
     private fun getRandomRound(): Int {
         val rand = Random()
         return rand.nextInt(10) + 15
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.stop()
     }
 
 }

@@ -2,6 +2,7 @@ package com.realteenpatti.sanify.ui.horserace;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -17,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.realteenpatti.sanify.MainActivity;
+import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel;
 import com.realteenpatti.sanify.retrofit.models.horse.HorseMyBidResponseModel;
@@ -35,6 +37,7 @@ public class HorseRaceFragment extends Fragment {
     HorseRaceViewModel viewModel;
     private CountDownTimer countDownTimer;
     long localRemainingTime = 0;
+    MediaPlayer mPlayer;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -44,6 +47,12 @@ public class HorseRaceFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(HorseRaceViewModel.class);
 
         viewModel.getSlotDetailsInfo();
+
+        if (mPlayer == null || !mPlayer.isPlaying()) {
+            mPlayer = MediaPlayer.create(requireContext(), R.raw.sound_horse_race);
+            mPlayer.setLooping(true);
+            mPlayer.start();
+        }
 
         viewModel.getSlotDetails().observe(getViewLifecycleOwner(), new Observer<GetSlotDetailsResponseModel>() {
             @Override
@@ -351,8 +360,7 @@ public class HorseRaceFragment extends Fragment {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), MainActivity.class);
-                startActivity(intent);
+                getParentFragmentManager().popBackStackImmediate();
             }
         });
 
@@ -681,6 +689,12 @@ public class HorseRaceFragment extends Fragment {
         binding.bidingAmountFive.setText("Bid");
         binding.bidingAmountSix.setText("Bid");
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPlayer.stop();
     }
 
 }
