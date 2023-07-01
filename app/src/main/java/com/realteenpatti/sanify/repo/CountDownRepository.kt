@@ -100,7 +100,7 @@ class CountDownRepository {
         })
     }
 
-    fun buyLottery() {
+    fun buyLottery(amount : Int) {
         isBuySuccess.postValue(false)
         isLoading.postValue(true)
 
@@ -108,7 +108,7 @@ class CountDownRepository {
         val now = Date()
         val offsetFromUtc = tz.getOffset(now.time).toLong()
 
-        val body = BuyLotteryRequestModel(amount = 20, offsetFromUtc)
+        val body = BuyLotteryRequestModel(amount = amount, offsetFromUtc)
         api.buyLottery("Bearer " + localStorage.token, body).enqueue(object : Callback<BuyLotteryResponseModel>{
             override fun onResponse(
                 call: Call<BuyLotteryResponseModel>,

@@ -2,6 +2,7 @@ package com.realteenpatti.sanify.ui.spin
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.example.adminpannel.Retrofit.model.spinner.AllSpinnerCoinResponseModel
 import com.realteenpatti.sanify.repo.CoinRepository
 
 class LuckyDrawActivityViewModel : ViewModel() {
@@ -13,6 +14,7 @@ class LuckyDrawActivityViewModel : ViewModel() {
     val coinBalance : LiveData<Int> = coinRepo.currentCoinBalance
     val isCoinDeducted : LiveData<Boolean> = coinRepo.isCoinDeducted
     val isCoinAdded : LiveData<Boolean> = coinRepo.isCoinAdded
+    val spinnerCoins : LiveData<AllSpinnerCoinResponseModel> = coinRepo.allSpinnerCoins
 
     fun getCoinBalance(){
         coinRepo.getCoinBalance()
@@ -26,7 +28,7 @@ class LuckyDrawActivityViewModel : ViewModel() {
         coinRepo.deductCoin(amount)
     }
 
-    fun getCoins() {
+    fun getLuckyDrawCoinValues() {
         coinRepo.getAllCoin()
     }
 

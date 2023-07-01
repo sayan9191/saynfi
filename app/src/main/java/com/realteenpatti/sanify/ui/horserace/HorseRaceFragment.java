@@ -19,12 +19,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.databinding.FragmentHorseRaceBinding;
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel;
+import com.realteenpatti.sanify.retrofit.models.horse.HorseMyBidResponseModel;
+import com.realteenpatti.sanify.retrofit.models.horse.HorseMyBidResponseModelItem;
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel;
 import com.realteenpatti.sanify.ui.bottomsheet.LuckyDrawBottomSheet;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Consumer;
 
 public class HorseRaceFragment extends Fragment {
 
@@ -70,6 +73,38 @@ public class HorseRaceFragment extends Fragment {
         });
 
         viewModel.getCoinBalance();
+        viewModel.getMyHorseBids();
+
+        viewModel.getMyBidDetails().observe(getViewLifecycleOwner(), new Observer<HorseMyBidResponseModel>() {
+            @Override
+            public void onChanged(HorseMyBidResponseModel biddingDetails) {
+                biddingDetails.forEach(new Consumer<HorseMyBidResponseModelItem>() {
+                    @Override
+                    public void accept(HorseMyBidResponseModelItem bidDetail) {
+                        switch (bidDetail.getHorse_id()){
+                            case 1:
+                                binding.bidingAmountOne.setText(String.valueOf(bidDetail.getBid_amount()));
+                                break;
+                            case 2:
+                                binding.bidingAmountTwo.setText(String.valueOf(bidDetail.getBid_amount()));
+                                break;
+                            case 3:
+                                binding.bidingAmountThree.setText(String.valueOf(bidDetail.getBid_amount()));
+                                break;
+                            case 4:
+                                binding.bidingAmountFour.setText(String.valueOf(bidDetail.getBid_amount()));
+                                break;
+                            case 5:
+                                binding.bidingAmountFive.setText(String.valueOf(bidDetail.getBid_amount()));
+                                break;
+                            case 6:
+                                binding.bidingAmountSix.setText(String.valueOf(bidDetail.getBid_amount()));
+                                break;
+                        }
+                    }
+                });
+            }
+        });
 
         viewModel.getCurrentCoinBalance().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
@@ -83,6 +118,7 @@ public class HorseRaceFragment extends Fragment {
             public void onChanged(Boolean isSuccess) {
                 if (isSuccess){
                     viewModel.getCoinBalance();
+                    viewModel.getMyHorseBids();
                 }
             }
         });
@@ -571,6 +607,7 @@ public class HorseRaceFragment extends Fragment {
 
                 viewModel.getCoinBalance();
                 viewModel.getSlotDetailsInfo();
+                viewModel.getMyHorseBids();
             }
         };
 
@@ -632,6 +669,18 @@ public class HorseRaceFragment extends Fragment {
         binding.horseFour.setProgress(0, true);
         binding.horseFive.setProgress(0, true);
         binding.horseSix.setProgress(0, true);
+        resetBidAmounts();
+    }
+
+    private void resetBidAmounts() {
+
+        binding.bidingAmountOne.setText("Bid");
+        binding.bidingAmountTwo.setText("Bid");
+        binding.bidingAmountThree.setText("Bid");
+        binding.bidingAmountFour.setText("Bid");
+        binding.bidingAmountFive.setText("Bid");
+        binding.bidingAmountSix.setText("Bid");
+
     }
 
 }

@@ -10,19 +10,32 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.realteenpatti.sanify.R;
+import com.realteenpatti.sanify.ui.bottomsheet.listeners.LotteryBuyListener;
+import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
+
+import java.util.Objects;
 
 public class BottomSheetLotteryNo extends BottomSheetDialogFragment {
-    public BottomSheetLotteryNo() {
+    LotteryBuyListener listener;
+    public BottomSheetLotteryNo(LotteryBuyListener listener) {
+        this.listener = listener;
     }
+
+    BottomSheetLotteryNoViewModel viewModel;
+    int noOfTicket = 10;
 
     @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.lottery_buy_no, container, false);
+        viewModel = new ViewModelProvider(this).get(BottomSheetLotteryNoViewModel.class);
+
         TextView decrementBtn,noOfLottery,incrementBtn,totalBuyAmount,buyMLotteryBtn;
         decrementBtn = view.findViewById(R.id.decrementBtn);
         noOfLottery = view.findViewById(R.id.noOfLottery);
@@ -48,10 +61,11 @@ public class BottomSheetLotteryNo extends BottomSheetDialogFragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                int noOfTicket = Integer.parseInt(noOfLottery.getText().toString().trim());
+                noOfTicket = Integer.parseInt(noOfLottery.getText().toString().trim());
                 noOfTicket = noOfTicket + 10;
                 noOfLottery.setText(Integer.toString(noOfTicket));
-                totalBuyAmount.setText("Total Amount: "+noOfTicket*20);
+                totalBuyAmount.setText("Total Amount: "+noOfTicket*20 + "/-");
+                buyMLotteryBtn.setText("Buy " + noOfTicket + " tickets");
             }
         });
 
@@ -59,9 +73,44 @@ public class BottomSheetLotteryNo extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 //call the api here
-
+                viewModel.buyLottery(noOfTicket*20);
             }
         });
+
+        viewModel.isBuyLotterySuccess().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isSuccess) {
+                if (isSuccess){
+                    listener.onMultipleLotteryBuySuccess();
+                    dismiss();
+                }
+            }
+        });
+
+        viewModel.getErrorMessage().observe(requireActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if (!Objects.equals(s, "")) {
+                    Toast.makeText(requireContext(), s, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        viewModel.isLoading().observe(requireActivity(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoading) {
+                if (isLoading) {
+                    LoadingScreen.Companion.showLoadingDialog(requireContext());
+                } else {
+                    try {
+                        LoadingScreen.Companion.hideLoadingDialog();
+                    } catch (Exception e) {
+                        e.getStackTrace();
+                    }
+                }
+            }
+        });
+
         return view;
     }
 }

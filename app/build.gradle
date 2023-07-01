@@ -122,4 +122,7 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-appcheck-playintegrity'
 
+    // Slide animation for recycler view
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
+
 }

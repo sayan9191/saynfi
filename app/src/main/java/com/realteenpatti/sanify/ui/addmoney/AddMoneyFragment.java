@@ -22,38 +22,58 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.databinding.FragmentAddMoneyBinding;
+import com.realteenpatti.sanify.retrofit.models.addmoney.PaymentGetResponseModel;
+import com.realteenpatti.sanify.retrofit.models.addmoney.PaymentGetResponseModelItem;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.realteenpatti.sanify.utils.ImageResizer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class AddMoneyFragment extends Fragment {
     FragmentAddMoneyBinding binding;
     public static final int GALLERY_REQ_CODE = 1001;
     Uri imageUri;
-    private FirebaseStorage storage;
-    private StorageReference storageRef;
     private AddMoneyViewModel viewModel;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentAddMoneyBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(AddMoneyViewModel.class);
 
-        String[] paymentMethods = new String[]{"G-Pay : 76548375543", "Bkash : 01918092438", "Nagad : 01918092438", "PayPal : sumon1200@gmail.com", "Cash App: 9175641287"};
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireContext(), R.layout.drop_downitem_layout, paymentMethods);
-        binding.paymentMethod.setAdapter(arrayAdapter);
-        binding.paymentMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        viewModel.getTransactionMedium();
+
+        viewModel.getAllTransactionMediums().observe(getViewLifecycleOwner(), new Observer<PaymentGetResponseModel>() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //here save the payment method
-                Toast.makeText(requireContext(), binding.paymentMethod.getText().toString(), Toast.LENGTH_SHORT).show();
+            public void onChanged(PaymentGetResponseModel transactionMediumData) {
+                if (transactionMediumData != null && transactionMediumData.size() > 0){
+                    ArrayList<String> paymentMethods = new ArrayList<>();
+
+                    transactionMediumData.forEach(new Consumer<PaymentGetResponseModelItem>() {
+                        @Override
+                        public void accept(PaymentGetResponseModelItem paymentGetResponseModelItem) {
+                            paymentMethods.add(paymentGetResponseModelItem.getMedium_title());
+                        }
+                    });
+
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(requireContext(), R.layout.drop_downitem_layout, paymentMethods);
+                    binding.paymentMethod.setAdapter(arrayAdapter);
+                    binding.paymentMethod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            //here save the payment method
+                            Toast.makeText(requireContext(), binding.paymentMethod.getText().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
+
 
         binding.btn1.setOnClickListener(new View.OnClickListener() {
             @Override

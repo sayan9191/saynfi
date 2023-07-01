@@ -35,7 +35,7 @@ class CoinRepository {
 
     val userInfo : MutableLiveData<UserInfoResponseModel> = MutableLiveData()
 
-    val allCoins: MutableLiveData<AllSpinnerCoinResponseModel> = MutableLiveData()
+    val allSpinnerCoins: MutableLiveData<AllSpinnerCoinResponseModel> = MutableLiveData()
 
 
     fun getCoinBalance(){
@@ -204,7 +204,7 @@ class CoinRepository {
                         isLoading.postValue(false)
                         errorMessage.postValue("")
                         response.body()?.let {
-                            allCoins.postValue(it)
+                            allSpinnerCoins.postValue(it)
                         }
                     } else {
                         isLoading.postValue(false)

@@ -1,6 +1,7 @@
 package com.realteenpatti.sanify.ui.lottery;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.databinding.FragmentLotteryBuyBinding;
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel;
 import com.realteenpatti.sanify.ui.bottomsheet.BottomSheetLotteryNo;
+import com.realteenpatti.sanify.ui.bottomsheet.listeners.LotteryBuyListener;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 import com.realteenpatti.sanify.ui.lottery.allParticipants.ParticipantFragment;
 import com.realteenpatti.sanify.ui.lottery.prizepool.PrizePoolFragment;
@@ -29,7 +31,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.TimeZone;
 
-public class LotteryBuyFragment extends Fragment {
+public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
 
     FragmentLotteryBuyBinding binding;
     private CountDownTimer countDownTimer = null;
@@ -44,6 +46,9 @@ public class LotteryBuyFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(LotteryBuyFragmentViewModel.class);
 
         viewModel.getCurrentCoinBalance();
+
+        MediaPlayer mPlayer = MediaPlayer.create(requireContext(), R.raw.sound_spinner);
+        mPlayer.start();
 
         viewModel.getCoinBalance().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
@@ -130,7 +135,7 @@ public class LotteryBuyFragment extends Fragment {
             public void onClick(View view) {
 
                 //call the api here Please
-                viewModel.buyLottery();
+                viewModel.buyLottery(20);
             }
         });
 
@@ -139,7 +144,9 @@ public class LotteryBuyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //SELECT QUANTITY CODE HERE
-                BottomSheetLotteryNo bottomSheetLotteryNo = new BottomSheetLotteryNo();
+                BottomSheetLotteryNo bottomSheetLotteryNo = new BottomSheetLotteryNo(LotteryBuyFragment.this);
+
+
                 bottomSheetLotteryNo.show(getParentFragmentManager(), "TAG");
             }
         });
@@ -174,7 +181,7 @@ public class LotteryBuyFragment extends Fragment {
             public void onClick(View view) {
 
                 Log.d("___________", String.valueOf(remainingMillis));
-                if (remainingMillis - 18000000 > 0 || remainingMillis < 0) {
+//                if (remainingMillis - 18000000 > 0 || remainingMillis < 0) {
 
                     ResultFragment resultFragment = new ResultFragment();
 
@@ -183,9 +190,9 @@ public class LotteryBuyFragment extends Fragment {
                             .addToBackStack("Result")
                             .replace(R.id.fragmentContainerView, resultFragment)
                             .commit();
-                }else {
-                    Toast.makeText(requireContext(), "Winner will be announced after lottery completion", Toast.LENGTH_SHORT).show();
-                }
+//                }else {
+//                    Toast.makeText(requireContext(), "Winner will be announced after lottery completion", Toast.LENGTH_SHORT).show();
+//                }
 
             }
         });
@@ -201,5 +208,10 @@ public class LotteryBuyFragment extends Fragment {
 
         return binding.getRoot();
 
+    }
+
+    @Override
+    public void onMultipleLotteryBuySuccess() {
+        viewModel.getCurrentCoinBalance();
     }
 }

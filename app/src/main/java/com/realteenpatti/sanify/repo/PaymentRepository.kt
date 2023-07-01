@@ -1,8 +1,6 @@
 package com.realteenpatti.sanify.repo
 
 import android.graphics.Bitmap
-import android.net.Uri
-import android.provider.MediaStore
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.OnFailureListener
@@ -37,7 +35,7 @@ class PaymentRepository {
 
     val uploadStatus: MutableLiveData<Boolean> = MutableLiveData(false)
 
-    val getPaymentInfo: MutableLiveData<PaymentGetResponseModel> = MutableLiveData()
+    val allTransactionMediums: MutableLiveData<PaymentGetResponseModel> = MutableLiveData()
 
 
 
@@ -114,7 +112,7 @@ class PaymentRepository {
         return stream.toByteArray()
     }
 
-    fun getPayment() {
+    fun getTransactionMediums() {
         isLoading.postValue(true)
         api.getAllTransactions()
             .enqueue(object : Callback<PaymentGetResponseModel> {
@@ -126,7 +124,7 @@ class PaymentRepository {
                         isLoading.postValue(false)
                         errorMessage.postValue("")
                         response.body()?.let {
-                            getPaymentInfo.postValue(it)
+                            allTransactionMediums.postValue(it)
                         }
                     } else {
                         isLoading.postValue(false)

@@ -35,7 +35,7 @@ class HorseRaceViewModel : ViewModel() {
         repo.horseBid(amount, horseNum)
     }
 
-    fun myHorseBid(){
+    fun getMyHorseBids(){
         repo.myBidDetails
     }
 }
