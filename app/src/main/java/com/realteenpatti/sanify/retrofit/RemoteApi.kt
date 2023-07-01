@@ -130,5 +130,7 @@ interface RemoteApi {
     @GET("transaction/get_all_transaction_mediums")
     fun getAllTransactions(): Call<PaymentGetResponseModel>
 
+    @GET("lottery/get_lottery_notice")
+    fun getLotteryNotice(): Call<LotteryNoticeGetResponseModel>
 
 }
