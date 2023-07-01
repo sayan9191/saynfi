@@ -692,6 +692,12 @@ public class HorseRaceFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        mPlayer.stop();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         mPlayer.stop();

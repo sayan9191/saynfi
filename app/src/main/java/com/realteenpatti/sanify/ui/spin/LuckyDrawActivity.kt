@@ -259,6 +259,11 @@ class LuckyDrawActivity : AppCompatActivity() {
         return rand.nextInt(10) + 15
     }
 
+    override fun onPause() {
+        super.onPause()
+        mediaPlayer?.stop()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer?.stop()
