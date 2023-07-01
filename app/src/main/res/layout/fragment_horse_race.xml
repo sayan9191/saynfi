@@ -110,7 +110,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ground_bg"
+                android:background="@drawable/ground_bg1"
                 android:padding="15dp">
 
                 <View
@@ -134,12 +134,10 @@
                     android:id="@+id/horceLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:paddingBottom="4dp"
                     android:orientation="vertical">
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/purple_700" />
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -157,17 +155,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/progress_horse_logo"
-                        android:progressBackgroundTint="@color/brown"
+                        android:progressBackgroundTint="#009C550F"
                         android:splitTrack="false"
                         android:enabled="false"
-                        android:progressTint="#ED6035"
+                        android:progressTint="#00ED6035"
                         android:thumbTint="#F34601"
                         android:thumbOffset="23dp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/purple_700" />
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -185,17 +180,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/progress_horse_logo"
-                        android:progressBackgroundTint="@color/brown"
+                        android:progressBackgroundTint="#009C550F"
                         android:splitTrack="false"
                         android:enabled="false"
                         android:thumbTint="#CC9A03"
-                        android:progressTint="@color/yellow"
+                        android:progressTint="#00FFC107"
                         android:thumbOffset="23dp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/purple_700" />
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -213,17 +205,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/progress_horse_logo"
-                        android:progressBackgroundTint="@color/brown"
+                        android:progressBackgroundTint="#009C550F"
                         android:splitTrack="false"
                         android:enabled="false"
                         android:thumbTint="#34C500"
-                        android:progressTint="#5DB34A"
+                        android:progressTint="#005DB34A"
                         android:thumbOffset="23dp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/purple_700" />
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -242,17 +231,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/progress_horse_logo"
-                        android:progressBackgroundTint="@color/brown"
+                        android:progressBackgroundTint="#009C550F"
                         android:splitTrack="false"
                         android:thumbTint="#00CFCD"
-                        android:progressTint="#44ACA1"
+                        android:progressTint="#0044ACA1"
                         android:enabled="false"
                         android:thumbOffset="23dp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/purple_700" />
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -270,17 +256,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/progress_horse_logo"
-                        android:progressBackgroundTint="@color/brown"
+                        android:progressBackgroundTint="#009C550F"
                         android:splitTrack="false"
                         android:thumbTint="#D900FF"
-                        android:progressTint="#BA4BFF"
+                        android:progressTint="#00BA4BFF"
                         android:enabled="false"
                         android:thumbOffset="23dp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/purple_700" />
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -299,17 +282,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:enabled="false"
-                        android:progressBackgroundTint="@color/brown"
-                        android:progressTint="#FF6060"
+                        android:progressBackgroundTint="#009C550F"
+                        android:progressTint="#00FF6060"
                         android:splitTrack="false"
                         android:thumb="@drawable/progress_horse_logo"
                         android:thumbOffset="23dp"
                         android:thumbTint="#FF0000" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/purple_700" />
+
                 </LinearLayout>
 
 

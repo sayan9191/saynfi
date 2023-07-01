@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -36,7 +37,7 @@ public class LotteryBuyFragment extends Fragment {
     long remainingMillis =0;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLotteryBuyBinding.inflate(getLayoutInflater(), container, false);
 
@@ -56,7 +57,7 @@ public class LotteryBuyFragment extends Fragment {
             @Override
             public void onChanged(Boolean isSuccess) {
                 if (isSuccess) {
-                    Toast.makeText(requireContext(), "Lottery entry (+1)", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(requireContext(), "Lottery entry (+1)", Toast.LENGTH_SHORT).show();
                     viewModel.getCurrentCoinBalance();
                 }
             }
@@ -174,10 +175,13 @@ public class LotteryBuyFragment extends Fragment {
 
                 Log.d("___________", String.valueOf(remainingMillis));
                 if (remainingMillis - 18000000 > 0 || remainingMillis < 0) {
+
+                    ResultFragment resultFragment = new ResultFragment();
+
                     getParentFragmentManager().beginTransaction()
                             .setReorderingAllowed(true)
                             .addToBackStack("Result")
-                            .replace(R.id.fragmentContainerView, new ResultFragment())
+                            .replace(R.id.fragmentContainerView, resultFragment)
                             .commit();
                 }else {
                     Toast.makeText(requireContext(), "Winner will be announced after lottery completion", Toast.LENGTH_SHORT).show();

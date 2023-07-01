@@ -35,7 +35,6 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:padding="10dp"
-            android:text="SAYAN mONDAL"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
