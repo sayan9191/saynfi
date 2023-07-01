@@ -44,6 +44,14 @@ public class ReferandEarnFragment extends Fragment {
             }
         });
 
+        //back button
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().popBackStackImmediate();
+            }
+        });
+
 
         return binding.getRoot();
     }

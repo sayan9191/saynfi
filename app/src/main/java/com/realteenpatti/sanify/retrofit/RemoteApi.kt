@@ -10,6 +10,7 @@ import com.realteenpatti.sanify.retrofit.models.coin.UpdateCoinRequestModel
 import com.realteenpatti.sanify.retrofit.models.coin.UpdateCoinResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseBidRequestModel
+import com.realteenpatti.sanify.retrofit.models.horse.HorseMyBidResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
 import com.realteenpatti.sanify.retrofit.models.login.LoginResponse
 import com.realteenpatti.sanify.retrofit.models.lottery.*
@@ -114,6 +115,9 @@ interface RemoteApi {
 
     @GET("horse/get_result_details")
     fun getResultDetails(@Header("Authorization") token: String): Call<HorseWinnerResponseModel>
+
+    @GET("horse/get_my_bids")
+    fun getMyBidDetails(@Header("Authorization") token: String): Call<HorseMyBidResponseModel>
 
     @GET("reffer/get_my_refferals")
     fun getMyRefer(@Header("Authorization") token: String): Call<ReferResponseModel>

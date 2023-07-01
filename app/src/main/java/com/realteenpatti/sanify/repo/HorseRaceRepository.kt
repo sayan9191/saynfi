@@ -8,8 +8,8 @@ import com.realteenpatti.sanify.retrofit.models.CommonErrorModel
 import com.realteenpatti.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseBidRequestModel
+import com.realteenpatti.sanify.retrofit.models.horse.HorseMyBidResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
-import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel
 import com.realteenpatti.sanify.utils.NetworkUtils
 import com.realteenpatti.sanify.utils.StorageUtil
 import retrofit2.Call
@@ -29,6 +29,7 @@ class HorseRaceRepository {
     val slotDetails: MutableLiveData<GetSlotDetailsResponseModel> = MutableLiveData()
     val winnerDetail: MutableLiveData<HorseWinnerResponseModel> = MutableLiveData()
     val isBidSuccess: MutableLiveData<Boolean> = MutableLiveData(false)
+    val myBidDetails: MutableLiveData<HorseMyBidResponseModel> = MutableLiveData()
 
     fun getSlotDetails() {
         isLoading.postValue(true)
@@ -141,15 +142,54 @@ class HorseRaceRepository {
         })
     }
 
-    fun getCoinBalance(){
+    fun getMyDetails() {
         isLoading.postValue(true)
-        api.getCoinBalance("Bearer " + localStorage.token).enqueue(object : Callback<CoinBalanceResponseModel>{
-            override fun onResponse(
-                call: Call<CoinBalanceResponseModel>,
-                response: Response<CoinBalanceResponseModel>
-            ) {
-                if (response.isSuccessful){
-                    val coinBalanceData = response.body()
+        api.getMyBidDetails("Bearer " + localStorage.token)
+            .enqueue(object : Callback<HorseMyBidResponseModel> {
+                override fun onResponse(
+                    call: Call<HorseMyBidResponseModel>,
+                    response: Response<HorseMyBidResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        isLoading.postValue(false)
+                        errorMessage.postValue("")
+                        response.body()?.let {
+                            myBidDetails.postValue(it)
+                        }
+                    } else {
+                        isLoading.postValue(false)
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+
+                                Log.e("Error: ", errorResponse.detail)
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<HorseMyBidResponseModel>, t: Throwable) {
+                    Log.d("Request Failed. Error: ", t.message.toString())
+                    isLoading.postValue(false)
+                    errorMessage.postValue("Something went wrong")
+                }
+
+            })
+    }
+
+    fun getCoinBalance() {
+        isLoading.postValue(true)
+        api.getCoinBalance("Bearer " + localStorage.token)
+            .enqueue(object : Callback<CoinBalanceResponseModel> {
+                override fun onResponse(
+                    call: Call<CoinBalanceResponseModel>,
+                    response: Response<CoinBalanceResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        val coinBalanceData = response.body()
                     if (coinBalanceData != null){
                         currentCoinBalance.postValue(coinBalanceData.num_of_coins)
                         isLoading.postValue(false)

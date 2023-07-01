@@ -36,7 +36,7 @@ public class Profile_Fragment extends Fragment {
     View view;
     StorageUtil localStorage = StorageUtil.Companion.getInstance();
     ProfileViewModel viewModel;
-    TextView profileName, profilePhoneNumber;
+    TextView profileName, profilePhoneNumber,coinAmount;
 
 
     @Override
@@ -54,12 +54,22 @@ public class Profile_Fragment extends Fragment {
         referBtn = view.findViewById(R.id.referBtn);
         profileName = view.findViewById(R.id.profileName);
         profilePhoneNumber = view.findViewById(R.id.profilePhoneNumber);
+        coinAmount = view.findViewById(R.id.coinAmount);
 
         localStorage.setSharedPref(requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE));
 
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
         viewModel.getCurrentUserInfo();
+        viewModel.getCoinBalance();
+
+        viewModel.getCurrentCoinBalance().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer balance) {
+                coinAmount.setText(String.valueOf(balance));
+            }
+        });
+
 
         addMoneyHistoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override

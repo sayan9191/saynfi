@@ -238,8 +238,8 @@
                         android:layout_marginBottom="20dp"
                         android:background="@drawable/circular_shape"
                         android:gravity="center"
-                        android:text="Your Tickets"
                         android:padding="5dp"
+                        android:text="Your Tickets"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -274,31 +274,72 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                />
+                android:layout_height="50dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/buyLotteryBtn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/golden_border_button"
-        android:elevation="5dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Join ৳20"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
+        <LinearLayout
+            android:id="@+id/buyLotteryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/spin_btn_background"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:text="Single Ticket"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/coinlogo"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/buyMLotteryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/spin_btn_background"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Buy Multiple Ticket"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

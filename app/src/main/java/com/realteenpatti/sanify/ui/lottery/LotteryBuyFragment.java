@@ -13,10 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.databinding.FragmentLotteryBuyBinding;
-import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel;
+import com.realteenpatti.sanify.ui.bottomsheet.BottomSheetLotteryNo;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 import com.realteenpatti.sanify.ui.lottery.allParticipants.ParticipantFragment;
 import com.realteenpatti.sanify.ui.lottery.prizepool.PrizePoolFragment;
@@ -122,12 +123,23 @@ public class LotteryBuyFragment extends Fragment {
             }
         });
 
-
+        //Single Buy Lottery
         binding.buyLotteryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //call the api here Please
                 viewModel.buyLottery();
+            }
+        });
+
+        //Multiple Buy Lottery
+        binding.buyMLotteryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //SELECT QUANTITY CODE HERE
+                BottomSheetLotteryNo bottomSheetLotteryNo = new BottomSheetLotteryNo();
+                bottomSheetLotteryNo.show(getParentFragmentManager(), "TAG");
             }
         });
         //all participants

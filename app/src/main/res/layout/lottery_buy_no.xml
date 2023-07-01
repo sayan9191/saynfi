@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@color/black" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Select the No. of tickets"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/decrementBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/spin_btn_background"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/noOfLottery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="1"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/incrementBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/spin_btn_background"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/totalBuyAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Amount : 200/-"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/buyMLotteryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spin_btn_background"
+        android:elevation="5dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:text="Buy Multiple Ticket"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+</LinearLayout>

@@ -11,8 +11,11 @@ class ProfileViewModel : ViewModel() {
     val isLoading : LiveData<Boolean> = coinRepo.isLoading
     val errorMessage : LiveData<String> = coinRepo.errorMessage
     val userInfo : LiveData<UserInfoResponseModel> = coinRepo.userInfo
+    val currentCoinBalance : LiveData<Int> = coinRepo.currentCoinBalance
 
-
+    fun getCoinBalance(){
+        coinRepo.getCoinBalance()
+    }
 
     fun getCurrentUserInfo(){
         coinRepo.getUserInfo()

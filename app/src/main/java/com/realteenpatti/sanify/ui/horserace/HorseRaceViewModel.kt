@@ -3,8 +3,8 @@ package com.realteenpatti.sanify.ui.horserace
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.realteenpatti.sanify.repo.HorseRaceRepository
-import com.realteenpatti.sanify.retrofit.models.UserInfoResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseModel
+import com.realteenpatti.sanify.retrofit.models.horse.HorseMyBidResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
 
 class HorseRaceViewModel : ViewModel() {
@@ -15,7 +15,8 @@ class HorseRaceViewModel : ViewModel() {
     val winnerDetail: LiveData<HorseWinnerResponseModel> = repo.winnerDetail
     val isBidSuccess: LiveData<Boolean> = repo.isBidSuccess
     val errorMessage: LiveData<String> = repo.errorMessage
-    val currentCoinBalance : LiveData<Int> = repo.currentCoinBalance
+    val currentCoinBalance: LiveData<Int> = repo.currentCoinBalance
+    val myBidDetails: LiveData<HorseMyBidResponseModel> = repo.myBidDetails
 
 
     fun getCoinBalance(){
@@ -32,5 +33,9 @@ class HorseRaceViewModel : ViewModel() {
 
     fun horseBid(amount: Int, horseNum: Int) {
         repo.horseBid(amount, horseNum)
+    }
+
+    fun myHorseBid(){
+        repo.myBidDetails
     }
 }

@@ -12,15 +12,11 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.realteenpatti.sanify.R
 import com.realteenpatti.sanify.databinding.FragmentDashBoardBinding
-
-import com.realteenpatti.sanify.ui.horserace.HorseRaceFragment
-
-import com.realteenpatti.sanify.ui.lottery.LotteryBuyFragment
-import com.realteenpatti.sanify.ui.profile.Profile_Fragment
-
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.showLoadingDialog
-import com.realteenpatti.sanify.ui.home.DashBoardViewModel
+import com.realteenpatti.sanify.ui.horserace.HorseRaceFragment
+import com.realteenpatti.sanify.ui.lottery.LotteryBuyFragment
+import com.realteenpatti.sanify.ui.profile.Profile_Fragment
 import com.realteenpatti.sanify.ui.spin.LuckyDrawActivity
 
 class DashBoardFragment : Fragment() {
@@ -108,25 +104,25 @@ class DashBoardFragment : Fragment() {
     val slideModels = ArrayList<SlideModel>()
     slideModels.add(
         SlideModel(
-            "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__480.jpg",
+            R.drawable.poster1,
             ScaleTypes.FIT
         )
     )
     slideModels.add(
         SlideModel(
-            "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__480.jpg",
+            R.drawable.poster2,
             ScaleTypes.FIT
         )
     )
     slideModels.add(
         SlideModel(
-            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+            R.drawable.poster3,
             ScaleTypes.FIT
         )
     )
     slideModels.add(
         SlideModel(
-            "https://cdn.pixabay.com/photo/2014/04/14/20/11/pink-324175__480.jpg",
+            R.drawable.poster4,
             ScaleTypes.FIT
         )
     )
