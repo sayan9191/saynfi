@@ -19,6 +19,7 @@ import com.realteenpatti.sanify.MainActivity;
 import com.realteenpatti.sanify.R;
 import com.realteenpatti.sanify.databinding.FragmentLotteryBuyBinding;
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel;
+import com.realteenpatti.sanify.retrofit.models.lottery.LotteryNoticeGetResponseModel;
 import com.realteenpatti.sanify.ui.bottomsheet.BottomSheetLotteryNo;
 import com.realteenpatti.sanify.ui.bottomsheet.listeners.LotteryBuyListener;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
@@ -47,6 +48,14 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
         viewModel = new ViewModelProvider(this).get(LotteryBuyFragmentViewModel.class);
 
         viewModel.getCurrentCoinBalance();
+        viewModel.getLotteryNoticeMessage();
+
+        viewModel.getNoticeBoardMessage().observe(getViewLifecycleOwner(), new Observer<LotteryNoticeGetResponseModel>() {
+            @Override
+            public void onChanged(LotteryNoticeGetResponseModel lotteryNoticeGetResponseModel) {
+                binding.noticeText.setText(lotteryNoticeGetResponseModel.getNotice_text());
+            }
+        });
 
         if (mPlayer == null || !mPlayer.isPlaying()) {
             mPlayer = MediaPlayer.create(requireContext(), R.raw.sound_spinner);

@@ -9,6 +9,7 @@ import com.realteenpatti.sanify.retrofit.models.coin.CoinBalanceResponseModel
 import com.realteenpatti.sanify.retrofit.models.lottery.BuyLotteryRequestModel
 import com.realteenpatti.sanify.retrofit.models.lottery.BuyLotteryResponseModel
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel
+import com.realteenpatti.sanify.retrofit.models.lottery.LotteryNoticeGetResponseModel
 import com.realteenpatti.sanify.utils.NetworkUtils
 import com.realteenpatti.sanify.utils.StorageUtil
 import retrofit2.Call
@@ -25,6 +26,47 @@ class CountDownRepository {
     val currentCoinBalance: MutableLiveData<Int> = MutableLiveData()
 //    val lotteryBuy: MutableLiveData<LotteryBuyResponseModel> = MutableLiveData()
     val isBuySuccess : MutableLiveData<Boolean> = MutableLiveData()
+    val noticeBoardMessage: MutableLiveData<LotteryNoticeGetResponseModel> = MutableLiveData()
+
+    fun getNoticeMessage() {
+        isLoading.postValue(true)
+        api.getLotteryNotice()
+            .enqueue(object : Callback<LotteryNoticeGetResponseModel> {
+                override fun onResponse(
+                    call: Call<LotteryNoticeGetResponseModel>,
+                    response: Response<LotteryNoticeGetResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        isLoading.postValue(false)
+                        errorMessage.postValue("")
+                        response.body()?.let {
+                            noticeBoardMessage.postValue(it)
+                        }
+                    } else {
+                        isLoading.postValue(false)
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+
+                                Log.e("Error: ", errorResponse.detail)
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<LotteryNoticeGetResponseModel>, t: Throwable) {
+                    Log.d("Request Failed. Error: ", t.message.toString())
+                    isLoading.postValue(false)
+                    errorMessage.postValue("Something went wrong")
+                }
+
+            })
+    }
+
+
 
     fun getCountDownTime() {
         isLoading.postValue(true)
