@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="How It works"
+                android:text="Know About Refer and Earn"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -71,53 +71,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Step 1:Share the code"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Friend uses your code to register"
+                android:text="Reffer your friend and get lifetime 5% bonus."
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Step 2:Friend gets Reward"
+                android:text="If your friend use your reffer code both you will get instant 10.
+Also you will get 5% Commission from your friend's deposit lifetime."
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Your Friend get ৳১০ joining bonus"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Step 3:You get Rewards"
+                android:text="Share this URL with this URL to your Facebook profile and send your post URL to our WhatsApp to get 50 instant(lock profile will not allow for this bonus)."
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="You also get ৳১০"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
