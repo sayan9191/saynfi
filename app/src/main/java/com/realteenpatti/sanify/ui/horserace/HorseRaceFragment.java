@@ -423,9 +423,13 @@ public class HorseRaceFragment extends Fragment {
 
         binding.bidBtnSix.setEnabled(false);
         binding.bidBtnSix.setAlpha(0.5f);
+        binding.myBidingLinear1.setVisibility(View.GONE);
+        binding.myBidingLinear2.setVisibility(View.GONE);
+        binding.myBidingText.setText("Try Your Luck here");
     }
 
     //bid start function--SAYAN
+    @SuppressLint("SetTextI18n")
     public void enableBidButtons() {
         binding.bidBtnOne.setEnabled(true);
         binding.bidBtnOne.setAlpha(1f);
@@ -439,6 +443,9 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnFive.setAlpha(1f);
         binding.bidBtnSix.setEnabled(true);
         binding.bidBtnSix.setAlpha(1f);
+        binding.myBidingLinear1.setVisibility(View.VISIBLE);
+        binding.myBidingLinear2.setVisibility(View.VISIBLE);
+        binding.myBidingText.setText("Your Biding Amount");
     }
 
     boolean isWinnerFetched = false;

@@ -11,8 +11,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.realteenpatti.sanify.databinding.FragmentYourTicketsBinding;
 import com.realteenpatti.sanify.adapter.lottery.MyTicketAdapter;
+import com.realteenpatti.sanify.databinding.FragmentYourTicketsBinding;
 import com.realteenpatti.sanify.retrofit.models.lottery.MyTicketResponseModel;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 
@@ -40,6 +40,12 @@ public class MyTicketFragment extends Fragment {
         viewModel.getMyTicketList().observe(getViewLifecycleOwner(), new Observer<MyTicketResponseModel>() {
             @Override
             public void onChanged(MyTicketResponseModel myTicketResponseModelItems) {
+                if (myTicketResponseModelItems.size() == 0) {
+                    binding.statusOfTicket.setVisibility(View.VISIBLE);
+                } else {
+                    binding.statusOfTicket.setVisibility(View.GONE);
+                    binding.todayTicket.setVisibility(View.VISIBLE);
+                }
                 adapter.updateList(myTicketResponseModelItems);
             }
         });

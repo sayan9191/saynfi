@@ -40,7 +40,7 @@ public class HelpCenterActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + "+88" + "01918092438" + "&text=" + "Hi,"));
+                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + "+1" + "7756283587" + "&text=" + "Hi,"));
                 startActivity(intent);
             }
         });
