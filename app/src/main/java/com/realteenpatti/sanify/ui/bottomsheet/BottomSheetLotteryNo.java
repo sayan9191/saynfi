@@ -44,13 +44,15 @@ public class BottomSheetLotteryNo extends BottomSheetDialogFragment {
         buyMLotteryBtn = view.findViewById(R.id.buyMLotteryBtn);
 
         decrementBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 int noOfTicket = Integer.parseInt(noOfLottery.getText().toString().trim());
                 if (noOfTicket > 2) {
                     noOfTicket = noOfTicket - 1;
                     noOfLottery.setText(Integer.toString(noOfTicket));
-                    totalBuyAmount.setText("Total Amount: "+noOfTicket*20);
+                    totalBuyAmount.setText("Total Amount: "+noOfTicket*20 + "/-");
+                    buyMLotteryBtn.setText("Buy " + noOfTicket + " Tickets");
                 } else {
                     Toast.makeText(requireContext(), "Minimum Lottery No. is 2", Toast.LENGTH_SHORT).show();
                 }
@@ -65,7 +67,7 @@ public class BottomSheetLotteryNo extends BottomSheetDialogFragment {
                 noOfTicket = noOfTicket + 10;
                 noOfLottery.setText(Integer.toString(noOfTicket));
                 totalBuyAmount.setText("Total Amount: "+noOfTicket*20 + "/-");
-                buyMLotteryBtn.setText("Buy " + noOfTicket + " tickets");
+                buyMLotteryBtn.setText("Buy " + noOfTicket + " Tickets");
             }
         });
 
