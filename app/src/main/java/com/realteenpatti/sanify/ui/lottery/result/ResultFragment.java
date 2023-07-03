@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.realteenpatti.sanify.databinding.FragmentResultBinding;
 import com.realteenpatti.sanify.adapter.lottery.ResultAdapter;
 import com.realteenpatti.sanify.retrofit.models.lottery.AllWinnerResponseModel;
 import com.realteenpatti.sanify.retrofit.models.lottery.AllWinnerResponseModelItem;
+import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel;
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen;
 
 
@@ -43,30 +45,44 @@ public class ResultFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-//        try {
-//            if (getArguments() != null) {
-//                timeTillResults = getArguments().getLong("timeTillResults");
-//            }
-//        }catch (Exception e){
-//            e.getStackTrace();
-//        }
-
         binding = FragmentResultBinding.inflate(getLayoutInflater(), container, false);
         viewModel = new ViewModelProvider(this).get(ResultViewModel.class);
         adapter = new ResultAdapter();
 
         //set Adapter
-        binding.recyclerviewResult.setLayoutManager(new LinearLayoutManager(requireContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        layoutManager.setReverseLayout(true);
+        binding.recyclerviewResult.setLayoutManager(layoutManager);
         binding.recyclerviewResult.setItemAnimator(new SlideInRightAnimator());
         binding.recyclerviewResult.setAdapter(adapter);
 
 
-        // get how much time spent
-        timeTillResults = 5000;
 
 
-        // Get all winnerList
-        viewModel.getAllWinnerDetails();
+        viewModel.getLotterySlotDetails();
+
+        viewModel.getSlotDetails().observe(getViewLifecycleOwner(), new Observer<CountDownTimeResponseModel>() {
+            @Override
+            public void onChanged(CountDownTimeResponseModel lotterySlotData) {
+                long timeLeft = Long.parseLong(lotterySlotData.getTime_left_in_millis());
+
+                if (timeLeft < 0){
+                    // get how much time spent
+                    timeTillResults = -timeLeft;
+//                    timeTillResults = 16000;
+
+                    currentIndex = (int) timeTillResults / 7500;
+                    if (currentIndex >= winnerList.size()){
+                        binding.digitAnimationLayout.setVisibility(View.GONE);
+                        binding.topLottieSparkle.setVisibility(View.GONE);
+                    }
+
+
+                    // Get all winnerList
+                    viewModel.getAllWinnerDetails();
+                }
+            }
+        });
 
         viewModel.getAllWinnerList().observe(getViewLifecycleOwner(), new Observer<AllWinnerResponseModel>() {
             @Override
@@ -152,8 +168,14 @@ public class ResultFragment extends Fragment {
             public void onFinish() {
                 view.setText(String.valueOf(num));
                 if (timeToShow == 5500){
-                    changeToNextNum();
-                }
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            changeToNextNum();
+                        }
+                        }, 1000);
+                    }
+
             }
         };
 
@@ -161,34 +183,47 @@ public class ResultFragment extends Fragment {
     }
 
     void changeToNextNum(){
-        currentIndex += 1;
-        if (currentIndex >= winnerList.size()){
-            adapter.updateAllList(winnerList);
-            binding.recyclerviewResult.scrollToPosition(winnerList.size() - 1);
-        }else{
-            adapter.updateAllList(winnerList);
-            binding.recyclerviewResult.scrollToPosition(winnerList.subList(0, currentIndex).size() - 1);
-
-        if(currentIndex < winnerList.size())
-            changeToWinningNumber(winnerList.get(currentIndex).getLottery_token_no());
-        }
+        timeTillResults += 7500;
+        initAnimation();
+//        currentIndex += 1;
+//        if (currentIndex >= winnerList.size()){
+//            adapter.updateAllList(winnerList);
+//            binding.recyclerviewResult.scrollToPosition(winnerList.size() - 1);
+//        }else{
+//            adapter.updateAllList(winnerList);
+//            binding.recyclerviewResult.scrollToPosition(winnerList.subList(0, currentIndex).size() - 1);
+//
+//        if(currentIndex < winnerList.size())
+//            changeToWinningNumber(winnerList.get(currentIndex).getLottery_token_no());
+//        }
     }
 
     void initAnimation(){
         if (timeTillResults != -1){
-            currentIndex = (int) timeTillResults / 5500;
+//            currentIndex = (int) timeTillResults / 7500;
             if (currentIndex >= winnerList.size()){
                 adapter.updateAllList(winnerList);
                 binding.recyclerviewResult.scrollToPosition(winnerList.size() - 1);
             }else{
                 adapter.updateAllList(winnerList.subList(0, currentIndex));
 
-                    binding.recyclerviewResult.scrollToPosition(winnerList.subList(0, currentIndex).size() - 1);
-                    changeToWinningNumber(winnerList.get(currentIndex).getLottery_token_no());
+                binding.recyclerviewResult.scrollToPosition(winnerList.subList(0, currentIndex).size() - 1);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        changeToWinningNumber(winnerList.get(currentIndex).getLottery_token_no());
+                    }
+                }, 1000);
 
             }
         }else {
-            changeToWinningNumber(winnerList.get(0).getLottery_token_no());
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    changeToWinningNumber(winnerList.get(0).getLottery_token_no());
+                }
+            }, 1000);
         }
     }
 }

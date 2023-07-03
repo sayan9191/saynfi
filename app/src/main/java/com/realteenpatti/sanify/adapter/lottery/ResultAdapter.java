@@ -30,7 +30,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultViewHolder> {
             holder.winnerName.setText("৳" + item.getUser().getName());
         }
 
-        holder.winnerRank.setText("Rank" + item.getPosition());
+        holder.winnerRank.setText("Rank " + item.getPosition());
 
         holder.winnerTicketNo.setText(String.valueOf(items.get(position).getLottery_token_no()));
     }
