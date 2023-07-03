@@ -58,17 +58,32 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/todayTicket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Todays Ticket"
+                android:text="Today's Ticket"
+                android:visibility="gone"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/statusOfTicket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="You have no tickets to display. Please buy some tickets."
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerviewYourTicket"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
