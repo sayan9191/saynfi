@@ -197,7 +197,7 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
             public void onClick(View view) {
 
                 Log.d("___________", String.valueOf(remainingMillis));
-                if (remainingMillis - 18000000 > 0 || remainingMillis < 0) {
+                if (remainingMillis + 300000 - 18000000 > 0 || remainingMillis + 300000 < 0) {
 
                     ResultFragment resultFragment = new ResultFragment();
 
