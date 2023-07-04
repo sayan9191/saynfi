@@ -88,13 +88,14 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
             @Override
             public void onChanged(CountDownTimeResponseModel countDownTimeResponseModel) {
 
-                TimeZone tz = TimeZone.getDefault();
-                Date now = new Date();
-                long offsetFromUtc = tz.getOffset(now.getTime());
+//                TimeZone tz = TimeZone.getDefault();
+//                Date now = new Date();
+//                long offsetFromUtc = tz.getOffset(now.getTime());
+//
+//                Log.d("___________ offset", String.valueOf(offsetFromUtc));
 
-                Log.d("___________ offset", String.valueOf(offsetFromUtc));
-
-                remainingMillis = Long.parseLong(countDownTimeResponseModel.getTime_left_in_millis()) - offsetFromUtc;
+//                remainingMillis = Long.parseLong(countDownTimeResponseModel.getTime_left_in_millis()) - offsetFromUtc;
+                remainingMillis = Long.parseLong(countDownTimeResponseModel.getTime_left_in_millis());
                 if (countDownTimer != null){
                     countDownTimer.cancel();
                 }
@@ -120,6 +121,7 @@ public class LotteryBuyFragment extends Fragment implements LotteryBuyListener {
                 countDownTimer.start();
             }
         });
+
         viewModel.getErrorMessage().observe(requireActivity(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
