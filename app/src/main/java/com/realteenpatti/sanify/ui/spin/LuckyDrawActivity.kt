@@ -48,7 +48,7 @@ class LuckyDrawActivity : AppCompatActivity() {
 
         try {
             if (mediaPlayer == null || !mediaPlayer!!.isPlaying())
-            mediaPlayer = MediaPlayer.create(this, R.raw.sound_lottery)
+                mediaPlayer = MediaPlayer.create(this, R.raw.sound_lottery)
 
             mediaPlayer?.let {
                 it.isLooping = true
@@ -231,27 +231,31 @@ class LuckyDrawActivity : AppCompatActivity() {
     }
 
     private fun getRandomIndex(): Int {
-        val ind = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8)
-        var rand: Int = Random().nextInt(ind.size)
+//        val ind = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8)
+        var rand: Int = Random().nextInt(spinnerValues.size)
 
-        if (ind[rand] >6){
-            rand = Random().nextInt(ind.size);
+        if (spinnerValues[rand] > 10){
+            rand = Random().nextInt(spinnerValues.size);
         }
 
-        if (ind[rand] >6){
-            rand = Random().nextInt(ind.size);
+        if (spinnerValues[rand] > 20){
+            rand = Random().nextInt(spinnerValues.size);
         }
 
-        if (ind[rand] >6){
-            rand = Random().nextInt(ind.size);
+        if (spinnerValues[rand] > 50){
+            rand = Random().nextInt(spinnerValues.size);
         }
 
-        if (ind[rand] >7){
-            rand = Random().nextInt(ind.size);
+        if (spinnerValues[rand] > 100){
+            rand = Random().nextInt(spinnerValues.size);
+        }
+
+        if (spinnerValues[rand] > 500){
+            rand = Random().nextInt(spinnerValues.size);
         }
 
 
-        return ind[rand]
+        return rand + 1
     }
 
     private fun getRandomRound(): Int {

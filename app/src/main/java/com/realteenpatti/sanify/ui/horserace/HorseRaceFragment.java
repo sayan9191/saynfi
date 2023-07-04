@@ -423,8 +423,8 @@ public class HorseRaceFragment extends Fragment {
 
         binding.bidBtnSix.setEnabled(false);
         binding.bidBtnSix.setAlpha(0.5f);
-        binding.myBidingLinear1.setVisibility(View.GONE);
-        binding.myBidingLinear2.setVisibility(View.GONE);
+//        binding.myBidingLinear1.setVisibility(View.GONE);
+//        binding.myBidingLinear2.setVisibility(View.GONE);
         binding.myBidingText.setText("Try Your Luck here");
     }
 
@@ -443,8 +443,8 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnFive.setAlpha(1f);
         binding.bidBtnSix.setEnabled(true);
         binding.bidBtnSix.setAlpha(1f);
-        binding.myBidingLinear1.setVisibility(View.VISIBLE);
-        binding.myBidingLinear2.setVisibility(View.VISIBLE);
+//        binding.myBidingLinear1.setVisibility(View.VISIBLE);
+//        binding.myBidingLinear2.setVisibility(View.VISIBLE);
         binding.myBidingText.setText("Your Biding Amount");
     }
 
@@ -615,7 +615,7 @@ public class HorseRaceFragment extends Fragment {
                 }
 
                 if (winnerData.getTotal_bid_money() > 0){
-                    LuckyDrawBottomSheet bottomSheetLottery = new LuckyDrawBottomSheet(winnerData.getWin_money());
+                    LuckyDrawBottomSheet bottomSheetLottery = new LuckyDrawBottomSheet(winnerData.getWin_money(), winnerData.getWinnig_horse_id());
                     Log.d("_________", String.valueOf(winnerData.getWin_money()));
                     bottomSheetLottery.show(getParentFragmentManager(), "TAG");
                 }
@@ -685,6 +685,7 @@ public class HorseRaceFragment extends Fragment {
         binding.horseFive.setProgress(0, true);
         binding.horseSix.setProgress(0, true);
         resetBidAmounts();
+        isWinnerFetched = false;
     }
 
     private void resetBidAmounts() {

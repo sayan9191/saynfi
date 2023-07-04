@@ -46,6 +46,18 @@
         android:layout_margin="20dp"/>
 
     <TextView
+        android:id="@+id/winningHorseIdText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Horse number 2 has won the race"
+        android:background="@drawable/fading_gradiant"
+        android:padding="15dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        />
+
+    <TextView
         android:id="@+id/luckyDrawWinningText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
