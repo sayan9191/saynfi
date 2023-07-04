@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="All Participants"
+            android:text="Lottery Information"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -154,7 +154,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Everyday 8PM(IST)/8.30PM(BST/)."
+                    android:text="Everyday 9.00P.M(BST)."
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
