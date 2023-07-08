@@ -9,6 +9,7 @@ import com.realteenpatti.sanify.utils.StorageUtil
 import com.google.gson.Gson
 import com.realteenpatti.sanify.retrofit.models.lottery.AllWinnerResponseModel
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel
+import com.realteenpatti.sanify.retrofit.models.lottery.PrizePoolResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +26,9 @@ class AllWinnerRepository {
     val allWinnerList: MutableLiveData<AllWinnerResponseModel> = MutableLiveData()
 
     val lotterySlotDetails: MutableLiveData<CountDownTimeResponseModel> = MutableLiveData()
+
+    val allPrizePoolList: MutableLiveData<PrizePoolResponseModel> = MutableLiveData()
+
 
 
     fun getAllWinner() {
@@ -105,6 +109,44 @@ class AllWinnerRepository {
             }
 
         })
+    }
+
+    fun getPrizePool() {
+        isLoading.postValue(true)
+        api.getPrizePool()
+            .enqueue(object : Callback<PrizePoolResponseModel> {
+                override fun onResponse(
+                    call: Call<PrizePoolResponseModel>,
+                    response: Response<PrizePoolResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        isLoading.postValue(false)
+                        errorMessage.postValue("")
+                        response.body()?.let {
+                            allPrizePoolList.postValue(it)
+                        }
+                    } else {
+                        isLoading.postValue(false)
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+
+                                Log.e("Error: ", errorResponse.detail)
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<PrizePoolResponseModel>, t: Throwable) {
+                    Log.d("Request Failed. Error: ", t.message.toString())
+                    isLoading.postValue(false)
+                    errorMessage.postValue("Something went wrong")
+                }
+
+            })
     }
 
 }

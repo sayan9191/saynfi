@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.realteenpatti.sanify.repo.AllWinnerRepository
 import com.realteenpatti.sanify.retrofit.models.lottery.AllWinnerResponseModel
 import com.realteenpatti.sanify.retrofit.models.lottery.CountDownTimeResponseModel
+import com.realteenpatti.sanify.retrofit.models.lottery.PrizePoolResponseModel
 
 class ResultViewModel : ViewModel() {
     private val repo = AllWinnerRepository()
@@ -13,6 +14,7 @@ class ResultViewModel : ViewModel() {
     val errorMessage: LiveData<String> = repo.errorMessage
     val allWinnerList: LiveData<AllWinnerResponseModel> = repo.allWinnerList
     val slotDetails: LiveData<CountDownTimeResponseModel> = repo.lotterySlotDetails
+    val allPrizePool: LiveData<PrizePoolResponseModel> = repo.allPrizePoolList
 
     fun getAllWinnerDetails() {
         repo.getAllWinner()
@@ -22,4 +24,7 @@ class ResultViewModel : ViewModel() {
         repo.getSlotDetails()
     }
 
+    fun getAllPrizePoolDetails() {
+        repo.getPrizePool()
+    }
 }
