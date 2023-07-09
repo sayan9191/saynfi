@@ -85,13 +85,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Last Lottery Results"
+                        android:text="Congratulations Winners!"
                         android:textColor="@color/white"
                         android:paddingBottom="10dp"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:id="@+id/digitAnimationLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -268,7 +268,118 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
-                    </LinearLayout>
+                    </LinearLayout>-->
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/winnerSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
+                        android:paddingStart="7dp"
+                        android:paddingEnd="7dp"
+                        android:paddingBottom="17dp"
+                        android:layout_margin="10dp">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/winnerPopup"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"
+                            app:lottie_rawRes="@raw/anim_popup"
+                            android:elevation="10dp"
+                            android:layout_margin="10dp"
+                            app:lottie_loop="true"
+                            app:lottie_autoPlay="true"/>
+
+                        <TextView
+                            android:id="@+id/winnerPopupTicketNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:visibility="gone"
+                            android:text="Ticket: 358"
+                            android:textStyle="bold"
+                            android:elevation="11dp"
+                            app:layout_constraintStart_toStartOf="@+id/winnerPopup"
+                            app:layout_constraintEnd_toEndOf="@+id/winnerPopup"
+                            android:layout_marginBottom="100dp"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/winnerPopup"/>
+
+                        <LinearLayout
+                            android:id="@+id/winnerPopupLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:elevation="11dp"
+                            android:orientation="vertical"
+                            android:layout_marginBottom="130dp"
+                            app:layout_constraintStart_toStartOf="@+id/winnerPopup"
+                            app:layout_constraintEnd_toEndOf="@+id/winnerPopup"
+                            app:layout_constraintBottom_toBottomOf="@+id/winnerPopup">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="You won"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.airbnb.lottie.LottieAnimationView
+                                    android:id="@+id/coinPopupAnimation"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    app:lottie_rawRes="@raw/anim_coin_popup"
+                                    app:lottie_autoPlay="true"
+                                    app:layout_constraintStart_toStartOf="@+id/winnerPopup"
+                                    app:layout_constraintEnd_toEndOf="@+id/winnerPopup"
+                                    app:layout_constraintBottom_toBottomOf="@+id/winnerPopup"/>
+
+                                <TextView
+                                    android:id="@+id/winnerPopupWinMoney"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1000/-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/white"
+                                    android:textSize="18sp"
+                                    android:layout_gravity="center"
+                                    app:layout_constraintStart_toEndOf="@+id/coinPopupAnimation"
+                                    app:layout_constraintBottom_toBottomOf="@+id/coinPopupAnimation"
+                                    app:layout_constraintTop_toTopOf="@+id/coinPopupAnimation"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:elevation="5dp"
+                            android:src="@drawable/lottery_winner_spinner_frame"/>
+
+                        <rubikstudio.library.LuckyWheelView
+                            android:id="@+id/luckyWheel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            app:lkwBackgroundColor="@android:color/transparent"
+                            app:lkwCenterImage="@drawable/lottery"
+                            app:lkwCursor="@drawable/spin"
+                            app:lkwTextColor="#F8F8F8"
+                            >
+                        </rubikstudio.library.LuckyWheelView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
