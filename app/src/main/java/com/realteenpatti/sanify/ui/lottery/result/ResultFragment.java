@@ -76,7 +76,7 @@ public class ResultFragment extends Fragment {
         viewModel.getSlotDetails().observe(getViewLifecycleOwner(), new Observer<CountDownTimeResponseModel>() {
             @Override
             public void onChanged(CountDownTimeResponseModel lotterySlotData) {
-                long timeLeft = Long.parseLong(lotterySlotData.getTime_left_in_millis());
+                long timeLeft = Long.parseLong(lotterySlotData.getTime_left_in_millis()) + 300000;
 
 //                if (timeLeft < 0){
                 // get how much time spent
@@ -124,6 +124,8 @@ public class ResultFragment extends Fragment {
                 winnerList.clear();
                 winnerList.addAll(allWinnerResponseModelItems);
                 if (winnerList.size() > 0){
+                    binding.topLottieSparkle.setVisibility(View.VISIBLE);
+                    binding.winnerSpinner.setVisibility(View.VISIBLE);
                     initAnimation();
 //                    Log.d("_________________", winnerList.get(0).getUser().toString());
                 }else{
