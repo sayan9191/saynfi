@@ -52,7 +52,7 @@
                     android:id="@+id/dashBoardUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SAYAN"
+                    android:text=""
                     android:layout_gravity="start"
                     android:textSize="12sp"
                     android:textColor="@color/white"
@@ -96,13 +96,27 @@
         </LinearLayout>
 
 
+        <TextView
+            android:id="@+id/noticeBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="0dp" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             app:cardCornerRadius="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/noticeBoard">
 
             <LinearLayout
                 android:layout_width="match_parent"

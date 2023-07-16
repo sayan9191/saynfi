@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.realteenpatti.sanify.R
 import com.realteenpatti.sanify.databinding.FragmentDashBoardBinding
+import com.realteenpatti.sanify.retrofit.models.lottery.LotteryNoticeGetResponseModel
+import com.realteenpatti.sanify.retrofit.models.spinner.DashBoardNoticeGetResponseModel
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.showLoadingDialog
 import com.realteenpatti.sanify.ui.horserace.HorseRaceFragment
@@ -34,7 +37,14 @@ class DashBoardFragment : Fragment() {
         viewModel = ViewModelProvider(this)[DashBoardViewModel::class.java]
 
         viewModel.getCurrentUserInfo()
+        viewModel.getDashBoardMessage()
 
+        viewModel.noticeDashBoardMessage.observe(viewLifecycleOwner)
+             {
+                 if (it!=null) {
+                     binding.noticeBoard.setText(it.notice_text)
+                 }
+            }
         viewModel.userInfo.observe(viewLifecycleOwner) {
             if (it != null){
                 binding.dashBoardUserName.text = it.name

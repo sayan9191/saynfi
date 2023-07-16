@@ -1,9 +1,11 @@
 package com.realteenpatti.sanify.ui.home
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.realteenpatti.sanify.repo.CoinRepository
 import com.realteenpatti.sanify.retrofit.models.UserInfoResponseModel
+import com.realteenpatti.sanify.retrofit.models.spinner.DashBoardNoticeGetResponseModel
 
 class DashBoardViewModel : ViewModel() {
     private val coinRepo = CoinRepository()
@@ -15,11 +17,17 @@ class DashBoardViewModel : ViewModel() {
 
     val userInfo : LiveData<UserInfoResponseModel> = coinRepo.userInfo
 
+    val noticeDashBoardMessage: MutableLiveData<DashBoardNoticeGetResponseModel> = coinRepo.noticeDashBoardMessage
+
     fun getCoinBalance(){
         coinRepo.getCoinBalance()
     }
 
     fun getCurrentUserInfo(){
         coinRepo.getUserInfo()
+    }
+
+    fun getDashBoardMessage(){
+        coinRepo.getNoticeDashBoardMessage()
     }
 }

@@ -22,7 +22,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:padding="10dp"
-            android:text="SAYAN MONDAL"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="18sp" />
         <TextView

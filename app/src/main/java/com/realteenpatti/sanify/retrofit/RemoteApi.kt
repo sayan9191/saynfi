@@ -17,6 +17,7 @@ import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
 import com.realteenpatti.sanify.retrofit.models.login.LoginResponse
 import com.realteenpatti.sanify.retrofit.models.lottery.*
 import com.realteenpatti.sanify.retrofit.models.refer.ReferResponseModel
+import com.realteenpatti.sanify.retrofit.models.spinner.DashBoardNoticeGetResponseModel
 
 import com.realteenpatti.sanify.retrofit.models.transaction.*
 import retrofit2.Call
@@ -132,5 +133,8 @@ interface RemoteApi {
 
     @GET("lottery/get_lottery_notice")
     fun getLotteryNotice(): Call<LotteryNoticeGetResponseModel>
+
+    @GET("Notice/get_dashboard_notice")
+    fun getDashBoardNotice(): Call<DashBoardNoticeGetResponseModel>
 
 }

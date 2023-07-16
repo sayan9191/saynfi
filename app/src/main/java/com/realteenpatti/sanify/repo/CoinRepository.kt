@@ -12,6 +12,7 @@ import com.realteenpatti.sanify.retrofit.models.coin.UpdateCoinResponseModel
 import com.realteenpatti.sanify.utils.NetworkUtils
 import com.realteenpatti.sanify.utils.StorageUtil
 import com.google.gson.Gson
+import com.realteenpatti.sanify.retrofit.models.spinner.DashBoardNoticeGetResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +37,9 @@ class CoinRepository {
     val userInfo : MutableLiveData<UserInfoResponseModel> = MutableLiveData()
 
     val allSpinnerCoins: MutableLiveData<AllSpinnerCoinResponseModel> = MutableLiveData()
+
+    val noticeDashBoardMessage: MutableLiveData<DashBoardNoticeGetResponseModel> = MutableLiveData()
+
 
 
     fun getCoinBalance(){
@@ -230,5 +234,42 @@ class CoinRepository {
             })
     }
 
+    fun getNoticeDashBoardMessage() {
+        isLoading.postValue(true)
+        api.getDashBoardNotice()
+            .enqueue(object : Callback<DashBoardNoticeGetResponseModel> {
+                override fun onResponse(
+                    call: Call<DashBoardNoticeGetResponseModel>,
+                    response: Response<DashBoardNoticeGetResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        isLoading.postValue(false)
+                        errorMessage.postValue("")
+                        response.body()?.let {
+                            noticeDashBoardMessage.postValue(it)
+                        }
+                    } else {
+                        isLoading.postValue(false)
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+
+                                Log.e("Error: ", errorResponse.detail)
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<DashBoardNoticeGetResponseModel>, t: Throwable) {
+                    Log.d("Request Failed. Error: ", t.message.toString())
+                    isLoading.postValue(false)
+                    errorMessage.postValue("Something went wrong")
+                }
+
+            })
+    }
 
 }
