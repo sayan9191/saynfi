@@ -18,6 +18,7 @@ import com.realteenpatti.sanify.retrofit.models.spinner.DashBoardNoticeGetRespon
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.hideLoadingDialog
 import com.realteenpatti.sanify.ui.dialogbox.LoadingScreen.Companion.showLoadingDialog
 import com.realteenpatti.sanify.ui.horserace.HorseRaceFragment
+import com.realteenpatti.sanify.ui.jhandimunda.JhandiMundaFragment
 import com.realteenpatti.sanify.ui.lottery.LotteryBuyFragment
 import com.realteenpatti.sanify.ui.profile.Profile_Fragment
 import com.realteenpatti.sanify.ui.spin.LuckyDrawActivity
@@ -97,6 +98,13 @@ class DashBoardFragment : Fragment() {
                 .setReorderingAllowed(true)
                 .addToBackStack("Home")
                 .replace(R.id.fragmentContainerView, HorseRaceFragment()).commit()
+        }
+
+        binding.jhandiMundaOption.setOnClickListener{
+            parentFragmentManager.beginTransaction()
+                .setReorderingAllowed(true)
+                .addToBackStack("Home")
+                .replace(R.id.fragmentContainerView, JhandiMundaFragment ()).commit()
         }
 
         binding.profileImage.setOnClickListener {

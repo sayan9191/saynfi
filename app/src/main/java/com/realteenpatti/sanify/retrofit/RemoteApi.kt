@@ -14,6 +14,10 @@ import com.realteenpatti.sanify.retrofit.models.horse.GetSlotDetailsResponseMode
 import com.realteenpatti.sanify.retrofit.models.horse.HorseBidRequestModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseMyBidResponseModel
 import com.realteenpatti.sanify.retrofit.models.horse.HorseWinnerResponseModel
+import com.realteenpatti.sanify.retrofit.models.jhandimunda.GetJMSlotDetailsResponseModel
+import com.realteenpatti.sanify.retrofit.models.jhandimunda.JMBidRequestModel
+import com.realteenpatti.sanify.retrofit.models.jhandimunda.JMMyBidResponseModel
+import com.realteenpatti.sanify.retrofit.models.jhandimunda.JMWinnerResponseModel
 import com.realteenpatti.sanify.retrofit.models.login.LoginResponse
 import com.realteenpatti.sanify.retrofit.models.lottery.*
 import com.realteenpatti.sanify.retrofit.models.refer.ReferResponseModel
@@ -137,4 +141,16 @@ interface RemoteApi {
     @GET("Notice/get_dashboard_notice")
     fun getDashBoardNotice(): Call<DashBoardNoticeGetResponseModel>
 
+    @GET("jm/get_time_slot")
+    fun getJmSlotDetails(): Call<GetJMSlotDetailsResponseModel>
+
+    @POST("jm/bid")
+    fun jmBid(@Header("Authorization") token: String, @Body body: JMBidRequestModel
+    ): Call<CommonErrorModel>
+
+    @GET("jm/get_result")
+    fun getJmResultDetails(@Header("Authorization") token: String): Call<JMWinnerResponseModel>
+
+    @GET("jm/get_my_bids")
+    fun getMyJMBidDetails(@Header("Authorization") token: String): Call<JMMyBidResponseModel>
 }

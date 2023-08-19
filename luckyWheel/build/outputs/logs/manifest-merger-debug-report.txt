@@ -14,9 +14,9 @@ ADDED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\mai
 	android:supportsRtl
 		ADDED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:4:9-35
 	android:label
-		ADDED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:45-77
+		ADDED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:46-78
 	android:allowBackup
-		ADDED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:18-44
+		ADDED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:18-45
 uses-sdk
 INJECTED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml

@@ -357,12 +357,7 @@ public class HorseRaceFragment extends Fragment {
         });
 
         //back Button
-        binding.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getParentFragmentManager().popBackStackImmediate();
-            }
-        });
+        binding.backBtn.setOnClickListener(view -> getParentFragmentManager().popBackStackImmediate());
 
         return binding.getRoot();
     }
@@ -443,8 +438,6 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnFive.setAlpha(1f);
         binding.bidBtnSix.setEnabled(true);
         binding.bidBtnSix.setAlpha(1f);
-//        binding.myBidingLinear1.setVisibility(View.VISIBLE);
-//        binding.myBidingLinear2.setVisibility(View.VISIBLE);
         binding.myBidingText.setText("Your Biding Amount");
     }
 
@@ -505,18 +498,6 @@ public class HorseRaceFragment extends Fragment {
                     fetchedTime = millisUntilFinished;
                 }
 
-//                if (millisUntilFinished < 25000){
-//                    if (timeDelay[0] == 0){
-//                        viewModel.getWinnerDetails();
-//                    }
-//                    else{
-//                        timeDelay[0] += 50;
-//                    }
-//
-//                    if (timeDelay[0] > 1000){
-//                        timeDelay[0] = 0;
-//                    }
-//                }
             }
 
             @Override

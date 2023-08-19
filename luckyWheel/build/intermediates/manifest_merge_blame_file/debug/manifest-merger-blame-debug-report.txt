@@ -7,10 +7,10 @@
 6
 7    <application
 7-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:5-6:19
-8        android:allowBackup="true"
-8-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:18-44
+8        android:allowBackup="false"
+8-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:18-45
 9        android:label="@string/app_name"
-9-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:45-77
+9-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:3:46-78
 10        android:supportsRtl="true" >
 10-->C:\Users\SAYAN MONDAL\AndroidStudioProjects\SANIFY\luckyWheel\src\main\AndroidManifest.xml:4:9-35
 11    </application>
