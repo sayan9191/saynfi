@@ -63,46 +63,22 @@ public class JhandiMundaFragment extends Fragment {
                     public void accept(JMMyBidResponseModelItem bidDetail) {
                         switch (bidDetail.getCard_id()) {
                             case 1:
-                                if (Integer.parseInt(binding.bidAmountOne.getText().toString().trim()) > 0) {
-                                    binding.bidingAmountOne.setText("Bid");
-                                } else if (Integer.parseInt(binding.bidAmountOne.getText().toString().trim()) == 0) {
-                                    binding.bidingAmountOne.setText(String.valueOf(bidDetail.getBid_amount()));
-                                }
+                                binding.bidingAmountOne.setText(String.valueOf(bidDetail.getBid_amount()));
                                 break;
                             case 2:
-                                if (Integer.parseInt(binding.bidAmountTwo.getText().toString().trim()) > 0) {
-                                    binding.bidingAmountTwo.setText("Bid");
-                                } else if (Integer.parseInt(binding.bidAmountTwo.getText().toString().trim()) == 0) {
-                                    binding.bidingAmountTwo.setText(String.valueOf(bidDetail.getBid_amount()));
-                                }
+                                binding.bidingAmountTwo.setText(String.valueOf(bidDetail.getBid_amount()));
                                 break;
                             case 3:
-                                if (Integer.parseInt(binding.bidAmountThree.getText().toString().trim()) > 0) {
-                                    binding.bidingAmountThree.setText("Bid");
-                                } else if (Integer.parseInt(binding.bidAmountThree.getText().toString().trim()) == 0) {
-                                    binding.bidingAmountThree.setText(String.valueOf(bidDetail.getBid_amount()));
-                                }
+                                binding.bidingAmountThree.setText(String.valueOf(bidDetail.getBid_amount()));
                                 break;
                             case 4:
-                                if (Integer.parseInt(binding.bidAmountFour.getText().toString().trim()) > 0) {
-                                    binding.bidingAmountFour.setText("Bid");
-                                } else if (Integer.parseInt(binding.bidAmountFour.getText().toString().trim()) == 0) {
-                                    binding.bidingAmountFour.setText(String.valueOf(bidDetail.getBid_amount()));
-                                }
+                                binding.bidingAmountFour.setText(String.valueOf(bidDetail.getBid_amount()));
                                 break;
                             case 5:
-                                if (Integer.parseInt(binding.bidAmountFive.getText().toString().trim()) > 0) {
-                                    binding.bidingAmountFive.setText("Bid");
-                                } else if (Integer.parseInt(binding.bidAmountFive.getText().toString().trim()) == 0) {
-                                    binding.bidingAmountFive.setText(String.valueOf(bidDetail.getBid_amount()));
-                                }
+                                binding.bidingAmountFive.setText(String.valueOf(bidDetail.getBid_amount()));
                                 break;
                             case 6:
-                                if (Integer.parseInt(binding.bidAmountSix.getText().toString().trim()) > 0) {
-                                    binding.bidingAmountSix.setText("Bid");
-                                } else if (Integer.parseInt(binding.bidAmountSix.getText().toString().trim()) == 0) {
-                                    binding.bidingAmountSix.setText(String.valueOf(bidDetail.getBid_amount()));
-                                }
+                                binding.bidingAmountSix.setText(String.valueOf(bidDetail.getBid_amount()));
                                 break;
                         }
                     }
@@ -155,84 +131,136 @@ public class JhandiMundaFragment extends Fragment {
         });
 
 
-        binding.increaseOne.setOnClickListener(view -> {
-            int amount1 = Integer.parseInt(binding.bidAmountOne.getText().toString().trim());
-            amount1 = amount1 + 10;
-            binding.bidAmountOne.setText(Integer.toString(amount1));
-        });
-
-        binding.decreaseOne.setOnClickListener(view -> {
-            int amount1 = Integer.parseInt(binding.bidAmountOne.getText().toString().trim());
-            if (amount1 > 0) {
-                amount1 = amount1 - 10;
-                binding.bidAmountOne.setText(Integer.toString(amount1));
+        binding.increaseOne.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                Integer amount1 = Integer.valueOf(binding.bidAmountOne.getText().toString().trim());
+                amount1 = amount1 + 10;
+                binding.bidAmountOne.setText(amount1.toString());
             }
         });
 
-        binding.bidingAmountOne.setOnClickListener(view -> {
-            int jmOneBidAmount = Integer.parseInt(binding.bidAmountOne.getText().toString().trim());
-            binding.bidAmountOne.setText("0");
-            viewModel.jmBid(jmOneBidAmount, 1);
+        binding.decreaseOne.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                Integer amount1 = Integer.valueOf(binding.bidAmountOne.getText().toString().trim());
+                if (amount1 > 10) {
+                    amount1 = amount1 - 10;
+                    binding.bidAmountOne.setText(amount1.toString());
+                } else {
+                    Toast.makeText(requireContext(), "Minimum Bid amount is 10", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
-        binding.increaseTwo.setOnClickListener(view -> {
-            int amount2 = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
-            amount2 = amount2 + 10;
-            binding.bidAmountTwo.setText(Integer.toString(amount2));
+        binding.bidOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int diceOneBidAmount = Integer.parseInt(binding.bidAmountOne.getText().toString().trim());
+                binding.bidAmountOne.setText("10");
+                viewModel.jmBid(diceOneBidAmount, 1);
+            }
         });
 
-        binding.decreaseTwo.setOnClickListener(view -> {
-            int amount2 = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
-            if (amount2 > 0) {
-                amount2 = amount2 - 10;
+        binding.increaseTwo.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                int amount2 = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
+                amount2 = amount2 + 10;
                 binding.bidAmountTwo.setText(Integer.toString(amount2));
             }
         });
 
-        binding.bidingAmountTwo.setOnClickListener(view -> {
-            int jmTwoBidAmount = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
-            binding.bidAmountTwo.setText("0");
-            viewModel.jmBid(jmTwoBidAmount, 2);
+        binding.decreaseTwo.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                int amount2 = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
+                if (amount2 > 10) {
+                    amount2 = amount2 - 10;
+                    binding.bidAmountTwo.setText(Integer.toString(amount2));
+                } else {
+                    Toast.makeText(requireContext(), "Minimum Bid amount is 10", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
-        binding.increaseThree.setOnClickListener(view -> {
-            int amount3 = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
-            amount3 = amount3 + 10;
-            binding.bidAmountThree.setText(Integer.toString(amount3));
+        binding.bidTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int diceTwoBidAmount = Integer.parseInt(binding.bidAmountTwo.getText().toString().trim());
+                binding.bidAmountTwo.setText("10");
+                viewModel.jmBid(diceTwoBidAmount, 2);
+            }
         });
 
-        binding.decreaseThree.setOnClickListener(view -> {
-            int amount3 = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
-            if (amount3 > 0) {
-                amount3 = amount3 - 10;
+        binding.increaseThree.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                int amount3 = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
+                amount3 = amount3 + 10;
                 binding.bidAmountThree.setText(Integer.toString(amount3));
             }
         });
 
-        binding.bidingAmountThree.setOnClickListener(view -> {
-            int jmThreeBidAmount = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
-            binding.bidAmountThree.setText("0");
-            viewModel.jmBid(jmThreeBidAmount, 3);
+        binding.decreaseThree.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                int amount3 = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
+                if (amount3 > 10) {
+                    amount3 = amount3 - 10;
+                    binding.bidAmountThree.setText(Integer.toString(amount3));
+                } else {
+                    Toast.makeText(requireContext(), "Minimum Bid amount is 10", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
-        binding.increaseFour.setOnClickListener(view -> {
-            int amount4 = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
-            amount4 = amount4 + 10;
-            binding.bidAmountFour.setText(Integer.toString(amount4));
+        binding.bidThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int diceThreeBidAmount = Integer.parseInt(binding.bidAmountThree.getText().toString().trim());
+                binding.bidAmountThree.setText("10");
+                viewModel.jmBid(diceThreeBidAmount, 3);
+            }
         });
 
-        binding.decreaseFour.setOnClickListener(view -> {
-            int amount4 = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
-            if (amount4 > 0) {
-                amount4 = amount4 - 10;
+        binding.increaseFour.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                int amount4 = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
+                amount4 = amount4 + 10;
                 binding.bidAmountFour.setText(Integer.toString(amount4));
             }
         });
 
-        binding.bidingAmountFour.setOnClickListener(view -> {
-            int horseFourBidAmount = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
-            binding.bidAmountFour.setText("0");
-            viewModel.jmBid(horseFourBidAmount, 4);
+        binding.decreaseFour.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                int amount4 = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
+                if (amount4 > 10) {
+                    amount4 = amount4 - 10;
+                    binding.bidAmountFour.setText(Integer.toString(amount4));
+                } else {
+                    Toast.makeText(requireContext(), "Minimum Bid amount is 10", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        binding.bidFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int diceFourBidAmount = Integer.parseInt(binding.bidAmountFour.getText().toString().trim());
+                binding.bidAmountFour.setText("10");
+                viewModel.jmBid(diceFourBidAmount, 4);
+            }
         });
 
         binding.increaseFive.setOnClickListener(new View.OnClickListener() {
@@ -250,19 +278,21 @@ public class JhandiMundaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int amount5 = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
-                if (amount5 > 0) {
+                if (amount5 > 10) {
                     amount5 = amount5 - 10;
                     binding.bidAmountFive.setText(Integer.toString(amount5));
+                } else {
+                    Toast.makeText(requireContext(), "Minimum Bid amount is 10", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        binding.bidingAmountFive.setOnClickListener(new View.OnClickListener() {
+        binding.bidFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int horseFiveBidAmount = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
-                binding.bidAmountFive.setText("0");
-                viewModel.jmBid(horseFiveBidAmount, 5);
+                int diceFiveBidAmount = Integer.parseInt(binding.bidAmountFive.getText().toString().trim());
+                binding.bidAmountFive.setText("10");
+                viewModel.jmBid(diceFiveBidAmount, 5);
             }
         });
 
@@ -281,18 +311,20 @@ public class JhandiMundaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int amount6 = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
-                if (amount6 > 0) {
+                if (amount6 > 10) {
                     amount6 = amount6 - 10;
                     binding.bidAmountSix.setText(Integer.toString(amount6));
+                } else {
+                    Toast.makeText(requireContext(), "Minimum Bid amount is 10", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        binding.bidingAmountSix.setOnClickListener(new View.OnClickListener() {
+        binding.bidSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int horseSixBidAmount = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
-                binding.bidAmountSix.setText("0");
-                viewModel.jmBid(horseSixBidAmount, 6);
+                int diceSixBidAmount = Integer.parseInt(binding.bidAmountSix.getText().toString().trim());
+                binding.bidAmountSix.setText("10");
+                viewModel.jmBid(diceSixBidAmount, 6);
             }
         });
 
