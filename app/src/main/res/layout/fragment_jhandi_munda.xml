@@ -728,4 +728,63 @@
             android:src="@drawable/jhandi_six" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"
+        android:weightSum="6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dice" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dice" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dice" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dice" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dice" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/dice" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
