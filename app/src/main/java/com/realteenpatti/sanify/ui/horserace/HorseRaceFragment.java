@@ -411,7 +411,7 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnThree.setAlpha(0.5f);
 
         binding.bidBtnFour.setEnabled(false);
-        binding.bidAmountFour.setAlpha(0.5f);
+        binding.bidBtnFour.setAlpha(0.5f);
 
         binding.bidBtnFive.setEnabled(false);
         binding.bidBtnFive.setAlpha(0.5f);
@@ -433,7 +433,7 @@ public class HorseRaceFragment extends Fragment {
         binding.bidBtnThree.setEnabled(true);
         binding.bidBtnThree.setAlpha(1f);
         binding.bidBtnFour.setEnabled(true);
-        binding.bidAmountFour.setAlpha(1f);
+        binding.bidBtnFour.setAlpha(1f);
         binding.bidBtnFive.setEnabled(true);
         binding.bidBtnFive.setAlpha(1f);
         binding.bidBtnSix.setEnabled(true);
@@ -596,7 +596,7 @@ public class HorseRaceFragment extends Fragment {
                 }
 
                 if (winnerData.getTotal_bid_money() > 0){
-                    LuckyDrawBottomSheet bottomSheetLottery = new LuckyDrawBottomSheet(winnerData.getWin_money(), winnerData.getWinnig_horse_id());
+                    LuckyDrawBottomSheet bottomSheetLottery = new LuckyDrawBottomSheet(winnerData.getWin_money(), winnerData.getWinnig_horse_id(), "horse");
                     Log.d("_________", String.valueOf(winnerData.getWin_money()));
                     bottomSheetLottery.show(getParentFragmentManager(), "TAG");
                 }

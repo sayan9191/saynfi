@@ -76,7 +76,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintBottom_toTopOf="@+id/diceLayout"
         app:layout_constraintTop_toBottomOf="@+id/toolBar">
 
         <LinearLayout
@@ -850,14 +850,13 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/diceLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:background="@color/white"
         android:orientation="horizontal"
         android:paddingTop="10dp"
-
         android:paddingBottom="10dp"
         android:weightSum="6"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -866,36 +865,42 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:id="@+id/dice1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:src="@drawable/jhandi_one" />
 
         <ImageView
+            android:id="@+id/dice2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:src="@drawable/jhandi_two" />
 
         <ImageView
+            android:id="@+id/dice3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:src="@drawable/jhandi_three" />
 
         <ImageView
+            android:id="@+id/dice4"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:src="@drawable/jhansi_four" />
 
         <ImageView
+            android:id="@+id/dice5"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:src="@drawable/jhandi_five" />
 
         <ImageView
+            android:id="@+id/dice6"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -906,54 +911,59 @@
         android:id="@+id/animation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:visibility="gone"
         android:weightSum="6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dice1Anim"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/dice" />
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dice2Anim"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/dice" />
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dice3Anim"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/dice" />
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dice4Anim"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/dice" />
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dice5Anim"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/dice" />
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/dice6Anim"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"

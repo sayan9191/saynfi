@@ -30,8 +30,8 @@ class JhandiMundaViewModel : ViewModel() {
         repo.jmWinner()
     }
 
-    fun jmBid(amount: Int, horseNum: Int) {
-        repo.jmBid(amount, horseNum)
+    fun jmBid(amount: Int, cardNum: Int) {
+        repo.jmBid(amount, cardNum)
     }
 
     fun getMyJmBids(){

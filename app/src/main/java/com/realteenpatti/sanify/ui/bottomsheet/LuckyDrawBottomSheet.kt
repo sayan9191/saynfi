@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.realteenpatti.sanify.R
 
-class LuckyDrawBottomSheet(val coins: Int, private val winning_horse_id : Int = -1) : BottomSheetDialogFragment() {
+class LuckyDrawBottomSheet(val coins: Int, private val winning_horse_id : Int = -1, private val gameTag : String = "horse" ) : BottomSheetDialogFragment() {
 
 
     override fun onCreateView(
@@ -28,7 +29,12 @@ class LuckyDrawBottomSheet(val coins: Int, private val winning_horse_id : Int = 
 
         if (winning_horse_id > 0){
             winningHorseText.visibility = View.VISIBLE
-            winningHorseText.text = "Horse number $winning_horse_id has won the race"
+            when(gameTag){
+                "horse" ->
+                    winningHorseText.text = "Horse number $winning_horse_id has won the race"
+                "jm" -> winningHorseText.text = "Card number $winning_horse_id has won"
+            }
+
         }else{
             winningHorseText.visibility = View.GONE
         }
