@@ -392,6 +392,13 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Version: 1.0"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#CCC6B5"/>
             </LinearLayout>
 
         </LinearLayout>
