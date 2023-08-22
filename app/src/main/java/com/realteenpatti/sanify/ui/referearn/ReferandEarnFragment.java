@@ -25,32 +25,24 @@ public class ReferandEarnFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentReferandEarnBinding.inflate(inflater, container, false);
 
-        getParentFragmentManager().setFragmentResultListener("referKey", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                String refer = result.getString("refer");
-                binding.referCode.setText(refer);
-                String copyText = "Use my coupon code " + refer + "and get cash bonus.";
-                binding.copyBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ClipboardManager clipboardManager = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                        ClipData clipData = ClipData.newPlainText("Text", copyText);
-                        clipboardManager.setPrimaryClip(clipData);
-                        Toast.makeText(requireContext(), "Text copied", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        getParentFragmentManager().setFragmentResultListener("referKey", this, (requestKey, result) -> {
+            String refer = result.getString("refer");
+            binding.referCode.setText(refer);
+            String copyText = "Use my coupon code " + refer + "and get cash bonus.";
+            binding.copyBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ClipboardManager clipboardManager = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clipData = ClipData.newPlainText("Text", copyText);
+                    clipboardManager.setPrimaryClip(clipData);
+                    Toast.makeText(requireContext(), "Referral code copied", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-            }
         });
 
         //back button
-        binding.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getParentFragmentManager().popBackStackImmediate();
-            }
-        });
+        binding.backBtn.setOnClickListener(view -> getParentFragmentManager().popBackStackImmediate());
 
 
         return binding.getRoot();

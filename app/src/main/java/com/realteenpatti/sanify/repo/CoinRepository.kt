@@ -174,14 +174,19 @@ class CoinRepository {
                 } else {
                     isLoading.postValue(false)
                     isCoinDeducted.postValue(false)
-                    response.errorBody()?.let { errorBody ->
-                        errorBody.string().let {
-                            Log.e("Error: ", it)
-                            val errorResponse: CommonErrorModel =
-                                Gson().fromJson(it, CommonErrorModel::class.java)
-                            errorMessage.postValue(errorResponse.detail)
+                    try {
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+                            }
                         }
+                    } catch (e: Exception){
+                        throw e
                     }
+
                 }
             }
 

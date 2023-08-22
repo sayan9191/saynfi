@@ -71,10 +71,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_margin="10dp"
                 android:text="Reffer your friend and get lifetime 5% bonus."
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                 android:text="If your friend use your reffer code both you will get instant 10.
 Also you will get 5% Commission from your friend's deposit lifetime."
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
 
             <TextView
@@ -92,13 +92,16 @@ Also you will get 5% Commission from your friend's deposit lifetime."
                 android:layout_margin="10dp"
                 android:text="Share this URL with this URL to your Facebook profile and send your post URL to our WhatsApp to get 50 instant(lock profile will not allow for this bonus)."
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#CCFFFFFF"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:cardMaxElevation="12dp"
@@ -107,15 +110,17 @@ Also you will get 5% Commission from your friend's deposit lifetime."
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="Your refer Code is"
+                        android:textAlignment="center"
+                        android:text="Your referral code is"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -124,10 +129,10 @@ Also you will get 5% Commission from your friend's deposit lifetime."
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:gravity="center"
-                        android:text="564797844789787majxgu"
+
                         android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="16sp"
+                         />
 
 
                     <TextView
@@ -137,7 +142,7 @@ Also you will get 5% Commission from your friend's deposit lifetime."
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/square"
-                        android:backgroundTint="#E19898"
+                        android:backgroundTint="#F44336"
                         android:drawableStart="@drawable/copy_icon"
                         android:gravity="center"
                         android:padding="10dp"

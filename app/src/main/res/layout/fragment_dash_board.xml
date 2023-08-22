@@ -305,7 +305,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:background="@drawable/fading_gradiant"
-                        android:backgroundTint="@color/purple_500"
+                        android:backgroundTint="#0D8E3C"
+
                         app:layout_constraintBottom_toBottomOf="parent" />
 
                     <TextView
@@ -359,7 +360,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:background="@drawable/fading_gradiant"
-                        android:backgroundTint="#0D8E3C"
+                        android:backgroundTint="@color/purple_500"
                         app:layout_constraintBottom_toBottomOf="parent" />
 
                     <TextView
