@@ -394,7 +394,7 @@ public class JhandiMundaFragment extends Fragment {
 
             @Override
             public void onFinish() {
-                binding.countdownTextView.setText("Something went wrong");
+                binding.countdownTextView.setText("Game finished");
                 viewModel.getSlotDetailsInfo();
                 viewModel.getWinnerDetails();
             }
@@ -448,7 +448,7 @@ public class JhandiMundaFragment extends Fragment {
     }
 
 
-
+    CountDownTimer timer;
     private void showWinnerAnimation(JMWinnerResponseModel winnerDetails){
         isWinnerFetched = true;
 
@@ -500,9 +500,12 @@ public class JhandiMundaFragment extends Fragment {
             }
         }
 
+        if (timer != null){
+            timer.cancel();
+        }
 
         // Roll dice
-        new CountDownTimer(3000, 200) {
+        timer = new CountDownTimer(3000, 200) {
             @Override
             public void onTick(long millisUntilFinished) {
                 rollDice();
@@ -522,7 +525,9 @@ public class JhandiMundaFragment extends Fragment {
                     }
                 }, 2000);
             }
-        }.start();
+        };
+
+        timer.start();
 
 //        new Handler().postDelayed(new Runnable() {
 //            @Override

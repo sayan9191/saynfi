@@ -75,7 +75,6 @@ class DashBoardFragment : Fragment() {
                     startActivity(Intent(requireContext(), LogInActivity::class.java))
                     requireActivity().finish()
                     Toast.makeText(requireContext(), "Session expired, log in again", Toast.LENGTH_SHORT).show()
-
                 }
             }
         }
