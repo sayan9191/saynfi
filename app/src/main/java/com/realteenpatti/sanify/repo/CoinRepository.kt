@@ -57,14 +57,19 @@ class CoinRepository {
                     }
                 }else{
                     isLoading.postValue(false)
-                    response.errorBody()?.let { errorBody ->
-                        errorBody.string().let {
-                            Log.e("Error: ", it)
-                            val errorResponse: CommonErrorModel =
-                                Gson().fromJson(it, CommonErrorModel::class.java)
-                            errorMessage.postValue(errorResponse.detail)
+                    try{
+                        response.errorBody()?.let { errorBody ->
+                            errorBody.string().let {
+                                Log.e("Error: ", it)
+                                val errorResponse: CommonErrorModel =
+                                    Gson().fromJson(it, CommonErrorModel::class.java)
+                                errorMessage.postValue(errorResponse.detail)
+                            }
                         }
+                    } catch (e: Exception){
+                        errorMessage.postValue("User does not exist")
                     }
+
                 }
             }
 
@@ -170,6 +175,7 @@ class CoinRepository {
                     errorMessage.postValue("")
                     response.body()?.let{
                         userInfo.postValue(it)
+                        Log.d("User Info: ", it.toString())
                     }
                 } else {
                     isLoading.postValue(false)
@@ -184,7 +190,7 @@ class CoinRepository {
                             }
                         }
                     } catch (e: Exception){
-                        throw e
+                        errorMessage.postValue("User does not exist")
                     }
 
                 }
@@ -193,8 +199,7 @@ class CoinRepository {
             override fun onFailure(call: Call<UserInfoResponseModel>, t: Throwable) {
                 Log.d("Request Failed. Error: ", t.message.toString())
                 isLoading.postValue(false)
-                isCoinDeducted.postValue(false)
-                errorMessage.postValue("Something went wrong")
+                errorMessage.postValue("User does not exist")
             }
 
         }

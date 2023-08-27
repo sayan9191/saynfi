@@ -454,13 +454,14 @@ public class JhandiMundaFragment extends Fragment {
 
         int[] arr = {0,0,0,0,0,0};
 
-        binding.animation.setVisibility(View.VISIBLE);
-        binding.dice1Anim.playAnimation();
-        binding.dice2Anim.playAnimation();
-        binding.dice3Anim.playAnimation();
-        binding.dice4Anim.playAnimation();
-        binding.dice5Anim.playAnimation();
-        binding.dice6Anim.playAnimation();
+//        binding.animation.setVisibility(View.VISIBLE);
+//        binding.dice1Anim.playAnimation();
+//        binding.dice2Anim.playAnimation();
+//        binding.dice3Anim.playAnimation();
+//        binding.dice4Anim.playAnimation();
+//        binding.dice5Anim.playAnimation();
+//        binding.dice6Anim.playAnimation();
+
 
         if (winnerDetails.getWinnig_card_id() == -1){
             for (int index = 0; index < 6; index ++) {
@@ -499,19 +500,21 @@ public class JhandiMundaFragment extends Fragment {
             }
         }
 
-        placeAllDice(arr);
 
-        new Handler().postDelayed(new Runnable() {
+        // Roll dice
+        new CountDownTimer(3000, 200) {
             @Override
-            public void run() {
-                binding.dice1Anim.pauseAnimation();
-                binding.dice2Anim.pauseAnimation();
-                binding.dice3Anim.pauseAnimation();
-                binding.dice4Anim.pauseAnimation();
-                binding.dice5Anim.pauseAnimation();
-                binding.dice6Anim.pauseAnimation();
-                binding.animation.setVisibility(View.GONE);
+            public void onTick(long millisUntilFinished) {
+                rollDice();
+            }
 
+            @Override
+            public void onFinish() {
+
+                // Stop dice roll
+                placeAllDice(arr);
+
+                // Show pop up
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -519,13 +522,44 @@ public class JhandiMundaFragment extends Fragment {
                     }
                 }, 2000);
             }
-        }, 3000);
+        }.start();
 
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+////                binding.dice1Anim.pauseAnimation();
+////                binding.dice2Anim.pauseAnimation();
+////                binding.dice3Anim.pauseAnimation();
+////                binding.dice4Anim.pauseAnimation();
+////                binding.dice5Anim.pauseAnimation();
+////                binding.dice6Anim.pauseAnimation();
+////                binding.animation.setVisibility(View.GONE);
+//
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        showPopUp(winnerDetails);
+//                    }
+//                }, 2000);
+//            }
+//        }, 3000);
+
+    }
+
+
+    private void rollDice(){
+        int[] arr = {0,0,0,0,0,0};
+
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+        }
+
+        placeAllDice(arr);
     }
 
     void placeAllDice(int[] arr){
 
-        for (int index = 0; index < 6; index ++){
+        for (int index = 0; index < arr.length; index ++){
             switch (arr[index]) {
                 case 1:
                     setDice(index + 1, R.drawable.jhandi_one);

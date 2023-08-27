@@ -43,14 +43,7 @@ class DashBoardFragment : Fragment() {
             requireContext().getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
 
 
-        try {
-            viewModel.getCurrentUserInfo()
-        }catch (e : Exception){
-            localStorage.token = ""
-            startActivity(Intent(requireContext(), LogInActivity::class.java))
-            Toast.makeText(requireContext(), "Session expired, log in again", Toast.LENGTH_SHORT).show()
-            requireActivity().finish()
-        }
+        viewModel.getCurrentUserInfo()
 
 
         viewModel.getDashBoardMessage()
@@ -58,12 +51,13 @@ class DashBoardFragment : Fragment() {
         viewModel.noticeDashBoardMessage.observe(viewLifecycleOwner)
              {
                  if (it!=null) {
-                     binding.noticeBoard.setText(it.notice_text)
+                     binding.noticeBoard.text = it.notice_text
                  }
             }
         viewModel.userInfo.observe(viewLifecycleOwner) {
             if (it != null){
                 binding.dashBoardUserName.text = it.name
+
                 viewModel.getCoinBalance()
             }
         }

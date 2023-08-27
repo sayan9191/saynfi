@@ -24,12 +24,7 @@ class DashBoardViewModel : ViewModel() {
     }
 
     fun getCurrentUserInfo(){
-        try{
-            coinRepo.getUserInfo()
-        } catch (e: Exception){
-            throw e
-        }
-
+        coinRepo.getUserInfo()
     }
 
     fun getDashBoardMessage(){
